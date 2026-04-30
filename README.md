@@ -1,0 +1,1 @@
+# stratg.github.io
