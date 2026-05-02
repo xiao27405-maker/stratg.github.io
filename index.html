@@ -3,436 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StratG — Coming Soon</title>
+<title>StratG Creative Studio — Coming Soon</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
   :root {
-    --white: #FFFFFF;
-    --warm: #F5F2EE;
-    --dark: #1A1A18;
-    --accent: #E8521A;
-    --muted: rgba(255,255,255,0.45);
+    --orange: #FE5F01;
+    --green:  #00BE63;
+    --dark:   #1A1A18;
+    --stone:  #8C8B87;
+    --warm:   #F5F2EE;
+    --white:  #FFFFFF;
   }
-
-  html, body {
-    height: 100%;
-    overflow: hidden;
-  }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--dark);
-    color: var(--white);
-    cursor: none;
-  }
-
-  /* CUSTOM CURSOR */
-  .cursor {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    background: var(--accent);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease;
-  }
-  .cursor-ring {
-    position: fixed;
-    width: 36px;
-    height: 36px;
-    border: 1px solid rgba(232,82,26,0.5);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.12s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s;
-  }
-
-  /* NOISE OVERLAY */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    opacity: 0.35;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  /* BG VIDEO/GRADIENT */
-  .bg {
-    position: fixed;
-    inset: 0;
-    background: 
-      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(232,82,26,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(232,82,26,0.05) 0%, transparent 50%),
-      #1A1A18;
-    z-index: 0;
-  }
-
-  /* ANIMATED LINES */
-  .lines {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-  }
-  .line {
-    position: absolute;
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.04), transparent);
-    animation: lineFade 8s ease-in-out infinite;
-  }
-  .line:nth-child(1) { left: 20%; height: 100%; animation-delay: 0s; }
-  .line:nth-child(2) { left: 40%; height: 100%; animation-delay: 2s; }
-  .line:nth-child(3) { left: 60%; height: 100%; animation-delay: 4s; }
-  .line:nth-child(4) { left: 80%; height: 100%; animation-delay: 6s; }
-
-  @keyframes lineFade {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
-  }
-
-  /* LAYOUT */
-  .page {
-    position: relative;
-    z-index: 2;
-    height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    padding: clamp(2rem, 5vw, 4rem);
-  }
-
-  /* TOP NAV */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    opacity: 0;
-    animation: fadeUp 1s ease 0.2s forwards;
-  }
-
-  .logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(18px, 2.5vw, 24px);
-    letter-spacing: -0.03em;
-    color: var(--white);
-  }
-  .logo span { color: var(--accent); }
-
-  .nav-tag {
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    border: 1px solid rgba(255,255,255,0.12);
-    padding: 6px 14px;
-    border-radius: 100px;
-  }
-
-  /* MAIN */
-  main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 900px;
-  }
-
-  .eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 1s ease 0.5s forwards;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .eyebrow::before {
-    content: '';
-    display: block;
-    width: 32px;
-    height: 1px;
-    background: var(--accent);
-  }
-
-  h1 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(52px, 10vw, 120px);
-    line-height: 0.92;
-    letter-spacing: -0.03em;
-    color: var(--white);
-    opacity: 0;
-    animation: fadeUp 1s ease 0.7s forwards;
-    margin-bottom: 2.5rem;
-  }
-
-  h1 .outline {
-    -webkit-text-stroke: 1px rgba(255,255,255,0.25);
-    color: transparent;
-  }
-
-  h1 .accent-word {
-    color: var(--accent);
-    display: inline-block;
-    animation: shimmer 4s ease-in-out infinite;
-  }
-
-  @keyframes shimmer {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
-  }
-
-  .description {
-    font-size: clamp(15px, 2vw, 18px);
-    font-weight: 300;
-    line-height: 1.7;
-    color: var(--muted);
-    max-width: 480px;
-    opacity: 0;
-    animation: fadeUp 1s ease 0.9s forwards;
-    margin-bottom: 3rem;
-  }
-
-  /* EMAIL FORM */
-  .notify-form {
-    display: flex;
-    gap: 0;
-    max-width: 420px;
-    opacity: 0;
-    animation: fadeUp 1s ease 1.1s forwards;
-  }
-
-  .notify-form input {
-    flex: 1;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-right: none;
-    border-radius: 100px 0 0 100px;
-    padding: 14px 20px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    color: var(--white);
-    outline: none;
-    transition: border-color 0.3s, background 0.3s;
-  }
-  .notify-form input::placeholder { color: rgba(255,255,255,0.25); }
-  .notify-form input:focus {
-    background: rgba(255,255,255,0.08);
-    border-color: rgba(232,82,26,0.5);
-  }
-
-  .notify-form button {
-    background: var(--accent);
-    color: white;
-    border: none;
-    border-radius: 0 100px 100px 0;
-    padding: 14px 24px;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 0.05em;
-    cursor: none;
-    transition: opacity 0.2s, transform 0.2s;
-    white-space: nowrap;
-  }
-  .notify-form button:hover { opacity: 0.88; }
-  .notify-form button:active { transform: scale(0.98); }
-
-  .form-success {
-    display: none;
-    font-size: 14px;
-    color: var(--accent);
-    padding: 14px 0;
-    letter-spacing: 0.02em;
-  }
-
-  /* FOOTER */
-  footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    opacity: 0;
-    animation: fadeUp 1s ease 1.3s forwards;
-  }
-
-  .contact-link {
-    font-size: 13px;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.02em;
-    transition: color 0.2s;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 2px;
-  }
-  .contact-link:hover { color: var(--white); border-color: var(--white); }
-
-  .socials {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
-  .socials a {
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .socials a:hover { color: var(--white); }
-
-  .status-dot {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.25);
-  }
-  .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.7); }
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* MOBILE */
-  @media (max-width: 600px) {
-    .page { padding: 1.75rem; }
-    .notify-form { flex-direction: column; gap: 10px; max-width: 100%; }
-    .notify-form input { border-right: 1px solid rgba(255,255,255,0.12); border-radius: 100px; }
-    .notify-form button { border-radius: 100px; padding: 14px; }
-    footer { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+  html, body { height: 100%; overflow: hidden; }
+  body { font-family: 'Cormorant Garamond', serif; background: var(--warm); color: var(--dark); cursor: none; }
+  .cursor { position: fixed; width: 8px; height: 8px; background: var(--orange); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .25s, height .25s; }
+  .cursor-ring { position: fixed; width: 32px; height: 32px; border: 1px solid rgba(254,95,1,.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width .25s, height .25s; }
+  .bg-circle-orange { position: fixed; width: 520px; height: 520px; border-radius: 50%; background: var(--orange); opacity: .07; top: -140px; right: -140px; pointer-events: none; animation: float 10s ease-in-out infinite; }
+  .bg-circle-green { position: fixed; width: 280px; height: 280px; border-radius: 50%; background: var(--green); opacity: .06; bottom: -80px; left: -80px; pointer-events: none; animation: float 14s ease-in-out infinite reverse; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-24px)} }
+  .page { position: relative; z-index: 2; height: 100vh; display: grid; grid-template-rows: auto 1fr auto; padding: clamp(1.75rem,5vw,3.5rem); max-width: 1400px; margin: 0 auto; }
+  nav { display: flex; justify-content: space-between; align-items: center; opacity: 0; animation: fadeUp .9s ease .1s forwards; }
+  .logo-wrap { display: flex; flex-direction: column; gap: 1px; }
+  .logo-main { font-family: 'League Spartan', sans-serif; font-weight: 900; font-size: clamp(20px,2.5vw,26px); letter-spacing: -.02em; color: var(--dark); line-height: 1; }
+  .logo-main span { color: var(--orange); }
+  .logo-sub { font-family: 'League Spartan', sans-serif; font-weight: 400; font-size: 9px; letter-spacing: .25em; text-transform: uppercase; color: var(--stone); }
+  .nav-tag { font-family: 'League Spartan', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--stone); border: 1px solid rgba(26,26,24,.15); padding: 7px 16px; border-radius: 100px; display: flex; align-items: center; gap: 8px; }
+  .nav-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 2s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+  main { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+  .main-left { flex: 1; max-width: 640px; }
+  .main-right { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 1.5rem; }
+  .eyebrow { font-family: 'League Spartan', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--orange); display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp .9s ease .3s forwards; }
+  .eyebrow::before { content:''; width:28px; height:1px; background:var(--orange); }
+  h1 { font-family: 'League Spartan', sans-serif; font-weight: 900; font-size: clamp(48px,8.5vw,108px); line-height: .91; letter-spacing: -.03em; color: var(--dark); opacity: 0; animation: fadeUp .9s ease .5s forwards; margin-bottom: 2rem; }
+  h1 .outline { -webkit-text-stroke: 1.5px rgba(26,26,24,.2); color: transparent; }
+  h1 .orange { color: var(--orange); }
+  .tagline { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px,1.8vw,20px); font-style: italic; font-weight: 300; line-height: 1.65; color: var(--stone); max-width: 420px; opacity: 0; animation: fadeUp .9s ease .7s forwards; margin-bottom: 2.5rem; }
+  .notify-wrap { opacity: 0; animation: fadeUp .9s ease .9s forwards; }
+  .notify-label { font-family: 'League Spartan', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--stone); margin-bottom: 10px; display: block; }
+  .notify-form { display: flex; max-width: 400px; }
+  .notify-form input { flex: 1; background: var(--white); border: 1px solid rgba(26,26,24,.15); border-right: none; border-radius: 4px 0 0 4px; padding: 13px 18px; font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--dark); outline: none; transition: border-color .25s; }
+  .notify-form input::placeholder { color: rgba(140,139,135,.6); font-style: italic; }
+  .notify-form input:focus { border-color: var(--orange); }
+  .notify-form button { background: var(--dark); color: var(--white); border: none; border-radius: 0 4px 4px 0; padding: 13px 22px; font-family: 'League Spartan', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; cursor: none; transition: background .25s; white-space: nowrap; }
+  .notify-form button:hover { background: var(--orange); }
+  .success-msg { display: none; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: var(--green); padding: 13px 0; }
+  .brand-mark { width: clamp(100px,14vw,180px); height: clamp(100px,14vw,180px); border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; opacity: 0; animation: fadeUp .9s ease .6s forwards, spin 20s linear infinite; flex-shrink: 0; }
+  @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+  .brand-mark-inner { font-family: 'League Spartan', sans-serif; font-weight: 900; font-size: clamp(40px,6vw,76px); color: var(--white); letter-spacing: -.04em; animation: spin 20s linear infinite reverse; }
+  .stats-col { display: flex; flex-direction: column; gap: 1.25rem; opacity: 0; animation: fadeUp .9s ease 1s forwards; }
+  .stat-item { text-align: right; }
+  .stat-num { font-family: 'League Spartan', sans-serif; font-weight: 800; font-size: clamp(22px,2.8vw,36px); color: var(--orange); letter-spacing: -.02em; line-height: 1; }
+  .stat-label { font-family: 'Cormorant Garamond', serif; font-size: clamp(12px,1.1vw,14px); color: var(--stone); font-style: italic; margin-top: 2px; }
+  .stat-divider { width: 100%; height: 1px; background: rgba(26,26,24,.1); margin: .25rem 0; }
+  footer { display: flex; justify-content: space-between; align-items: flex-end; opacity: 0; animation: fadeUp .9s ease 1.2s forwards; }
+  .contact-link { font-family: 'Cormorant Garamond', serif; font-size: clamp(14px,1.3vw,16px); font-style: italic; color: var(--stone); text-decoration: none; border-bottom: 1px solid rgba(140,139,135,.3); padding-bottom: 2px; transition: color .2s, border-color .2s; }
+  .contact-link:hover { color: var(--orange); border-color: var(--orange); }
+  .footer-right { display: flex; align-items: center; gap: 20px; }
+  .footer-tag { font-family: 'League Spartan', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: rgba(140,139,135,.5); }
+  .footer-tag span { color: var(--green); }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  @media (max-width: 700px) {
+    body { overflow-y: auto; } html, body { height: auto; }
+    .page { height: auto; min-height: 100vh; padding: 1.75rem; }
+    main { flex-direction: column; align-items: flex-start; padding: 1.5rem 0; }
+    .main-right { flex-direction: row; align-items: center; width: 100%; justify-content: space-between; }
+    .brand-mark { width: 80px; height: 80px; }
+    .brand-mark-inner { font-size: 32px; }
+    .stats-col { flex-direction: row; gap: 1.5rem; }
+    .stat-item { text-align: left; }
+    .stat-divider { display: none; }
+    footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
     .cursor, .cursor-ring { display: none; }
     body { cursor: auto; }
   }
 </style>
 </head>
 <body>
-
 <div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<div class="bg"></div>
-<div class="lines">
-  <div class="line"></div>
-  <div class="line"></div>
-  <div class="line"></div>
-  <div class="line"></div>
-</div>
-
+<div class="cursor-ring" id="ring"></div>
+<div class="bg-circle-orange"></div>
+<div class="bg-circle-green"></div>
 <div class="page">
-
   <nav>
-    <div class="logo">Strat<span>G</span></div>
-    <div class="nav-tag">Sydney, AU</div>
+    <div class="logo-wrap">
+      <div class="logo-main">Strat<span>G</span></div>
+      <div class="logo-sub">Creative Studio</div>
+    </div>
+    <div class="nav-tag"><span class="nav-dot"></span>Canberra, ACT</div>
   </nav>
-
   <main>
-    <div class="eyebrow">Something is coming</div>
-
-    <h1>
-      Strategy<br>
-      that <span class="accent-word">moves</span><br>
-      <span class="outline">the needle.</span>
-    </h1>
-
-    <p class="description">
-      Freelance social media specialist helping brands grow with intentional content and data-backed strategy. Full site launching soon.
-    </p>
-
-    <div class="notify-form" id="notifyForm">
-      <input type="email" placeholder="your@email.com" id="emailInput">
-      <button onclick="handleSubmit()">Notify me →</button>
-    </div>
-    <div class="form-success" id="formSuccess">
-      ✓ &nbsp;You're on the list. Talk soon.
-    </div>
-  </main>
-
-  <footer>
-    <a href="mailto:hello@stratg.com.au" class="contact-link">hello@stratg.com.au</a>
-    <div class="socials">
-      <div class="status-dot">
-        <div class="dot"></div>
-        In development
+    <div class="main-left">
+      <div class="eyebrow">Something is building</div>
+      <h1>Strategy<br>that <span class="orange">moves</span><br><span class="outline">the needle.</span></h1>
+      <p class="tagline">Freelance social media specialist helping brands grow with intentional content and data-backed strategy — based in Canberra, available everywhere.</p>
+      <div class="notify-wrap">
+        <span class="notify-label">Get notified when we launch</span>
+        <div class="notify-form" id="form">
+          <input type="email" id="emailInput" placeholder="your@email.com">
+          <button onclick="submit()">Notify me</button>
+        </div>
+        <div class="success-msg" id="success">✓ &nbsp;You're on the list — talk soon.</div>
       </div>
     </div>
+    <div class="main-right">
+      <div class="brand-mark"><div class="brand-mark-inner">G</div></div>
+      <div class="stats-col">
+        <div class="stat-item">
+          <div class="stat-num">INS</div>
+          <div class="stat-label">Instagram · TikTok · LinkedIn</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num">CBR</div>
+          <div class="stat-label">Canberra based, remote-friendly</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num">2025</div>
+          <div class="stat-label">Launching soon</div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <a href="mailto:hello@stratg.com.au" class="contact-link">hello@stratg.com.au</a>
+    <div class="footer-right">
+      <div class="footer-tag">stratg.com.au</div>
+      <div class="footer-tag">© 2025 StratG <span>Creative Studio</span></div>
+    </div>
   </footer>
-
 </div>
-
 <script>
-  // Custom cursor
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx + 'px';
-    cursor.style.top = my + 'px';
+  const cur=document.getElementById('cursor'),ring=document.getElementById('ring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+  (function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+  document.querySelectorAll('a,button,input').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cur.style.width='5px';cur.style.height='5px';ring.style.width='44px';ring.style.height='44px';});
+    el.addEventListener('mouseleave',()=>{cur.style.width='8px';cur.style.height='8px';ring.style.width='32px';ring.style.height='32px';});
   });
-
-  function animRing() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) *.12;
-    ring.style.left = rx + 'px';
-    ring.style.top = ry + 'px';
-    requestAnimationFrame(animRing);
+  function submit(){
+    const v=document.getElementById('emailInput').value;
+    if(!v||!v.includes('@')){document.getElementById('emailInput').style.borderColor='var(--orange)';return;}
+    document.getElementById('form').style.display='none';
+    document.getElementById('success').style.display='block';
   }
-  animRing();
-
-  document.querySelectorAll('a, button, input').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.width = '6px';
-      cursor.style.height = '6px';
-      ring.style.width = '48px';
-      ring.style.height = '48px';
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.style.width = '10px';
-      cursor.style.height = '10px';
-      ring.style.width = '36px';
-      ring.style.height = '36px';
-    });
-  });
-
-  // Form
-  function handleSubmit() {
-    const email = document.getElementById('emailInput').value;
-    if (!email || !email.includes('@')) {
-      document.getElementById('emailInput').style.borderColor = 'rgba(232,82,26,0.8)';
-      return;
-    }
-    document.getElementById('notifyForm').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
-  }
-
-  document.getElementById('emailInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') handleSubmit();
-  });
+  document.getElementById('emailInput').addEventListener('keydown',e=>{if(e.key==='Enter')submit();});
 </script>
 </body>
 </html>
