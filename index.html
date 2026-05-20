@@ -3,155 +3,832 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StratG Creative Studio — Coming Soon</title>
+<title>StratG Creative Studio — Social Media Strategy, Canberra</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --orange: #FE5F01;
-    --green:  #00BE63;
-    --dark:   #1A1A18;
-    --stone:  #8C8B87;
-    --warm:   #F5F2EE;
-    --white:  #FFFFFF;
-  }
-  html, body { height: 100%; overflow: hidden; }
-  body { font-family: 'Cormorant Garamond', serif; background: var(--warm); color: var(--dark); cursor: none; }
-  .cursor { position: fixed; width: 8px; height: 8px; background: var(--orange); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .25s, height .25s; }
-  .cursor-ring { position: fixed; width: 32px; height: 32px; border: 1px solid rgba(254,95,1,.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width .25s, height .25s; }
-  .bg-circle-orange { position: fixed; width: 520px; height: 520px; border-radius: 50%; background: var(--orange); opacity: .07; top: -140px; right: -140px; pointer-events: none; animation: float 10s ease-in-out infinite; }
-  .bg-circle-green { position: fixed; width: 280px; height: 280px; border-radius: 50%; background: var(--green); opacity: .06; bottom: -80px; left: -80px; pointer-events: none; animation: float 14s ease-in-out infinite reverse; }
-  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-24px)} }
-  .page { position: relative; z-index: 2; height: 100vh; display: grid; grid-template-rows: auto 1fr auto; padding: clamp(1.75rem,5vw,3.5rem); max-width: 1400px; margin: 0 auto; }
-  nav { display: flex; justify-content: space-between; align-items: center; opacity: 0; animation: fadeUp .9s ease .1s forwards; }
-  .logo-wrap { display: flex; flex-direction: column; gap: 1px; }
-  .logo-main { font-family: 'League Spartan', sans-serif; font-weight: 900; font-size: clamp(20px,2.5vw,26px); letter-spacing: -.02em; color: var(--dark); line-height: 1; }
-  .logo-main span { color: var(--orange); }
-  .logo-sub { font-family: 'League Spartan', sans-serif; font-weight: 400; font-size: 9px; letter-spacing: .25em; text-transform: uppercase; color: var(--stone); }
-  .nav-tag { font-family: 'League Spartan', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--stone); border: 1px solid rgba(26,26,24,.15); padding: 7px 16px; border-radius: 100px; display: flex; align-items: center; gap: 8px; }
-  .nav-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 2s ease-in-out infinite; }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
-  main { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
-  .main-left { flex: 1; max-width: 640px; }
-  .main-right { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 1.5rem; }
-  .eyebrow { font-family: 'League Spartan', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--orange); display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp .9s ease .3s forwards; }
-  .eyebrow::before { content:''; width:28px; height:1px; background:var(--orange); }
-  h1 { font-family: 'League Spartan', sans-serif; font-weight: 900; font-size: clamp(48px,8.5vw,108px); line-height: .91; letter-spacing: -.03em; color: var(--dark); opacity: 0; animation: fadeUp .9s ease .5s forwards; margin-bottom: 2rem; }
-  h1 .outline { -webkit-text-stroke: 1.5px rgba(26,26,24,.2); color: transparent; }
-  h1 .orange { color: var(--orange); }
-  .tagline { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px,1.8vw,20px); font-style: italic; font-weight: 300; line-height: 1.65; color: var(--stone); max-width: 420px; opacity: 0; animation: fadeUp .9s ease .7s forwards; margin-bottom: 2.5rem; }
-  .notify-wrap { opacity: 0; animation: fadeUp .9s ease .9s forwards; }
-  .notify-label { font-family: 'League Spartan', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--stone); margin-bottom: 10px; display: block; }
-  .notify-form { display: flex; max-width: 400px; }
-  .notify-form input { flex: 1; background: var(--white); border: 1px solid rgba(26,26,24,.15); border-right: none; border-radius: 4px 0 0 4px; padding: 13px 18px; font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--dark); outline: none; transition: border-color .25s; }
-  .notify-form input::placeholder { color: rgba(140,139,135,.6); font-style: italic; }
-  .notify-form input:focus { border-color: var(--orange); }
-  .notify-form button { background: var(--dark); color: var(--white); border: none; border-radius: 0 4px 4px 0; padding: 13px 22px; font-family: 'League Spartan', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; cursor: none; transition: background .25s; white-space: nowrap; }
-  .notify-form button:hover { background: var(--orange); }
-  .success-msg { display: none; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: var(--green); padding: 13px 0; }
-  .brand-mark { width: clamp(100px,14vw,180px); height: clamp(100px,14vw,180px); border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; opacity: 0; animation: fadeUp .9s ease .6s forwards, spin 20s linear infinite; flex-shrink: 0; }
-  @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-  .brand-mark-inner { font-family: 'League Spartan', sans-serif; font-weight: 900; font-size: clamp(40px,6vw,76px); color: var(--white); letter-spacing: -.04em; animation: spin 20s linear infinite reverse; }
-  .stats-col { display: flex; flex-direction: column; gap: 1.25rem; opacity: 0; animation: fadeUp .9s ease 1s forwards; }
-  .stat-item { text-align: right; }
-  .stat-num { font-family: 'League Spartan', sans-serif; font-weight: 800; font-size: clamp(22px,2.8vw,36px); color: var(--orange); letter-spacing: -.02em; line-height: 1; }
-  .stat-label { font-family: 'Cormorant Garamond', serif; font-size: clamp(12px,1.1vw,14px); color: var(--stone); font-style: italic; margin-top: 2px; }
-  .stat-divider { width: 100%; height: 1px; background: rgba(26,26,24,.1); margin: .25rem 0; }
-  footer { display: flex; justify-content: space-between; align-items: flex-end; opacity: 0; animation: fadeUp .9s ease 1.2s forwards; }
-  .contact-link { font-family: 'Cormorant Garamond', serif; font-size: clamp(14px,1.3vw,16px); font-style: italic; color: var(--stone); text-decoration: none; border-bottom: 1px solid rgba(140,139,135,.3); padding-bottom: 2px; transition: color .2s, border-color .2s; }
-  .contact-link:hover { color: var(--orange); border-color: var(--orange); }
-  .footer-right { display: flex; align-items: center; gap: 20px; }
-  .footer-tag { font-family: 'League Spartan', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: rgba(140,139,135,.5); }
-  .footer-tag span { color: var(--green); }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-  @media (max-width: 700px) {
-    body { overflow-y: auto; } html, body { height: auto; }
-    .page { height: auto; min-height: 100vh; padding: 1.75rem; }
-    main { flex-direction: column; align-items: flex-start; padding: 1.5rem 0; }
-    .main-right { flex-direction: row; align-items: center; width: 100%; justify-content: space-between; }
-    .brand-mark { width: 80px; height: 80px; }
-    .brand-mark-inner { font-size: 32px; }
-    .stats-col { flex-direction: row; gap: 1.5rem; }
-    .stat-item { text-align: left; }
-    .stat-divider { display: none; }
-    footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
-    .cursor, .cursor-ring { display: none; }
-    body { cursor: auto; }
-  }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --orange:#FE5F01;
+  --green:#00BE63;
+  --dark:#111110;
+  --mid:#2A2A28;
+  --stone:#8C8B87;
+  --warm:#F7F4F0;
+  --cream:#EDE9E3;
+  --white:#FFFFFF;
+  --border:rgba(26,26,24,.1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cormorant Garamond',serif;background:var(--warm);color:var(--dark);overflow-x:hidden;cursor:none}
+
+/* ── CURSOR ── */
+.cur{position:fixed;width:7px;height:7px;background:var(--orange);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s}
+.cur-ring{position:fixed;width:30px;height:30px;border:1px solid rgba(254,95,1,.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%)}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(1.5rem,5vw,4rem);height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .4s,box-shadow .4s}
+nav.scrolled{background:rgba(247,244,240,.92);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--border)}
+.nav-logo{display:flex;flex-direction:column;gap:0;text-decoration:none}
+.nav-logo-main{font-family:'League Spartan',sans-serif;font-weight:900;font-size:22px;letter-spacing:-.03em;color:var(--dark);line-height:1}
+.nav-logo-main span{color:var(--orange)}
+.nav-logo-sub{font-family:'League Spartan',sans-serif;font-weight:400;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);margin-top:1px}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+.nav-links a{font-family:'League Spartan',sans-serif;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--dark)}
+.nav-cta{background:var(--dark)!important;color:var(--white)!important;padding:10px 22px!important;border-radius:100px!important;letter-spacing:.1em!important;transition:background .2s!important}
+.nav-cta:hover{background:var(--orange)!important;color:var(--white)!important}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:4px}
+.nav-burger span{display:block;width:22px;height:1.5px;background:var(--dark);transition:all .3s}
+
+/* ── SECTIONS ── */
+section{display:none}
+section.active{display:block}
+#home{display:block}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:120px clamp(1.5rem,5vw,4rem) 80px;position:relative;z-index:2}
+.hero-eyebrow{font-family:'League Spartan',sans-serif;font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:10px;margin-bottom:2rem;opacity:0;animation:up .8s ease .2s forwards}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--orange)}
+.hero-h1{font-family:'League Spartan',sans-serif;font-weight:900;font-size:clamp(52px,7vw,90px);line-height:.9;letter-spacing:-.03em;color:var(--dark);margin-bottom:2rem;opacity:0;animation:up .8s ease .4s forwards}
+.hero-h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;color:var(--orange);display:block;font-size:1.05em}
+.hero-h1 .ghost{-webkit-text-stroke:1.5px rgba(17,17,16,.18);color:transparent;display:block}
+.hero-desc{font-size:clamp(17px,1.6vw,20px);font-weight:300;line-height:1.7;color:var(--stone);max-width:400px;margin-bottom:3rem;opacity:0;animation:up .8s ease .6s forwards}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:up .8s ease .8s forwards}
+.btn-primary{font-family:'League Spartan',sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:var(--dark);color:var(--white);border:none;padding:16px 32px;border-radius:100px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:background .2s,transform .2s;cursor:none}
+.btn-primary:hover{background:var(--orange);transform:translateY(-1px)}
+.btn-outline{font-family:'League Spartan',sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:transparent;color:var(--dark);border:1.5px solid rgba(17,17,16,.25);padding:15px 28px;border-radius:100px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:border-color .2s,color .2s;cursor:none}
+.btn-outline:hover{border-color:var(--orange);color:var(--orange)}
+.hero-right{position:relative;overflow:hidden;background:var(--dark)}
+.hero-right-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.hero-big-g{font-family:'League Spartan',sans-serif;font-weight:900;font-size:clamp(200px,28vw,380px);color:transparent;-webkit-text-stroke:1px rgba(254,95,1,.15);letter-spacing:-.05em;line-height:1;user-select:none;animation:slowspin 30s linear infinite}
+@keyframes slowspin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.hero-circle{position:absolute;width:clamp(140px,18vw,220px);height:clamp(140px,18vw,220px);border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;opacity:0;animation:up .8s ease .5s forwards}
+.hero-circle-g{font-family:'League Spartan',sans-serif;font-weight:900;font-size:clamp(60px,8vw,100px);color:var(--white);letter-spacing:-.04em}
+.hero-stats{position:absolute;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.08)}
+.hero-stat{padding:24px;border-right:1px solid rgba(255,255,255,.08)}
+.hero-stat:last-child{border-right:none}
+.hero-stat-n{font-family:'League Spartan',sans-serif;font-weight:800;font-size:clamp(24px,3vw,36px);color:var(--orange);letter-spacing:-.02em;line-height:1}
+.hero-stat-l{font-family:'Cormorant Garamond',serif;font-size:12px;font-style:italic;color:rgba(255,255,255,.4);margin-top:4px}
+.hero-scroll{position:absolute;bottom:2.5rem;left:clamp(1.5rem,5vw,4rem);display:flex;align-items:center;gap:10px;opacity:0;animation:up .8s ease 1.2s forwards}
+.hero-scroll-line{width:40px;height:1px;background:var(--stone)}
+.hero-scroll-txt{font-family:'League Spartan',sans-serif;font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--stone)}
+
+/* ── MARQUEE ── */
+.marquee-wrap{background:var(--dark);padding:16px 0;overflow:hidden}
+.marquee-track{display:flex;gap:0;white-space:nowrap;animation:marquee 18s linear infinite}
+.marquee-item{font-family:'League Spartan',sans-serif;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:0 2rem}
+.marquee-item span{color:var(--orange);margin-right:2rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SECTION HEADER ── */
+.section-head{padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem) 0}
+.section-label{font-family:'League Spartan',sans-serif;font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:10px;margin-bottom:1.25rem}
+.section-label::before{content:'';width:24px;height:1px;background:var(--orange)}
+.section-title{font-family:'League Spartan',sans-serif;font-weight:900;font-size:clamp(36px,6vw,72px);letter-spacing:-.03em;line-height:.95;color:var(--dark)}
+.section-title em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;color:var(--orange)}
+
+/* ── SERVICES ── */
+.services-page{padding-bottom:clamp(4rem,8vw,7rem)}
+.services-intro{padding:3rem clamp(1.5rem,5vw,4rem);display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.services-intro p{font-size:clamp(17px,1.6vw,21px);font-weight:300;line-height:1.75;color:var(--stone)}
+.services-intro-right{padding-top:.5rem}
+.services-intro-right p{font-size:15px;line-height:1.7;color:var(--stone)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin:0 clamp(1.5rem,5vw,4rem)}
+.service-card{background:var(--warm);padding:3rem 2.5rem;position:relative;overflow:hidden;transition:background .3s}
+.service-card::before{content:'';position:absolute;bottom:0;left:0;width:3px;height:0;background:var(--orange);transition:height .4s}
+.service-card:hover{background:var(--white)}
+.service-card:hover::before{height:100%}
+.service-num{font-family:'League Spartan',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--stone);margin-bottom:2rem}
+.service-icon{font-size:28px;margin-bottom:1.5rem;display:block}
+.service-name{font-family:'League Spartan',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.02em;color:var(--dark);margin-bottom:1rem}
+.service-desc{font-size:15px;font-weight:300;line-height:1.7;color:var(--stone);margin-bottom:2rem}
+.service-tags{display:flex;flex-wrap:wrap;gap:6px}
+.service-tag{font-family:'League Spartan',sans-serif;font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--border);padding:5px 10px;border-radius:100px;color:var(--stone)}
+.services-cta{padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem);text-align:center}
+.services-cta p{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.5vw,28px);font-style:italic;font-weight:300;color:var(--stone);max-width:500px;margin:0 auto 2.5rem}
+
+/* ── ABOUT ── */
+.about-page{padding-bottom:clamp(4rem,8vw,7rem)}
+.about-hero{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:70vh;margin-top:3rem}
+.about-photo-side{background:var(--cream);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:500px}
+.about-photo-placeholder{width:240px;height:320px;border-radius:16px;background:var(--stone);opacity:.15;position:relative}
+.about-photo-placeholder::after{content:'YOUR PHOTO';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'League Spartan',sans-serif;font-size:10px;letter-spacing:.2em;color:var(--stone);text-align:center;line-height:1}
+.about-photo-badge{position:absolute;bottom:2rem;right:2rem;background:var(--orange);color:var(--white);padding:12px 20px;border-radius:100px;font-family:'League Spartan',sans-serif;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+.about-content-side{padding:4rem clamp(2rem,5vw,5rem);display:flex;flex-direction:column;justify-content:center}
+.about-role{font-family:'League Spartan',sans-serif;font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--orange);margin-bottom:1.5rem;display:flex;align-items:center;gap:10px}
+.about-role::before{content:'';width:24px;height:1px;background:var(--orange)}
+.about-name{font-family:'League Spartan',sans-serif;font-weight:900;font-size:clamp(40px,5.5vw,68px);letter-spacing:-.03em;line-height:.95;color:var(--dark);margin-bottom:2rem}
+.about-name em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;display:block;font-size:.7em;color:var(--stone);margin-top:.5rem}
+.about-bio{font-size:clamp(16px,1.5vw,18px);font-weight:300;line-height:1.8;color:var(--stone);margin-bottom:2.5rem}
+.about-bio strong{color:var(--dark);font-weight:500}
+
+/* PILLARS */
+.about-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin:clamp(3rem,5vw,5rem) clamp(1.5rem,5vw,4rem)}
+.pillar{background:var(--warm);padding:2.5rem 2rem}
+.pillar-num{font-family:'League Spartan',sans-serif;font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--orange);margin-bottom:1rem}
+.pillar-title{font-family:'League Spartan',sans-serif;font-weight:800;font-size:17px;letter-spacing:-.01em;color:var(--dark);margin-bottom:.75rem}
+.pillar-desc{font-size:14px;font-weight:300;line-height:1.65;color:var(--stone)}
+
+/* VALUE PROP */
+.value-prop{background:var(--dark);padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);text-align:center;position:relative;overflow:hidden}
+.value-prop-bg{position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:var(--orange);opacity:.05}
+.value-prop blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,52px);font-style:italic;font-weight:300;color:var(--white);line-height:1.3;max-width:800px;margin:0 auto 2rem;position:relative;z-index:1}
+.value-prop blockquote::before{content:'"';font-size:6em;color:var(--orange);opacity:.2;position:absolute;top:-.4em;left:-.1em;font-style:normal;line-height:1}
+.value-prop cite{font-family:'League Spartan',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);position:relative;z-index:1}
+
+/* TESTIMONIALS */
+.testimonials{padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
+.testi-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:2.5rem;position:relative}
+.testi-card::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:80px;color:var(--orange);opacity:.15;position:absolute;top:1rem;left:1.5rem;line-height:1}
+.testi-quote{font-size:clamp(15px,1.4vw,17px);font-weight:300;line-height:1.75;color:var(--mid);margin-bottom:2rem;padding-top:2rem}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;font-family:'League Spartan',sans-serif;font-weight:800;font-size:14px;color:var(--orange)}
+.testi-name{font-family:'League Spartan',sans-serif;font-weight:700;font-size:13px;letter-spacing:-.01em;color:var(--dark)}
+.testi-role{font-size:12px;font-style:italic;color:var(--stone)}
+
+/* FAQ */
+.faq{padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);background:var(--cream)}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:3rem}
+.faq-item{padding:2rem 0;border-bottom:1px solid var(--border)}
+.faq-item:nth-child(odd){padding-right:3rem}
+.faq-item:nth-child(even){padding-left:3rem;border-left:1px solid var(--border)}
+.faq-q{font-family:'League Spartan',sans-serif;font-weight:700;font-size:15px;letter-spacing:-.01em;color:var(--dark);margin-bottom:.75rem;cursor:none;display:flex;justify-content:space-between;align-items:start;gap:1rem}
+.faq-q::after{content:'+';color:var(--orange);font-size:20px;line-height:1;flex-shrink:0;transition:transform .3s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:14px;font-weight:300;line-height:1.7;color:var(--stone);max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.faq-item.open .faq-a{max-height:200px;padding-top:.5rem}
+
+/* ── BLOG ── */
+.blog-page{padding-bottom:clamp(4rem,8vw,7rem)}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin:3rem clamp(1.5rem,5vw,4rem) 0}
+.blog-card{background:var(--warm);padding:2.5rem 2rem;display:flex;flex-direction:column;gap:1rem;cursor:none;transition:background .2s}
+.blog-card:hover{background:var(--white)}
+.blog-cat{font-family:'League Spartan',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
+.blog-title{font-family:'League Spartan',sans-serif;font-weight:800;font-size:18px;letter-spacing:-.02em;line-height:1.2;color:var(--dark);flex:1}
+.blog-excerpt{font-size:14px;font-weight:300;line-height:1.65;color:var(--stone)}
+.blog-meta{font-family:'League Spartan',sans-serif;font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);display:flex;align-items:center;gap:8px}
+.blog-meta::before{content:'';width:16px;height:1px;background:var(--stone)}
+.blog-coming{padding:clamp(3rem,5vw,5rem) clamp(1.5rem,5vw,4rem);text-align:center}
+.blog-coming p{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--stone);max-width:440px;margin:0 auto}
+
+/* ── CONTACT ── */
+.contact-page{padding-bottom:clamp(4rem,8vw,7rem)}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:3rem;min-height:70vh}
+.contact-left{padding:4rem clamp(2rem,5vw,5rem);background:var(--dark);display:flex;flex-direction:column;justify-content:center}
+.contact-left h2{font-family:'League Spartan',sans-serif;font-weight:900;font-size:clamp(36px,5vw,60px);letter-spacing:-.03em;line-height:.95;color:var(--white);margin-bottom:2rem}
+.contact-left h2 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;color:var(--orange);display:block}
+.contact-left p{font-size:16px;font-weight:300;line-height:1.75;color:rgba(255,255,255,.4);margin-bottom:3rem}
+.contact-detail{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;text-decoration:none}
+.contact-detail-icon{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.contact-detail-text{font-family:'League Spartan',sans-serif;font-size:12px;font-weight:500;letter-spacing:.05em;color:rgba(255,255,255,.5);transition:color .2s}
+.contact-detail:hover .contact-detail-text{color:var(--orange)}
+.contact-right{padding:4rem clamp(2rem,5vw,5rem);display:flex;flex-direction:column;justify-content:center}
+.contact-form{display:flex;flex-direction:column;gap:1.25rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.form-group{display:flex;flex-direction:column;gap:.5rem}
+.form-label{font-family:'League Spartan',sans-serif;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--stone)}
+.form-input,.form-select,.form-textarea{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:14px 16px;font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--dark);outline:none;transition:border-color .2s;width:100%;cursor:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--orange)}
+.form-textarea{resize:none;height:120px;line-height:1.5}
+.form-submit{font-family:'League Spartan',sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:var(--dark);color:var(--white);border:none;padding:18px 40px;border-radius:100px;cursor:none;transition:background .2s;align-self:flex-start;margin-top:.5rem}
+.form-submit:hover{background:var(--orange)}
+.form-success{display:none;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--green);padding:1rem 0}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);padding:4rem clamp(1.5rem,5vw,4rem) 2rem}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer-brand{}
+.footer-brand-logo{font-family:'League Spartan',sans-serif;font-weight:900;font-size:24px;letter-spacing:-.03em;color:var(--white);margin-bottom:.5rem}
+.footer-brand-logo span{color:var(--orange)}
+.footer-brand-sub{font-family:'League Spartan',sans-serif;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);margin-bottom:1.5rem}
+.footer-brand-desc{font-size:14px;font-weight:300;line-height:1.65;color:rgba(255,255,255,.3)}
+.footer-col-title{font-family:'League Spartan',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);margin-bottom:1.5rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.75rem}
+.footer-links a{font-family:'League Spartan',sans-serif;font-size:12px;font-weight:500;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;cursor:none}
+.footer-links a:hover{color:var(--orange)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem}
+.footer-copy{font-family:'League Spartan',sans-serif;font-size:10px;font-weight:500;letter-spacing:.08em;color:rgba(255,255,255,.2)}
+.footer-green{color:var(--green)}
+
+/* ── ANIMATIONS ── */
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-right{height:260px}
+  .hero-big-g{font-size:160px}
+  .services-grid{grid-template-columns:1fr}
+  .about-hero{grid-template-columns:1fr}
+  .about-pillars{grid-template-columns:1fr}
+  .testimonials-grid{grid-template-columns:1fr}
+  .faq-grid{grid-template-columns:1fr}
+  .faq-item:nth-child(even){padding-left:0;border-left:none}
+  .faq-item:nth-child(odd){padding-right:0}
+  .contact-layout{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .blog-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .services-intro{grid-template-columns:1fr;gap:1.5rem}
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  body{cursor:auto}
+  .cur,.cur-ring{display:none}
+}
 </style>
 </head>
 <body>
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="ring"></div>
-<div class="bg-circle-orange"></div>
-<div class="bg-circle-green"></div>
-<div class="page">
-  <nav>
-    <div class="logo-wrap">
-      <div class="logo-main">Strat<span>G</span></div>
-      <div class="logo-sub">Creative Studio</div>
-    </div>
-    <div class="nav-tag"><span class="nav-dot"></span>Canberra, ACT</div>
-  </nav>
-  <main>
-    <div class="main-left">
-      <div class="eyebrow">Something is building</div>
-      <h1>Strategy<br>that <span class="orange">moves</span><br><span class="outline">the needle.</span></h1>
-      <p class="tagline">Freelance social media specialist helping brands grow with intentional content and data-backed strategy — based in Canberra, available everywhere.</p>
-      <div class="notify-wrap">
-        <span class="notify-label">Get notified when we launch</span>
-        <div class="notify-form" id="form">
-          <input type="email" id="emailInput" placeholder="your@email.com">
-          <button onclick="submit()">Notify me</button>
-        </div>
-        <div class="success-msg" id="success">✓ &nbsp;You're on the list — talk soon.</div>
+
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="cur-ring"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" onclick="show('home')" style="cursor:none">
+    <div class="nav-logo-main">Strat<span>G</span></div>
+    <div class="nav-logo-sub">Creative Studio</div>
+  </a>
+  <ul class="nav-links">
+    <li><a onclick="show('home')" style="cursor:none">Home</a></li>
+    <li><a onclick="show('services')" style="cursor:none">Services</a></li>
+    <li><a onclick="show('about')" style="cursor:none">About Us</a></li>
+    <li><a onclick="show('blog')" style="cursor:none">Blog</a></li>
+    <li><a onclick="show('contact')" class="nav-cta" style="cursor:none">Get in Touch</a></li>
+  </ul>
+  <button class="nav-burger" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu" style="display:none;position:fixed;inset:0;background:var(--dark);z-index:99;display:none;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem">
+  <a style="font-family:'League Spartan',sans-serif;font-weight:800;font-size:32px;letter-spacing:-.02em;color:var(--white);text-decoration:none" onclick="show('home');closeMobile()">Home</a>
+  <a style="font-family:'League Spartan',sans-serif;font-weight:800;font-size:32px;letter-spacing:-.02em;color:var(--white);text-decoration:none" onclick="show('services');closeMobile()">Services</a>
+  <a style="font-family:'League Spartan',sans-serif;font-weight:800;font-size:32px;letter-spacing:-.02em;color:var(--white);text-decoration:none" onclick="show('about');closeMobile()">About Us</a>
+  <a style="font-family:'League Spartan',sans-serif;font-weight:800;font-size:32px;letter-spacing:-.02em;color:var(--white);text-decoration:none" onclick="show('blog');closeMobile()">Blog</a>
+  <a style="font-family:'League Spartan',sans-serif;font-weight:800;font-size:32px;letter-spacing:-.02em;color:var(--orange);text-decoration:none" onclick="show('contact');closeMobile()">Get in Touch</a>
+</div>
+
+<!-- ════════════════ HOME ════════════════ -->
+<section id="home" class="active">
+
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Social Media Studio · Canberra ACT</div>
+      <h1 class="hero-h1">
+        We build<br>
+        <em>brands that</em>
+        <span class="ghost">own the feed.</span>
+      </h1>
+      <p class="hero-desc">
+        The algorithm rewards intention. We build the strategy, content architecture and platform presence that turns your brand into the one people can't scroll past.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" onclick="show('services')">Our Services →</a>
+        <a class="btn-outline" onclick="show('contact')">Let's Talk</a>
+      </div>
+      <div class="hero-scroll">
+        <div class="hero-scroll-line"></div>
+        <div class="hero-scroll-txt">Scroll to explore</div>
       </div>
     </div>
-    <div class="main-right">
-      <div class="brand-mark"><div class="brand-mark-inner">G</div></div>
-      <div class="stats-col">
-        <div class="stat-item">
-          <div class="stat-num">INS</div>
-          <div class="stat-label">Instagram · TikTok · LinkedIn</div>
+    <div class="hero-right">
+      <div class="hero-right-inner">
+        <div class="hero-big-g">G</div>
+        <div class="hero-circle"><div class="hero-circle-g">G</div></div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-n">Full</div>
+          <div class="hero-stat-l">Platform coverage</div>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <div class="stat-num">CBR</div>
-          <div class="stat-label">Canberra based, remote-friendly</div>
+        <div class="hero-stat">
+          <div class="hero-stat-n">CBR</div>
+          <div class="hero-stat-l">Based, global reach</div>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <div class="stat-num">2025</div>
-          <div class="stat-label">Launching soon</div>
+        <div class="hero-stat">
+          <div class="hero-stat-n">Now</div>
+          <div class="hero-stat-l">Taking enquiries</div>
         </div>
       </div>
     </div>
-  </main>
-  <footer>
-    <a href="mailto:hello@stratg.com.au" class="contact-link">hello@stratg.com.au</a>
-    <div class="footer-right">
-      <div class="footer-tag">stratg.com.au</div>
-      <div class="footer-tag">© 2025 StratG <span>Creative Studio</span></div>
+  </div>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item"><span>✦</span> Social Strategy</span>
+      <span class="marquee-item"><span>✦</span> Content Creation</span>
+      <span class="marquee-item"><span>✦</span> Platform Matrix</span>
+      <span class="marquee-item"><span>✦</span> Account Management</span>
+      <span class="marquee-item"><span>✦</span> Campaign Direction</span>
+      <span class="marquee-item"><span>✦</span> Brand Merchandise</span>
+      <span class="marquee-item"><span>✦</span> Social Strategy</span>
+      <span class="marquee-item"><span>✦</span> Content Creation</span>
+      <span class="marquee-item"><span>✦</span> Platform Matrix</span>
+      <span class="marquee-item"><span>✦</span> Account Management</span>
+      <span class="marquee-item"><span>✦</span> Campaign Direction</span>
+      <span class="marquee-item"><span>✦</span> Brand Merchandise</span>
+    </div>
+  </div>
+
+  <!-- HOME SERVICES PREVIEW -->
+  <div class="section-head fade-up">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Strategy-led.<br><em>Results-driven.</em></h2>
+  </div>
+  <div class="services-grid fade-up" style="margin-top:3rem">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <span class="service-icon">◎</span>
+      <div class="service-name">Social Strategy</div>
+      <div class="service-desc">Full-platform content architecture built around your audience, not guesswork. From brief to calendar to KPIs.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <span class="service-icon">▶</span>
+      <div class="service-name">Content Creation</div>
+      <div class="service-desc">Scroll-stopping copy, visual briefs and short-form video scripts crafted for each platform's native format.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <span class="service-icon">◈</span>
+      <div class="service-name">Platform Matrix</div>
+      <div class="service-desc">Multi-channel ecosystem setup — Instagram, TikTok, LinkedIn, WeChat and beyond — built to talk to each other.</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:3rem clamp(1.5rem,5vw,4rem) 0" class="fade-up">
+    <a class="btn-outline" onclick="show('services')">View all services →</a>
+  </div>
+
+  <!-- HOME VALUE PROP -->
+  <div class="value-prop fade-up" style="margin-top:clamp(4rem,8vw,7rem)">
+    <div class="value-prop-bg"></div>
+    <div class="section-label" style="justify-content:center;margin-bottom:2.5rem">Studio Director</div>
+    <blockquote>Most brands post content. We build presence. There's a difference — and it shows in the numbers.</blockquote>
+    <cite>— StratG Creative Studio</cite>
+  </div>
+
+  <!-- HOME ABOUT TEASER (reference image style) -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:520px;margin-top:clamp(4rem,8vw,7rem)" class="fade-up">
+    <div style="background:var(--cream);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;min-height:400px">
+      <div style="width:220px;height:300px;border-radius:50%;background:linear-gradient(135deg,var(--stone) 0%,var(--cream) 100%);opacity:.25"></div>
+      <div style="position:absolute;bottom:2rem;left:2rem;background:var(--orange);color:var(--white);padding:10px 18px;border-radius:100px;font-family:'League Spartan',sans-serif;font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase">Studio Director</div>
+    </div>
+    <div style="background:var(--warm);padding:4rem clamp(2rem,5vw,5rem);display:flex;flex-direction:column;justify-content:center">
+      <div class="section-label">Behind the Studio</div>
+      <h2 style="font-family:'League Spartan',sans-serif;font-weight:900;font-size:clamp(36px,5vw,58px);letter-spacing:-.03em;line-height:.95;color:var(--dark);margin:1.5rem 0">THE STUDIO<br><span style="color:var(--orange)">DIRECTOR.</span></h2>
+      <p style="font-size:clamp(16px,1.5vw,18px);font-weight:300;line-height:1.8;color:var(--stone);margin-bottom:2rem">We are an intentional social media studio built for brands who understand that the attention economy rewards those who show up strategically — not just consistently.</p>
+      <p style="font-size:clamp(16px,1.5vw,18px);font-weight:300;line-height:1.8;color:var(--stone);margin-bottom:2.5rem">No account managers. No handoffs. You work directly with the specialist — always.</p>
+      <a class="btn-outline" onclick="show('about')" style="align-self:flex-start">Meet the Studio →</a>
+    </div>
+  </div>
+
+  <!-- HOME TESTIMONIALS TEASER -->
+  <div class="testimonials fade-up">
+    <div class="section-label">Client Results</div>
+    <h2 class="section-title">Words from<br><em>our clients.</em></h2>
+    <div class="testimonials-grid">
+      <div class="testi-card">
+        <p class="testi-quote">Working with StratG completely transformed how we show up online. Our engagement tripled in 60 days — and for the first time our content actually sounds like us.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div><div class="testi-name">Add Client Name</div><div class="testi-role">Founder, [Brand], Canberra</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">The platform matrix StratG built for us took us from zero to a consistent 6-figure monthly reach. The strategy was the piece we'd been missing.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">B</div>
+          <div><div class="testi-name">Add Client Name</div><div class="testi-role">Director, [Brand]</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer style="margin-top:clamp(4rem,8vw,7rem)">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-logo">Strat<span>G</span></div>
+        <div class="footer-brand-sub">Creative Studio</div>
+        <p class="footer-brand-desc">Strategy-led social media for brands ready to own their space online. Based in Canberra, working everywhere.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-links">
+          <li><a onclick="show('home')">Home</a></li>
+          <li><a onclick="show('services')">Services</a></li>
+          <li><a onclick="show('about')">About Us</a></li>
+          <li><a onclick="show('blog')">Blog</a></li>
+          <li><a onclick="show('contact')">Get in Touch</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:galinasong365@gmail.com">galinasong365@gmail.com</a></li>
+          <li><a>Canberra, ACT 2617</a></li>
+          <li><a>Available remotely</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 StratG Creative Studio. All rights reserved.</div>
+      <div class="footer-copy">Made with <span class="footer-green">♥</span> in Canberra</div>
     </div>
   </footer>
-</div>
+</section>
+
+<!-- ════════════════ SERVICES ════════════════ -->
+<section id="services">
+  <div class="services-page" style="padding-top:72px">
+    <div class="section-head fade-up">
+      <div class="section-label">Services</div>
+      <h1 class="section-title">What we<br><em>do best.</em></h1>
+    </div>
+    <div class="services-intro fade-up">
+      <p>We don't do cookie-cutter social. Every service we offer is built around your brand's specific goals, audience, and the platforms where your people actually live.</p>
+      <div class="services-intro-right">
+        <p>Whether you need a full-platform strategy or targeted execution, we work directly with you — no account managers, no layers.</p>
+      </div>
+    </div>
+    <div class="services-grid fade-up">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <span class="service-icon">◎</span>
+        <div class="service-name">Social Media Strategy</div>
+        <div class="service-desc">Deep-dive brand audit, audience mapping, content pillar development and a 90-day roadmap built around measurable outcomes — not vanity metrics.</div>
+        <div class="service-tags">
+          <span class="service-tag">Audit</span>
+          <span class="service-tag">Roadmap</span>
+          <span class="service-tag">KPIs</span>
+          <span class="service-tag">Content pillars</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <span class="service-icon">▶</span>
+        <div class="service-name">Content Creation</div>
+        <div class="service-desc">Platform-native content — copy, visual briefs, short-form video scripts and Reels direction — crafted to convert attention into action.</div>
+        <div class="service-tags">
+          <span class="service-tag">Copywriting</span>
+          <span class="service-tag">Reels</span>
+          <span class="service-tag">Visual briefs</span>
+          <span class="service-tag">Scripts</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <span class="service-icon">◈</span>
+        <div class="service-name">Full Platform Matrix</div>
+        <div class="service-desc">Multi-channel ecosystem architecture — Instagram, TikTok, LinkedIn, WeChat, YouTube Shorts — built to amplify across every touchpoint.</div>
+        <div class="service-tags">
+          <span class="service-tag">Instagram</span>
+          <span class="service-tag">TikTok</span>
+          <span class="service-tag">LinkedIn</span>
+          <span class="service-tag">WeChat</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <span class="service-icon">⊛</span>
+        <div class="service-name">Account Management</div>
+        <div class="service-desc">Monthly retainer — scheduling, community management, trend monitoring and engagement. We show up so you don't have to.</div>
+        <div class="service-tags">
+          <span class="service-tag">Monthly retainer</span>
+          <span class="service-tag">Scheduling</span>
+          <span class="service-tag">Community</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <span class="service-icon">◐</span>
+        <div class="service-name">Campaign Direction</div>
+        <div class="service-desc">Product launches, brand activations and seasonal campaigns — from concept to execution, with detailed performance reporting.</div>
+        <div class="service-tags">
+          <span class="service-tag">Launch campaigns</span>
+          <span class="service-tag">Activations</span>
+          <span class="service-tag">Reporting</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <span class="service-icon">⊕</span>
+        <div class="service-name">Brand Merchandise</div>
+        <div class="service-desc">International product sourcing and customisation for brand merchandise — a unique service backed by direct global procurement channels.</div>
+        <div class="service-tags">
+          <span class="service-tag">Sourcing</span>
+          <span class="service-tag">Customisation</span>
+          <span class="service-tag">Global supply</span>
+        </div>
+      </div>
+    </div>
+    <div class="services-cta fade-up">
+      <p>Not sure which service fits? Let's talk through what your brand actually needs.</p>
+      <a class="btn-primary" onclick="show('contact')">Start the conversation →</a>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-logo">Strat<span>G</span></div>
+        <div class="footer-brand-sub">Creative Studio</div>
+        <p class="footer-brand-desc">Strategy-led social media for brands ready to own their space online.</p>
+      </div>
+      <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a onclick="show('home')">Home</a></li><li><a onclick="show('services')">Services</a></li><li><a onclick="show('about')">About Us</a></li><li><a onclick="show('blog')">Blog</a></li><li><a onclick="show('contact')">Get in Touch</a></li></ul></div>
+      <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:galinasong365@gmail.com">galinasong365@gmail.com</a></li><li><a>Canberra, ACT 2617</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-copy">© 2025 StratG Creative Studio.</div><div class="footer-copy">Made with <span class="footer-green">♥</span> in Canberra</div></div>
+  </footer>
+</section>
+
+<!-- ════════════════ ABOUT ════════════════ -->
+<section id="about">
+  <div class="about-page" style="padding-top:72px">
+    <div class="section-head fade-up">
+      <div class="section-label">About Us</div>
+      <h1 class="section-title">Behind the<br><em>studio.</em></h1>
+    </div>
+    <div class="about-hero fade-up">
+      <div class="about-photo-side">
+        <div class="about-photo-placeholder"></div>
+        <div class="about-photo-badge">Studio Director</div>
+      </div>
+      <div class="about-content-side">
+        <div class="about-role">Behind the Studio</div>
+        <h2 class="about-name">THE STUDIO<br>DIRECTOR.<em>Strategy. Content. Results.</em></h2>
+        <p class="about-bio">We are <strong>StratG Creative Studio</strong> — a boutique social media studio for brands who believe their online presence should work as hard as they do.<br><br>Based in Canberra with a global mindset, we specialise in full-platform matrix strategy, social media content creation and international brand merchandise sourcing. Our approach is always <strong>strategy first</strong> — because great content without direction is just noise.<br><br>When you work with StratG, you work directly with the studio director. No junior handoffs, no account managers in between. Just sharp, intentional social media that moves the needle.</p>
+        <a class="btn-primary" onclick="show('contact')" style="align-self:flex-start">Work with us →</a>
+      </div>
+    </div>
+
+    <div class="about-pillars fade-up">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Strategy First</div>
+        <div class="pillar-desc">Every decision starts with a clear objective. We don't post for the sake of posting — every piece of content serves a purpose.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Culturally Fluent</div>
+        <div class="pillar-desc">We understand the nuance of multi-cultural audiences — creating content that speaks authentically across communities and platforms.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Boutique by Design</div>
+        <div class="pillar-desc">We deliberately stay small. Your brand gets the full focus of a specialist, not a team of interns interpreting a brief.</div>
+      </div>
+    </div>
+
+    <div class="value-prop fade-up">
+      <div class="value-prop-bg"></div>
+      <div class="section-label" style="justify-content:center;margin-bottom:2rem">Our Philosophy</div>
+      <blockquote>The brands winning on social aren't posting more. They're posting with intent.</blockquote>
+      <cite>— StratG Creative Studio</cite>
+    </div>
+
+    <div class="testimonials fade-up">
+      <div class="section-label">What Clients Say</div>
+      <h2 class="section-title">Proof in<br><em>their words.</em></h2>
+      <div class="testimonials-grid">
+        <div class="testi-card">
+          <p class="testi-quote">Working with StratG completely transformed how we show up online. Our engagement tripled in 60 days — and for the first time our content actually sounds like us.</p>
+          <div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Add Client Name</div><div class="testi-role">Founder, [Brand], Canberra</div></div></div>
+        </div>
+        <div class="testi-card">
+          <p class="testi-quote">The platform matrix StratG built took us from zero to consistent 6-figure monthly reach. The strategy was the piece we'd been missing for years.</p>
+          <div class="testi-author"><div class="testi-avatar">B</div><div><div class="testi-name">Add Client Name</div><div class="testi-role">Director, [Brand]</div></div></div>
+        </div>
+        <div class="testi-card">
+          <p class="testi-quote">Finally, someone who thinks about social media the same way I think about business. No fluff — just clear strategy and content that actually performs.</p>
+          <div class="testi-author"><div class="testi-avatar">C</div><div><div class="testi-name">Add Client Name</div><div class="testi-role">CEO, [Brand]</div></div></div>
+        </div>
+        <div class="testi-card">
+          <p class="testi-quote">StratG helped us launch our rebrand across every platform simultaneously. Seamless, strategic, and the results spoke for themselves within the first month.</p>
+          <div class="testi-author"><div class="testi-avatar">D</div><div><div class="testi-name">Add Client Name</div><div class="testi-role">Marketing Manager, [Brand]</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq fade-up">
+      <div class="section-label">Q &amp; A</div>
+      <h2 class="section-title">Frequently<br><em>asked.</em></h2>
+      <div class="faq-grid" id="faq">
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you work with small businesses?</div><div class="faq-a">Yes — in fact, most of our clients are small to medium businesses and founders. We love working with brands that are ambitious but need the right strategy to scale their social presence effectively.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What platforms do you cover?</div><div class="faq-a">We cover all major platforms — Instagram, TikTok, LinkedIn, Facebook, YouTube Shorts and WeChat. Our full-platform matrix approach ensures your content is adapted for each channel, not just repurposed.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does pricing work?</div><div class="faq-a">We offer both project-based and monthly retainer pricing. Every engagement starts with a strategy consultation so we can scope exactly what you need — no packages that don't fit.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How quickly can we start?</div><div class="faq-a">Usually within 2 weeks of confirming scope. We begin with a kick-off session to deep-dive your brand, audience and goals before building anything.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will I work with you directly?</div><div class="faq-a">Always. You work directly with the Studio Director — no account managers, no junior handoffs. This is a boutique studio by design, and that direct relationship is central to how we work.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is brand merchandise sourcing?</div><div class="faq-a">We have direct international procurement channels for custom branded merchandise — ideal for brand activations, campaign giveaways or product launches. We handle sourcing, customisation and logistics.</div></div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand"><div class="footer-brand-logo">Strat<span>G</span></div><div class="footer-brand-sub">Creative Studio</div><p class="footer-brand-desc">Strategy-led social media for brands ready to own their space online.</p></div>
+      <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a onclick="show('home')">Home</a></li><li><a onclick="show('services')">Services</a></li><li><a onclick="show('about')">About Us</a></li><li><a onclick="show('blog')">Blog</a></li><li><a onclick="show('contact')">Get in Touch</a></li></ul></div>
+      <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:galinasong365@gmail.com">galinasong365@gmail.com</a></li><li><a>Canberra, ACT 2617</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-copy">© 2025 StratG Creative Studio.</div><div class="footer-copy">Made with <span class="footer-green">♥</span> in Canberra</div></div>
+  </footer>
+</section>
+
+<!-- ════════════════ BLOG ════════════════ -->
+<section id="blog">
+  <div class="blog-page" style="padding-top:72px">
+    <div class="section-head fade-up">
+      <div class="section-label">Insights</div>
+      <h1 class="section-title">The StratG<br><em>journal.</em></h1>
+    </div>
+    <div class="blog-grid fade-up">
+      <div class="blog-card">
+        <div class="blog-cat">Strategy</div>
+        <div class="blog-title">Why your Instagram isn't growing — and the 3 things to fix first</div>
+        <div class="blog-excerpt">Most accounts plateau not because of the algorithm, but because their strategy never had a foundation. Here's where to start.</div>
+        <div class="blog-meta">Coming soon · 5 min read</div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-cat">Platform</div>
+        <div class="blog-title">TikTok vs Instagram in 2025: where should your brand actually be?</div>
+        <div class="blog-excerpt">The answer isn't "both" — it's "where your audience is paying attention." A framework for making the right call.</div>
+        <div class="blog-meta">Coming soon · 4 min read</div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-cat">Content</div>
+        <div class="blog-title">How to build a content calendar that you'll actually stick to</div>
+        <div class="blog-excerpt">The problem with most content calendars is they're built for the best-case scenario. Here's how to build one for real life.</div>
+        <div class="blog-meta">Coming soon · 6 min read</div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-cat">Analytics</div>
+        <div class="blog-title">The social media metrics that actually matter (and the ones to ignore)</div>
+        <div class="blog-excerpt">Follower count is vanity. Reach is interesting. Saves and shares are the signal. A guide to reading your analytics with intent.</div>
+        <div class="blog-meta">Coming soon · 5 min read</div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-cat">Strategy</div>
+        <div class="blog-title">Full-platform matrix: why your brand needs more than one channel</div>
+        <div class="blog-excerpt">A single-platform strategy is a single point of failure. Here's how to build a content ecosystem that amplifies itself.</div>
+        <div class="blog-meta">Coming soon · 7 min read</div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-cat">Brand</div>
+        <div class="blog-title">Brand merchandise as a social strategy: the underrated growth lever</div>
+        <div class="blog-excerpt">The brands using physical touchpoints to drive digital engagement are playing a different game. Here's how it works.</div>
+        <div class="blog-meta">Coming soon · 4 min read</div>
+      </div>
+    </div>
+    <div class="blog-coming fade-up">
+      <p>Articles launching soon. Follow us on Instagram for early access to every piece.</p>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand"><div class="footer-brand-logo">Strat<span>G</span></div><div class="footer-brand-sub">Creative Studio</div><p class="footer-brand-desc">Strategy-led social media for brands ready to own their space online.</p></div>
+      <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a onclick="show('home')">Home</a></li><li><a onclick="show('services')">Services</a></li><li><a onclick="show('about')">About Us</a></li><li><a onclick="show('blog')">Blog</a></li><li><a onclick="show('contact')">Get in Touch</a></li></ul></div>
+      <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:galinasong365@gmail.com">galinasong365@gmail.com</a></li><li><a>Canberra, ACT 2617</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-copy">© 2025 StratG Creative Studio.</div><div class="footer-copy">Made with <span class="footer-green">♥</span> in Canberra</div></div>
+  </footer>
+</section>
+
+<!-- ════════════════ CONTACT ════════════════ -->
+<section id="contact">
+  <div class="contact-page" style="padding-top:72px">
+    <div class="section-head fade-up">
+      <div class="section-label">Get in Touch</div>
+      <h1 class="section-title">Let's build<br><em>something worth<br>scrolling for.</em></h1>
+    </div>
+    <div class="contact-layout fade-up">
+      <div class="contact-left">
+        <h2>Ready to<br><em>own your feed?</em></h2>
+        <p>Whether you have a full brief or just an idea — we'd love to hear from you. Every great partnership starts with a conversation.</p>
+        <a href="mailto:galinasong365@gmail.com" class="contact-detail">
+          <div class="contact-detail-icon">✉</div>
+          <div class="contact-detail-text">galinasong365@gmail.com</div>
+        </a>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">◎</div>
+          <div class="contact-detail-text">Canberra, ACT 2617 · Remote-friendly</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">◐</div>
+          <div class="contact-detail-text">We reply within 24 hours</div>
+        </div>
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.08)">
+          <div style="font-family:'League Spartan',sans-serif;font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:1rem">Our approach</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;font-weight:300;color:rgba(255,255,255,.4);line-height:1.6">No account managers. No handoffs. You work directly with the Studio Director — always.</p>
+        </div>
+      </div>
+      <div class="contact-right">
+        <div class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Your Name</label>
+              <input class="form-input" type="text" placeholder="Jane Smith">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input class="form-input" type="email" id="contactEmail" placeholder="jane@yourbrand.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Brand / Company</label>
+            <input class="form-input" type="text" placeholder="Your Brand Name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">What do you need?</label>
+            <select class="form-select">
+              <option value="">Select a service</option>
+              <option>Social Media Strategy</option>
+              <option>Content Creation</option>
+              <option>Full Platform Matrix</option>
+              <option>Account Management</option>
+              <option>Campaign Direction</option>
+              <option>Brand Merchandise</option>
+              <option>Not sure yet — let's talk</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tell us more</label>
+            <textarea class="form-textarea" placeholder="What's your brand about, what's your goal, or what's not working right now?"></textarea>
+          </div>
+          <button class="form-submit" onclick="submitForm()">Send Message →</button>
+          <div class="form-success" id="formSuccess">✓ &nbsp;Message received — we'll be in touch within 24 hours.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer style="margin-top:clamp(4rem,8vw,7rem)">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="footer-brand-logo">Strat<span>G</span></div><div class="footer-brand-sub">Creative Studio</div><p class="footer-brand-desc">Strategy-led social media for brands ready to own their space online.</p></div>
+      <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a onclick="show('home')">Home</a></li><li><a onclick="show('services')">Services</a></li><li><a onclick="show('about')">About Us</a></li><li><a onclick="show('blog')">Blog</a></li><li><a onclick="show('contact')">Get in Touch</a></li></ul></div>
+      <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:galinasong365@gmail.com">galinasong365@gmail.com</a></li><li><a>Canberra, ACT 2617</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-copy">© 2025 StratG Creative Studio.</div><div class="footer-copy">Made with <span class="footer-green">♥</span> in Canberra</div></div>
+  </footer>
+</section>
+
 <script>
-  const cur=document.getElementById('cursor'),ring=document.getElementById('ring');
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
-  (function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
-  document.querySelectorAll('a,button,input').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{cur.style.width='5px';cur.style.height='5px';ring.style.width='44px';ring.style.height='44px';});
-    el.addEventListener('mouseleave',()=>{cur.style.width='8px';cur.style.height='8px';ring.style.width='32px';ring.style.height='32px';});
-  });
-  function submit(){
-    const v=document.getElementById('emailInput').value;
-    if(!v||!v.includes('@')){document.getElementById('emailInput').style.borderColor='var(--orange)';return;}
-    document.getElementById('form').style.display='none';
-    document.getElementById('success').style.display='block';
-  }
-  document.getElementById('emailInput').addEventListener('keydown',e=>{if(e.key==='Enter')submit();});
+// Cursor
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,input,select,textarea,.faq-q,.service-card,.blog-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='5px';cur.style.height='5px';ring.style.width='42px';ring.style.height='42px';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='7px';cur.style.height='7px';ring.style.width='30px';ring.style.height='30px';});
+});
+
+// Nav scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20);
+});
+
+// Section switching
+function show(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+  setTimeout(initFadeUps,100);
+}
+
+// Fade on scroll
+function initFadeUps(){
+  const els=document.querySelectorAll('.active .fade-up');
+  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.1});
+  els.forEach(el=>io.observe(el));
+}
+initFadeUps();
+
+// FAQ
+function toggleFaq(el){
+  el.parentElement.classList.toggle('open');
+}
+
+// Form
+function submitForm(){
+  const email=document.getElementById('contactEmail').value;
+  if(!email||!email.includes('@')){document.getElementById('contactEmail').style.borderColor='var(--orange)';return;}
+  document.getElementById('contactForm').style.opacity='.4';
+  document.getElementById('contactForm').style.pointerEvents='none';
+  document.getElementById('formSuccess').style.display='block';
+}
+
+// Mobile menu
+function toggleMobileMenu(){
+  const m=document.getElementById('mobile-menu');
+  m.style.display=m.style.display==='flex'?'none':'flex';
+}
+function closeMobile(){
+  document.getElementById('mobile-menu').style.display='none';
+}
 </script>
 </body>
 </html>
