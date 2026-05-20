@@ -1,244 +1,307 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StratG Creative Studio — Social Media Strategy, Canberra</title>
+<title>StratG Creative Studio | Content & Growth Agency, Canberra</title>
+<meta name="description" content="StratG builds content systems that turn small businesses into brands. Strategy, content, and sourcing — Canberra & beyond.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --orange:#FE5F01;
-  --green:#00BE63;
+  --red:#E52A58;
   --dark:#111110;
-  --mid:#2A2A28;
-  --stone:#8C8B87;
-  --warm:#F7F4F0;
-  --cream:#EDE9E3;
+  --mid:#222220;
+  --stone:#888886;
+  --light:#F7F7F5;
+  --cream:#EFEDE8;
   --white:#FFFFFF;
-  --border:rgba(26,26,24,.1);
+  --border:rgba(17,17,16,.1);
+  --green:#00BE63;
 }
 html{scroll-behavior:smooth}
-body{font-family:'Cormorant Garamond',serif;background:var(--warm);color:var(--dark);overflow-x:hidden;cursor:none}
+body{font-family:'League Spartan',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden;cursor:none}
 
-/* ── CURSOR ── */
-.cur{position:fixed;width:7px;height:7px;background:var(--orange);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s}
-.cur-ring{position:fixed;width:30px;height:30px;border:1px solid rgba(254,95,1,.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%)}
+/* CURSOR */
+.cur{position:fixed;width:8px;height:8px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s}
+.cur-ring{position:fixed;width:32px;height:32px;border:1.5px solid rgba(229,42,88,.3);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%)}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(1.5rem,5vw,4rem);height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .4s,box-shadow .4s}
-nav.scrolled{background:rgba(247,244,240,.92);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--border)}
-.nav-logo{display:flex;flex-direction:column;gap:0;text-decoration:none}
-.nav-logo-main{font-family:'League Spartan',sans-serif;font-weight:900;font-size:22px;letter-spacing:-.03em;color:var(--dark);line-height:1}
-.nav-logo-main span{color:var(--orange)}
-.nav-logo-sub{font-family:'League Spartan',sans-serif;font-weight:400;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);margin-top:1px}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,5vw,4rem);transition:background .35s,box-shadow .35s}
+nav.scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);box-shadow:0 1px 0 var(--border)}
+.nav-logo{text-decoration:none;display:flex;flex-direction:column;line-height:1;cursor:none}
+.nav-logo-main{font-weight:900;font-size:21px;letter-spacing:-.03em;color:var(--dark)}
+.nav-logo-main span{color:var(--red)}
+.nav-logo-sub{font-size:7.5px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--stone);margin-top:1px}
 .nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
-.nav-links a{font-family:'League Spartan',sans-serif;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);text-decoration:none;transition:color .2s}
+.nav-links a{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);text-decoration:none;transition:color .2s;cursor:none}
 .nav-links a:hover{color:var(--dark)}
-.nav-cta{background:var(--dark)!important;color:var(--white)!important;padding:10px 22px!important;border-radius:100px!important;letter-spacing:.1em!important;transition:background .2s!important}
-.nav-cta:hover{background:var(--orange)!important;color:var(--white)!important}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:4px}
-.nav-burger span{display:block;width:22px;height:1.5px;background:var(--dark);transition:all .3s}
+.nav-cta{background:var(--red)!important;color:var(--white)!important;padding:10px 24px;border-radius:2px!important;transition:opacity .2s!important}
+.nav-cta:hover{opacity:.85!important}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px}
+.burger span{display:block;width:24px;height:1.5px;background:var(--dark);transition:all .3s}
 
-/* ── SECTIONS ── */
+/* PAGE ROUTING */
 section{display:none}
 section.active{display:block}
 #home{display:block}
 
-/* ── HERO ── */
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
-.hero-left{display:flex;flex-direction:column;justify-content:center;padding:120px clamp(1.5rem,5vw,4rem) 80px;position:relative;z-index:2}
-.hero-eyebrow{font-family:'League Spartan',sans-serif;font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:10px;margin-bottom:2rem;opacity:0;animation:up .8s ease .2s forwards}
-.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--orange)}
-.hero-h1{font-family:'League Spartan',sans-serif;font-weight:900;font-size:clamp(52px,7vw,90px);line-height:.9;letter-spacing:-.03em;color:var(--dark);margin-bottom:2rem;opacity:0;animation:up .8s ease .4s forwards}
-.hero-h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;color:var(--orange);display:block;font-size:1.05em}
-.hero-h1 .ghost{-webkit-text-stroke:1.5px rgba(17,17,16,.18);color:transparent;display:block}
-.hero-desc{font-size:clamp(17px,1.6vw,20px);font-weight:300;line-height:1.7;color:var(--stone);max-width:400px;margin-bottom:3rem;opacity:0;animation:up .8s ease .6s forwards}
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:up .8s ease .8s forwards}
-.btn-primary{font-family:'League Spartan',sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:var(--dark);color:var(--white);border:none;padding:16px 32px;border-radius:100px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:background .2s,transform .2s;cursor:none}
-.btn-primary:hover{background:var(--orange);transform:translateY(-1px)}
-.btn-outline{font-family:'League Spartan',sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:transparent;color:var(--dark);border:1.5px solid rgba(17,17,16,.25);padding:15px 28px;border-radius:100px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:border-color .2s,color .2s;cursor:none}
-.btn-outline:hover{border-color:var(--orange);color:var(--orange)}
-.hero-right{position:relative;overflow:hidden;background:var(--dark)}
-.hero-right-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-.hero-big-g{font-family:'League Spartan',sans-serif;font-weight:900;font-size:clamp(200px,28vw,380px);color:transparent;-webkit-text-stroke:1px rgba(254,95,1,.15);letter-spacing:-.05em;line-height:1;user-select:none;animation:slowspin 30s linear infinite}
-@keyframes slowspin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-.hero-circle{position:absolute;width:clamp(140px,18vw,220px);height:clamp(140px,18vw,220px);border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;opacity:0;animation:up .8s ease .5s forwards}
-.hero-circle-g{font-family:'League Spartan',sans-serif;font-weight:900;font-size:clamp(60px,8vw,100px);color:var(--white);letter-spacing:-.04em}
-.hero-stats{position:absolute;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.08)}
-.hero-stat{padding:24px;border-right:1px solid rgba(255,255,255,.08)}
-.hero-stat:last-child{border-right:none}
-.hero-stat-n{font-family:'League Spartan',sans-serif;font-weight:800;font-size:clamp(24px,3vw,36px);color:var(--orange);letter-spacing:-.02em;line-height:1}
-.hero-stat-l{font-family:'Cormorant Garamond',serif;font-size:12px;font-style:italic;color:rgba(255,255,255,.4);margin-top:4px}
-.hero-scroll{position:absolute;bottom:2.5rem;left:clamp(1.5rem,5vw,4rem);display:flex;align-items:center;gap:10px;opacity:0;animation:up .8s ease 1.2s forwards}
-.hero-scroll-line{width:40px;height:1px;background:var(--stone)}
-.hero-scroll-txt{font-family:'League Spartan',sans-serif;font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--stone)}
+/* SECTION WRAPPER */
+.page-wrap{padding-top:68px}
 
-/* ── MARQUEE ── */
-.marquee-wrap{background:var(--dark);padding:16px 0;overflow:hidden}
-.marquee-track{display:flex;gap:0;white-space:nowrap;animation:marquee 18s linear infinite}
-.marquee-item{font-family:'League Spartan',sans-serif;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:0 2rem}
-.marquee-item span{color:var(--orange);margin-right:2rem}
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:var(--dark);position:relative;overflow:hidden}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:clamp(5rem,10vh,8rem) clamp(2rem,5vw,5rem) clamp(3rem,6vh,5rem);position:relative;z-index:2}
+.hero-tag{font-size:9.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--red);margin-bottom:2rem;display:flex;align-items:center;gap:10px;opacity:0;animation:up .8s ease .1s forwards}
+.hero-tag::before{content:'';width:20px;height:1.5px;background:var(--red)}
+.hero-h1{font-weight:900;font-size:clamp(44px,6vw,78px);line-height:.92;letter-spacing:-.04em;color:var(--white);margin-bottom:2.5rem;opacity:0;animation:up .8s ease .25s forwards}
+.hero-h1 em{color:var(--red);font-style:normal}
+.hero-h1 .ghost{-webkit-text-stroke:1px rgba(255,255,255,.18);color:transparent;display:block}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2vw,23px);font-weight:300;font-style:italic;line-height:1.65;color:rgba(255,255,255,.45);max-width:420px;margin-bottom:3rem;opacity:0;animation:up .8s ease .4s forwards}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:up .8s ease .55s forwards}
+.btn-red{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--red);color:var(--white);border:none;padding:15px 32px;border-radius:2px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:opacity .2s;cursor:none}
+.btn-red:hover{opacity:.85}
+.btn-ghost{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:transparent;color:rgba(255,255,255,.6);border:1.5px solid rgba(255,255,255,.2);padding:14px 28px;border-radius:2px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s;cursor:none}
+.btn-ghost:hover{border-color:var(--red);color:var(--white)}
+.hero-right{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-circle-bg{position:absolute;width:600px;height:600px;border-radius:50%;border:1px solid rgba(229,42,88,.12);animation:slowspin 25s linear infinite}
+.hero-circle-bg2{position:absolute;width:400px;height:400px;border-radius:50%;border:1px solid rgba(229,42,88,.08);animation:slowspin 18s linear infinite reverse}
+.hero-big-num{font-weight:900;font-size:clamp(180px,22vw,280px);color:transparent;-webkit-text-stroke:1px rgba(229,42,88,.12);letter-spacing:-.05em;line-height:1;user-select:none;position:relative;z-index:1}
+.hero-pill{position:absolute;bottom:3rem;right:3rem;background:var(--red);padding:18px 28px;border-radius:2px;text-align:center;opacity:0;animation:up .8s ease .7s forwards}
+.hero-pill-n{font-weight:900;font-size:32px;letter-spacing:-.03em;color:var(--white);line-height:1}
+.hero-pill-l{font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:4px}
+
+/* MARQUEE */
+.marquee-bar{background:var(--red);padding:13px 0;overflow:hidden}
+.marquee-inner{display:flex;white-space:nowrap;animation:marquee 16s linear infinite}
+.marquee-item{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.7);padding:0 2.5rem}
+.marquee-item b{color:var(--white)}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ── SECTION HEADER ── */
-.section-head{padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem) 0}
-.section-label{font-family:'League Spartan',sans-serif;font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:10px;margin-bottom:1.25rem}
-.section-label::before{content:'';width:24px;height:1px;background:var(--orange)}
-.section-title{font-family:'League Spartan',sans-serif;font-weight:900;font-size:clamp(36px,6vw,72px);letter-spacing:-.03em;line-height:.95;color:var(--dark)}
-.section-title em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;color:var(--orange)}
+/* SECTION LABEL */
+.s-label{font-size:9.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:10px;margin-bottom:1.5rem}
+.s-label::before{content:'';width:20px;height:1.5px;background:var(--red)}
+.s-num{font-size:9.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--stone);margin-bottom:1rem}
+
+/* SECTION PADDING */
+.s-pad{padding:clamp(4rem,9vw,8rem) clamp(1.5rem,5vw,4rem)}
+.s-pad-t{padding-top:clamp(4rem,9vw,8rem)}
+.s-pad-b{padding-bottom:clamp(4rem,9vw,8rem)}
+
+/* SECTION TITLE */
+.s-h2{font-weight:900;font-size:clamp(36px,5.5vw,68px);letter-spacing:-.04em;line-height:.95;color:var(--dark)}
+.s-h2 em{color:var(--red);font-style:normal}
+.s-h2 .ghost{-webkit-text-stroke:1px rgba(17,17,16,.15);color:transparent}
+
+/* ── PROBLEM / SOLUTION ── */
+.problem{background:var(--light)}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:4rem}
+.problem-col{padding:3rem}
+.problem-col:first-child{border-right:1px solid var(--border)}
+.problem-col-label{font-size:9px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--stone);margin-bottom:2rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
+.problem-item{display:flex;align-items:flex-start;gap:12px;padding:.9rem 0;border-bottom:1px solid var(--border)}
+.problem-item:last-child{border-bottom:none}
+.problem-dot{width:6px;height:6px;border-radius:50%;background:var(--stone);flex-shrink:0;margin-top:6px}
+.problem-dot.red{background:var(--red)}
+.problem-text{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,1.6vw,19px);font-weight:300;line-height:1.5;color:var(--mid)}
+
+/* ── DIFFERENTIATORS ── */
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:4rem}
+.diff-card{background:var(--white);padding:3rem 2.5rem;position:relative;overflow:hidden;transition:background .25s}
+.diff-card:hover{background:var(--light)}
+.diff-card::after{content:'';position:absolute;left:0;bottom:0;width:3px;height:0;background:var(--red);transition:height .4s}
+.diff-card:hover::after{height:100%}
+.diff-n{font-size:9px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--stone);margin-bottom:2rem}
+.diff-icon{font-size:26px;margin-bottom:1.25rem;display:block;line-height:1}
+.diff-title{font-weight:900;font-size:22px;letter-spacing:-.03em;color:var(--dark);margin-bottom:1rem;text-transform:uppercase}
+.diff-desc{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.4vw,17px);font-weight:300;line-height:1.7;color:var(--stone)}
 
 /* ── SERVICES ── */
-.services-page{padding-bottom:clamp(4rem,8vw,7rem)}
-.services-intro{padding:3rem clamp(1.5rem,5vw,4rem);display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.services-intro p{font-size:clamp(17px,1.6vw,21px);font-weight:300;line-height:1.75;color:var(--stone)}
-.services-intro-right{padding-top:.5rem}
-.services-intro-right p{font-size:15px;line-height:1.7;color:var(--stone)}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin:0 clamp(1.5rem,5vw,4rem)}
-.service-card{background:var(--warm);padding:3rem 2.5rem;position:relative;overflow:hidden;transition:background .3s}
-.service-card::before{content:'';position:absolute;bottom:0;left:0;width:3px;height:0;background:var(--orange);transition:height .4s}
-.service-card:hover{background:var(--white)}
-.service-card:hover::before{height:100%}
-.service-num{font-family:'League Spartan',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--stone);margin-bottom:2rem}
-.service-icon{font-size:28px;margin-bottom:1.5rem;display:block}
-.service-name{font-family:'League Spartan',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.02em;color:var(--dark);margin-bottom:1rem}
-.service-desc{font-size:15px;font-weight:300;line-height:1.7;color:var(--stone);margin-bottom:2rem}
-.service-tags{display:flex;flex-wrap:wrap;gap:6px}
-.service-tag{font-family:'League Spartan',sans-serif;font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--border);padding:5px 10px;border-radius:100px;color:var(--stone)}
-.services-cta{padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem);text-align:center}
-.services-cta p{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.5vw,28px);font-style:italic;font-weight:300;color:var(--stone);max-width:500px;margin:0 auto 2.5rem}
+.services-intro{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-bottom:4rem;align-items:end}
+.services-intro p{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,1.8vw,22px);font-weight:300;line-height:1.7;color:var(--stone)}
+.services-table{border-top:1px solid var(--border)}
+.service-row{display:grid;grid-template-columns:2fr 3fr 2fr;gap:0;padding:2.5rem 0;border-bottom:1px solid var(--border);align-items:start;transition:background .2s;cursor:none}
+.service-row:hover{background:var(--light);padding-left:1rem;padding-right:1rem;margin:0 -1rem}
+.service-row-num{font-size:9px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--stone)}
+.service-row-name{font-weight:900;font-size:clamp(18px,2.2vw,26px);letter-spacing:-.03em;text-transform:uppercase;color:var(--dark)}
+.service-row-tags{font-size:11px;font-weight:500;letter-spacing:.06em;color:var(--stone);line-height:1.9}
+.service-row-tags span{color:var(--red);margin-right:.5rem}
+.service-badge{display:inline-block;background:var(--red);color:var(--white);font-size:8.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:4px 10px;border-radius:2px;margin-top:.5rem}
+
+/* ── HOW IT WORKS ── */
+.how{background:var(--dark)}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06);margin-top:4rem}
+.how-step{background:var(--dark);padding:3rem 2rem;position:relative;overflow:hidden}
+.how-step::before{content:attr(data-n);font-weight:900;font-size:100px;color:rgba(255,255,255,.03);position:absolute;top:-10px;right:-10px;letter-spacing:-.05em;line-height:1}
+.how-n{font-size:9px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--red);margin-bottom:1.5rem}
+.how-title{font-weight:900;font-size:20px;letter-spacing:-.03em;text-transform:uppercase;color:var(--white);margin-bottom:1rem}
+.how-desc{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;line-height:1.65;color:rgba(255,255,255,.4)}
+.how-arrow{position:absolute;top:3rem;right:-1px;font-size:20px;color:rgba(229,42,88,.3)}
+
+/* ── WORK / CASES ── */
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:4rem}
+.work-card{background:var(--light);padding:3rem;position:relative;overflow:hidden;cursor:none;transition:background .25s}
+.work-card:hover{background:var(--cream)}
+.work-card-tag{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:1.5rem}
+.work-card-title{font-weight:900;font-size:clamp(20px,2.5vw,30px);letter-spacing:-.03em;text-transform:uppercase;color:var(--dark);margin-bottom:1rem;line-height:1.05}
+.work-card-desc{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;line-height:1.65;color:var(--stone);margin-bottom:2rem}
+.work-card-stats{display:flex;gap:2rem}
+.work-stat-n{font-weight:900;font-size:28px;letter-spacing:-.03em;color:var(--red);line-height:1}
+.work-stat-l{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-top:3px}
+.work-card-full{grid-column:1/-1;background:var(--dark);padding:4rem}
+.work-card-full .work-card-title{color:var(--white)}
+.work-card-full .work-card-desc{color:rgba(255,255,255,.4)}
+.work-card-full .work-stat-l{color:rgba(255,255,255,.3)}
+
+/* ── SOURCING BLOCK ── */
+.sourcing{background:var(--red);padding:clamp(4rem,9vw,8rem) clamp(1.5rem,5vw,4rem)}
+.sourcing-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;margin-top:4rem}
+.sourcing h2{font-weight:900;font-size:clamp(36px,5.5vw,68px);letter-spacing:-.04em;line-height:.95;color:var(--white);text-transform:uppercase}
+.sourcing-points{display:flex;flex-direction:column;gap:1.5rem}
+.sourcing-point{display:flex;align-items:flex-start;gap:1rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,.15)}
+.sourcing-point:last-child{border-bottom:none;padding-bottom:0}
+.sourcing-point-icon{width:32px;height:32px;border:1.5px solid rgba(255,255,255,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;color:var(--white)}
+.sourcing-point-text{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,1.6vw,19px);font-weight:300;line-height:1.55;color:rgba(255,255,255,.75)}
+.sourcing-point-text strong{color:var(--white);font-style:italic}
+.btn-white{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--white);color:var(--red);border:none;padding:15px 32px;border-radius:2px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:opacity .2s;cursor:none;margin-top:2rem}
+.btn-white:hover{opacity:.9}
+
+/* ── TESTIMONIALS ── */
+.testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);margin-top:4rem}
+.testi-card{background:var(--white);padding:3rem;position:relative}
+.testi-card::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:72px;color:var(--red);opacity:.15;position:absolute;top:1.5rem;left:2rem;line-height:1}
+.testi-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,1.6vw,19px);font-weight:300;line-height:1.75;color:var(--mid);margin-bottom:2rem;padding-top:1.5rem}
+.testi-author{display:flex;align-items:center;gap:12px;padding-top:1.5rem;border-top:1px solid var(--border)}
+.testi-avatar{width:38px;height:38px;border-radius:50%;background:var(--light);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:var(--red)}
+.testi-name{font-weight:700;font-size:13px;letter-spacing:-.01em;color:var(--dark)}
+.testi-role{font-size:11px;font-weight:400;color:var(--stone);font-style:italic;font-family:'Cormorant Garamond',serif}
 
 /* ── ABOUT ── */
-.about-page{padding-bottom:clamp(4rem,8vw,7rem)}
-.about-hero{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:70vh;margin-top:3rem}
-.about-photo-side{background:var(--cream);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:500px}
-.about-photo-placeholder{width:240px;height:320px;border-radius:16px;background:var(--stone);opacity:.15;position:relative}
-.about-photo-placeholder::after{content:'YOUR PHOTO';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'League Spartan',sans-serif;font-size:10px;letter-spacing:.2em;color:var(--stone);text-align:center;line-height:1}
-.about-photo-badge{position:absolute;bottom:2rem;right:2rem;background:var(--orange);color:var(--white);padding:12px 20px;border-radius:100px;font-family:'League Spartan',sans-serif;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
-.about-content-side{padding:4rem clamp(2rem,5vw,5rem);display:flex;flex-direction:column;justify-content:center}
-.about-role{font-family:'League Spartan',sans-serif;font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--orange);margin-bottom:1.5rem;display:flex;align-items:center;gap:10px}
-.about-role::before{content:'';width:24px;height:1px;background:var(--orange)}
-.about-name{font-family:'League Spartan',sans-serif;font-weight:900;font-size:clamp(40px,5.5vw,68px);letter-spacing:-.03em;line-height:.95;color:var(--dark);margin-bottom:2rem}
-.about-name em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;display:block;font-size:.7em;color:var(--stone);margin-top:.5rem}
-.about-bio{font-size:clamp(16px,1.5vw,18px);font-weight:300;line-height:1.8;color:var(--stone);margin-bottom:2.5rem}
+.about-hero{display:grid;grid-template-columns:1fr 1fr;min-height:620px}
+.about-photo{background:var(--cream);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:500px}
+.about-photo-circle{width:280px;height:380px;border-radius:8px;background:linear-gradient(160deg,rgba(229,42,88,.15) 0%,rgba(17,17,16,.08) 100%);display:flex;align-items:center;justify-content:center;position:relative}
+.about-photo-circle::after{content:'GALINA\A FOUNDER &\A DIRECTOR';white-space:pre;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);text-align:center;position:absolute;bottom:2rem}
+.about-badge{position:absolute;bottom:2.5rem;right:2.5rem;background:var(--red);color:var(--white);padding:12px 20px;border-radius:2px;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.about-content{padding:5rem clamp(2.5rem,5vw,5rem);display:flex;flex-direction:column;justify-content:center}
+.about-role{font-size:9.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--red);margin-bottom:2rem;display:flex;align-items:center;gap:10px}
+.about-role::before{content:'';width:20px;height:1.5px;background:var(--red)}
+.about-h2{font-weight:900;font-size:clamp(36px,5vw,60px);letter-spacing:-.04em;line-height:.95;text-transform:uppercase;color:var(--dark);margin-bottom:.5rem}
+.about-h2 em{color:var(--red);font-style:normal}
+.about-title-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,1.8vw,22px);font-style:italic;font-weight:300;color:var(--stone);margin-bottom:2.5rem}
+.about-bio{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,1.55vw,18px);font-weight:300;line-height:1.85;color:var(--stone);margin-bottom:2.5rem}
 .about-bio strong{color:var(--dark);font-weight:500}
+.about-credentials{display:flex;gap:3rem;padding-top:2rem;border-top:1px solid var(--border);margin-bottom:2.5rem}
+.cred-n{font-weight:900;font-size:28px;letter-spacing:-.03em;color:var(--red);line-height:1}
+.cred-l{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-top:4px}
 
-/* PILLARS */
-.about-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin:clamp(3rem,5vw,5rem) clamp(1.5rem,5vw,4rem)}
-.pillar{background:var(--warm);padding:2.5rem 2rem}
-.pillar-num{font-family:'League Spartan',sans-serif;font-size:9px;font-weight:600;letter-spacing:.2em;color:var(--orange);margin-bottom:1rem}
-.pillar-title{font-family:'League Spartan',sans-serif;font-weight:800;font-size:17px;letter-spacing:-.01em;color:var(--dark);margin-bottom:.75rem}
-.pillar-desc{font-size:14px;font-weight:300;line-height:1.65;color:var(--stone)}
-
-/* VALUE PROP */
-.value-prop{background:var(--dark);padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);text-align:center;position:relative;overflow:hidden}
-.value-prop-bg{position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:var(--orange);opacity:.05}
-.value-prop blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,52px);font-style:italic;font-weight:300;color:var(--white);line-height:1.3;max-width:800px;margin:0 auto 2rem;position:relative;z-index:1}
-.value-prop blockquote::before{content:'"';font-size:6em;color:var(--orange);opacity:.2;position:absolute;top:-.4em;left:-.1em;font-style:normal;line-height:1}
-.value-prop cite{font-family:'League Spartan',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);position:relative;z-index:1}
-
-/* TESTIMONIALS */
-.testimonials{padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem)}
-.testimonials-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
-.testi-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:2.5rem;position:relative}
-.testi-card::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:80px;color:var(--orange);opacity:.15;position:absolute;top:1rem;left:1.5rem;line-height:1}
-.testi-quote{font-size:clamp(15px,1.4vw,17px);font-weight:300;line-height:1.75;color:var(--mid);margin-bottom:2rem;padding-top:2rem}
-.testi-author{display:flex;align-items:center;gap:12px}
-.testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;font-family:'League Spartan',sans-serif;font-weight:800;font-size:14px;color:var(--orange)}
-.testi-name{font-family:'League Spartan',sans-serif;font-weight:700;font-size:13px;letter-spacing:-.01em;color:var(--dark)}
-.testi-role{font-size:12px;font-style:italic;color:var(--stone)}
-
-/* FAQ */
-.faq{padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);background:var(--cream)}
-.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:3rem}
-.faq-item{padding:2rem 0;border-bottom:1px solid var(--border)}
-.faq-item:nth-child(odd){padding-right:3rem}
-.faq-item:nth-child(even){padding-left:3rem;border-left:1px solid var(--border)}
-.faq-q{font-family:'League Spartan',sans-serif;font-weight:700;font-size:15px;letter-spacing:-.01em;color:var(--dark);margin-bottom:.75rem;cursor:none;display:flex;justify-content:space-between;align-items:start;gap:1rem}
-.faq-q::after{content:'+';color:var(--orange);font-size:20px;line-height:1;flex-shrink:0;transition:transform .3s}
-.faq-item.open .faq-q::after{transform:rotate(45deg)}
-.faq-a{font-size:14px;font-weight:300;line-height:1.7;color:var(--stone);max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
-.faq-item.open .faq-a{max-height:200px;padding-top:.5rem}
+/* ── FAQ ── */
+.faq-wrap{background:var(--light)}
+.faq-list{margin-top:4rem;border-top:1px solid var(--border)}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{padding:1.75rem 0;display:flex;justify-content:space-between;align-items:center;cursor:none;font-weight:700;font-size:clamp(14px,1.4vw,16px);letter-spacing:-.01em;color:var(--dark);gap:2rem}
+.faq-toggle{width:28px;height:28px;border:1.5px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--stone);flex-shrink:0;transition:all .25s}
+.faq-item.open .faq-toggle{background:var(--red);border-color:var(--red);color:var(--white);transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.faq-a-inner{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,1.5vw,17px);font-weight:300;line-height:1.75;color:var(--stone);padding-bottom:1.75rem}
+.faq-item.open .faq-a{max-height:200px}
 
 /* ── BLOG ── */
-.blog-page{padding-bottom:clamp(4rem,8vw,7rem)}
-.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin:3rem clamp(1.5rem,5vw,4rem) 0}
-.blog-card{background:var(--warm);padding:2.5rem 2rem;display:flex;flex-direction:column;gap:1rem;cursor:none;transition:background .2s}
-.blog-card:hover{background:var(--white)}
-.blog-cat{font-family:'League Spartan',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
-.blog-title{font-family:'League Spartan',sans-serif;font-weight:800;font-size:18px;letter-spacing:-.02em;line-height:1.2;color:var(--dark);flex:1}
-.blog-excerpt{font-size:14px;font-weight:300;line-height:1.65;color:var(--stone)}
-.blog-meta{font-family:'League Spartan',sans-serif;font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);display:flex;align-items:center;gap:8px}
-.blog-meta::before{content:'';width:16px;height:1px;background:var(--stone)}
-.blog-coming{padding:clamp(3rem,5vw,5rem) clamp(1.5rem,5vw,4rem);text-align:center}
-.blog-coming p{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--stone);max-width:440px;margin:0 auto}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:4rem}
+.blog-card{background:var(--white);padding:2.5rem 2rem;cursor:none;transition:background .2s}
+.blog-card:hover{background:var(--light)}
+.blog-cat{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:1.25rem}
+.blog-title{font-weight:900;font-size:clamp(16px,1.8vw,20px);letter-spacing:-.02em;line-height:1.15;color:var(--dark);text-transform:uppercase;margin-bottom:1rem;flex:1}
+.blog-excerpt{font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.3vw,16px);font-weight:300;line-height:1.65;color:var(--stone);margin-bottom:1.5rem}
+.blog-meta{font-size:9px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--stone);display:flex;align-items:center;gap:8px}
+.blog-meta::before{content:'';width:14px;height:1px;background:var(--stone)}
 
 /* ── CONTACT ── */
-.contact-page{padding-bottom:clamp(4rem,8vw,7rem)}
-.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:3rem;min-height:70vh}
-.contact-left{padding:4rem clamp(2rem,5vw,5rem);background:var(--dark);display:flex;flex-direction:column;justify-content:center}
-.contact-left h2{font-family:'League Spartan',sans-serif;font-weight:900;font-size:clamp(36px,5vw,60px);letter-spacing:-.03em;line-height:.95;color:var(--white);margin-bottom:2rem}
-.contact-left h2 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;color:var(--orange);display:block}
-.contact-left p{font-size:16px;font-weight:300;line-height:1.75;color:rgba(255,255,255,.4);margin-bottom:3rem}
-.contact-detail{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;text-decoration:none}
-.contact-detail-icon{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
-.contact-detail-text{font-family:'League Spartan',sans-serif;font-size:12px;font-weight:500;letter-spacing:.05em;color:rgba(255,255,255,.5);transition:color .2s}
-.contact-detail:hover .contact-detail-text{color:var(--orange)}
-.contact-right{padding:4rem clamp(2rem,5vw,5rem);display:flex;flex-direction:column;justify-content:center}
-.contact-form{display:flex;flex-direction:column;gap:1.25rem}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
-.form-group{display:flex;flex-direction:column;gap:.5rem}
-.form-label{font-family:'League Spartan',sans-serif;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--stone)}
-.form-input,.form-select,.form-textarea{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:14px 16px;font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--dark);outline:none;transition:border-color .2s;width:100%;cursor:none}
-.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--orange)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;min-height:70vh}
+.contact-left{background:var(--dark);padding:5rem clamp(2.5rem,5vw,5rem);display:flex;flex-direction:column;justify-content:center}
+.contact-left h2{font-weight:900;font-size:clamp(36px,5vw,62px);letter-spacing:-.04em;line-height:.95;text-transform:uppercase;color:var(--white);margin-bottom:2.5rem}
+.contact-left h2 em{color:var(--red);font-style:normal}
+.contact-left p{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,1.6vw,19px);font-weight:300;line-height:1.75;color:rgba(255,255,255,.4);margin-bottom:3rem}
+.contact-detail{display:flex;align-items:center;gap:12px;text-decoration:none;margin-bottom:1rem}
+.contact-icon{width:34px;height:34px;border:1px solid rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;color:rgba(255,255,255,.4);flex-shrink:0}
+.contact-txt{font-size:12px;font-weight:500;letter-spacing:.04em;color:rgba(255,255,255,.45);transition:color .2s}
+.contact-detail:hover .contact-txt{color:var(--red)}
+.contact-note{margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.08)}
+.contact-note p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:rgba(255,255,255,.3);line-height:1.6}
+.contact-right{background:var(--light);padding:5rem clamp(2.5rem,5vw,5rem);display:flex;flex-direction:column;justify-content:center}
+.form-group{margin-bottom:1.25rem}
+.form-label{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:.5rem}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--white);border:1px solid var(--border);border-radius:2px;padding:14px 16px;font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--dark);outline:none;transition:border-color .2s;cursor:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--red)}
 .form-textarea{resize:none;height:120px;line-height:1.5}
-.form-submit{font-family:'League Spartan',sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:var(--dark);color:var(--white);border:none;padding:18px 40px;border-radius:100px;cursor:none;transition:background .2s;align-self:flex-start;margin-top:.5rem}
-.form-submit:hover{background:var(--orange)}
-.form-success{display:none;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--green);padding:1rem 0}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.form-submit{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--dark);color:var(--white);border:none;padding:16px 36px;border-radius:2px;cursor:none;transition:background .2s;margin-top:.5rem}
+.form-submit:hover{background:var(--red)}
+.form-success{display:none;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--red);padding:1rem 0}
+
+/* ── FINAL CTA STRIP ── */
+.cta-strip{background:var(--dark);padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);text-align:center;position:relative;overflow:hidden}
+.cta-strip::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;border:1px solid rgba(229,42,88,.07)}
+.cta-strip::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:400px;border-radius:50%;border:1px solid rgba(229,42,88,.05)}
+.cta-strip h2{font-weight:900;font-size:clamp(32px,5vw,62px);letter-spacing:-.04em;line-height:.95;text-transform:uppercase;color:var(--white);margin-bottom:1.5rem;position:relative;z-index:1}
+.cta-strip h2 em{color:var(--red);font-style:normal}
+.cta-strip p{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,1.8vw,21px);font-style:italic;font-weight:300;color:rgba(255,255,255,.35);margin-bottom:3rem;position:relative;z-index:1}
+.cta-strip-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
 
 /* ── FOOTER ── */
-footer{background:var(--dark);padding:4rem clamp(1.5rem,5vw,4rem) 2rem}
-.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08)}
-.footer-brand{}
-.footer-brand-logo{font-family:'League Spartan',sans-serif;font-weight:900;font-size:24px;letter-spacing:-.03em;color:var(--white);margin-bottom:.5rem}
-.footer-brand-logo span{color:var(--orange)}
-.footer-brand-sub{font-family:'League Spartan',sans-serif;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);margin-bottom:1.5rem}
-.footer-brand-desc{font-size:14px;font-weight:300;line-height:1.65;color:rgba(255,255,255,.3)}
-.footer-col-title{font-family:'League Spartan',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);margin-bottom:1.5rem}
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:.75rem}
-.footer-links a{font-family:'League Spartan',sans-serif;font-size:12px;font-weight:500;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;cursor:none}
-.footer-links a:hover{color:var(--orange)}
+footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding:3.5rem clamp(1.5rem,5vw,4rem) 2rem}
+.footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:4rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.footer-logo-main{font-weight:900;font-size:22px;letter-spacing:-.03em;color:var(--white);margin-bottom:2px}
+.footer-logo-main span{color:var(--red)}
+.footer-logo-sub{font-size:7.5px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--stone);margin-bottom:1.25rem}
+.footer-desc{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:300;line-height:1.65;color:rgba(255,255,255,.25)}
+.footer-col-title{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1.25rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-links a{font-size:12px;font-weight:500;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s;cursor:none}
+.footer-links a:hover{color:var(--red)}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem}
-.footer-copy{font-family:'League Spartan',sans-serif;font-size:10px;font-weight:500;letter-spacing:.08em;color:rgba(255,255,255,.2)}
-.footer-green{color:var(--green)}
+.footer-copy{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.15)}
 
-/* ── ANIMATIONS ── */
-@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
-.fade-up.visible{opacity:1;transform:translateY(0)}
+/* ANIM */
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slowspin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.fade{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.fade.in{opacity:1;transform:translateY(0)}
 
-/* ── MOBILE ── */
-@media(max-width:900px){
+/* MOBILE MENU */
+#mob-menu{display:none;position:fixed;inset:0;background:var(--dark);z-index:190;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+#mob-menu a{font-weight:900;font-size:32px;letter-spacing:-.03em;text-transform:uppercase;color:var(--white);text-decoration:none;cursor:none;transition:color .2s}
+#mob-menu a:hover,#mob-menu a.red{color:var(--red)}
+
+/* RESPONSIVE */
+@media(max-width:960px){
   .hero{grid-template-columns:1fr;min-height:auto}
-  .hero-right{height:260px}
-  .hero-big-g{font-size:160px}
-  .services-grid{grid-template-columns:1fr}
-  .about-hero{grid-template-columns:1fr}
-  .about-pillars{grid-template-columns:1fr}
-  .testimonials-grid{grid-template-columns:1fr}
-  .faq-grid{grid-template-columns:1fr}
-  .faq-item:nth-child(even){padding-left:0;border-left:none}
-  .faq-item:nth-child(odd){padding-right:0}
-  .contact-layout{grid-template-columns:1fr}
-  .footer-top{grid-template-columns:1fr}
-  .blog-grid{grid-template-columns:1fr}
-  .form-row{grid-template-columns:1fr}
+  .hero-right{height:300px}
+  .diff-grid{grid-template-columns:1fr}
   .services-intro{grid-template-columns:1fr;gap:1.5rem}
+  .how-grid{grid-template-columns:1fr 1fr}
+  .work-grid{grid-template-columns:1fr}
+  .work-card-full{grid-column:auto}
+  .sourcing-grid{grid-template-columns:1fr;gap:3rem}
+  .testi-grid{grid-template-columns:1fr}
+  .about-hero{grid-template-columns:1fr}
+  .faq-list{grid-template-columns:1fr}
+  .blog-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2.5rem}
+  .problem-grid{grid-template-columns:1fr}
+  .problem-col:first-child{border-right:none;border-bottom:1px solid var(--border)}
   .nav-links{display:none}
-  .nav-burger{display:flex}
+  .burger{display:flex}
   body{cursor:auto}
   .cur,.cur-ring{display:none}
+}
+@media(max-width:600px){
+  .how-grid{grid-template-columns:1fr}
+  .blog-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .about-credentials{gap:1.5rem}
 }
 </style>
 </head>
@@ -249,530 +312,607 @@ footer{background:var(--dark);padding:4rem clamp(1.5rem,5vw,4rem) 2rem}
 
 <!-- NAV -->
 <nav id="nav">
-  <a class="nav-logo" onclick="show('home')" style="cursor:none">
+  <a class="nav-logo" onclick="go('home')" style="cursor:none">
     <div class="nav-logo-main">Strat<span>G</span></div>
     <div class="nav-logo-sub">Creative Studio</div>
   </a>
   <ul class="nav-links">
-    <li><a onclick="show('home')" style="cursor:none">Home</a></li>
-    <li><a onclick="show('services')" style="cursor:none">Services</a></li>
-    <li><a onclick="show('about')" style="cursor:none">About Us</a></li>
-    <li><a onclick="show('blog')" style="cursor:none">Blog</a></li>
-    <li><a onclick="show('contact')" class="nav-cta" style="cursor:none">Get in Touch</a></li>
+    <li><a onclick="go('home')">Home</a></li>
+    <li><a onclick="go('services')">Services</a></li>
+    <li><a onclick="go('work')">Our Work</a></li>
+    <li><a onclick="go('about')">About</a></li>
+    <li><a onclick="go('blog')">Blog</a></li>
+    <li><a onclick="go('contact')" class="nav-cta">Book a Call</a></li>
   </ul>
-  <button class="nav-burger" onclick="toggleMobileMenu()">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="burger" id="burger" onclick="toggleMob()"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- MOBILE MENU -->
-<div id="mobile-menu" style="display:none;position:fixed;inset:0;background:var(--dark);z-index:99;display:none;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem">
-  <a style="font-family:'League Spartan',sans-serif;font-weight:800;font-size:32px;letter-spacing:-.02em;color:var(--white);text-decoration:none" onclick="show('home');closeMobile()">Home</a>
-  <a style="font-family:'League Spartan',sans-serif;font-weight:800;font-size:32px;letter-spacing:-.02em;color:var(--white);text-decoration:none" onclick="show('services');closeMobile()">Services</a>
-  <a style="font-family:'League Spartan',sans-serif;font-weight:800;font-size:32px;letter-spacing:-.02em;color:var(--white);text-decoration:none" onclick="show('about');closeMobile()">About Us</a>
-  <a style="font-family:'League Spartan',sans-serif;font-weight:800;font-size:32px;letter-spacing:-.02em;color:var(--white);text-decoration:none" onclick="show('blog');closeMobile()">Blog</a>
-  <a style="font-family:'League Spartan',sans-serif;font-weight:800;font-size:32px;letter-spacing:-.02em;color:var(--orange);text-decoration:none" onclick="show('contact');closeMobile()">Get in Touch</a>
+<div id="mob-menu">
+  <a onclick="go('home');closeMob()">Home</a>
+  <a onclick="go('services');closeMob()">Services</a>
+  <a onclick="go('work');closeMob()">Our Work</a>
+  <a onclick="go('about');closeMob()">About</a>
+  <a onclick="go('blog');closeMob()">Blog</a>
+  <a onclick="go('contact');closeMob()" class="red">Book a Call</a>
 </div>
 
-<!-- ════════════════ HOME ════════════════ -->
+<!-- ══════════ HOME ══════════ -->
 <section id="home" class="active">
+<div class="page-wrap">
 
+  <!-- HERO -->
   <div class="hero">
     <div class="hero-left">
-      <div class="hero-eyebrow">Social Media Studio · Canberra ACT</div>
+      <div class="hero-tag">Content & Growth Agency · Canberra, AU</div>
       <h1 class="hero-h1">
-        We build<br>
-        <em>brands that</em>
-        <span class="ghost">own the feed.</span>
+        Not just content.<br>
+        <em>A system</em>
+        <span class="ghost">that sells.</span>
       </h1>
-      <p class="hero-desc">
-        The algorithm rewards intention. We build the strategy, content architecture and platform presence that turns your brand into the one people can't scroll past.
-      </p>
-      <div class="hero-actions">
-        <a class="btn-primary" onclick="show('services')">Our Services →</a>
-        <a class="btn-outline" onclick="show('contact')">Let's Talk</a>
-      </div>
-      <div class="hero-scroll">
-        <div class="hero-scroll-line"></div>
-        <div class="hero-scroll-txt">Scroll to explore</div>
+      <p class="hero-sub">Strategy, content, and sourcing — everything your business needs to grow, in one place.</p>
+      <div class="hero-btns">
+        <a class="btn-red" onclick="go('contact')">Book a Free Consultation</a>
+        <a class="btn-ghost" onclick="go('work')">See Our Work</a>
       </div>
     </div>
     <div class="hero-right">
-      <div class="hero-right-inner">
-        <div class="hero-big-g">G</div>
-        <div class="hero-circle"><div class="hero-circle-g">G</div></div>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-n">Full</div>
-          <div class="hero-stat-l">Platform coverage</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-n">CBR</div>
-          <div class="hero-stat-l">Based, global reach</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-n">Now</div>
-          <div class="hero-stat-l">Taking enquiries</div>
-        </div>
+      <div class="hero-circle-bg"></div>
+      <div class="hero-circle-bg2"></div>
+      <div class="hero-big-num">G</div>
+      <div class="hero-pill">
+        <div class="hero-pill-n">CBR</div>
+        <div class="hero-pill-l">Canberra Based</div>
       </div>
     </div>
   </div>
 
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <span class="marquee-item"><span>✦</span> Social Strategy</span>
-      <span class="marquee-item"><span>✦</span> Content Creation</span>
-      <span class="marquee-item"><span>✦</span> Platform Matrix</span>
-      <span class="marquee-item"><span>✦</span> Account Management</span>
-      <span class="marquee-item"><span>✦</span> Campaign Direction</span>
-      <span class="marquee-item"><span>✦</span> Brand Merchandise</span>
-      <span class="marquee-item"><span>✦</span> Social Strategy</span>
-      <span class="marquee-item"><span>✦</span> Content Creation</span>
-      <span class="marquee-item"><span>✦</span> Platform Matrix</span>
-      <span class="marquee-item"><span>✦</span> Account Management</span>
-      <span class="marquee-item"><span>✦</span> Campaign Direction</span>
-      <span class="marquee-item"><span>✦</span> Brand Merchandise</span>
+  <!-- MARQUEE -->
+  <div class="marquee-bar">
+    <div class="marquee-inner">
+      <span class="marquee-item">✦ <b>Content Strategy</b></span>
+      <span class="marquee-item">✦ <b>Social Media Systems</b></span>
+      <span class="marquee-item">✦ <b>Video Production</b></span>
+      <span class="marquee-item">✦ <b>Platform Matrix</b></span>
+      <span class="marquee-item">✦ <b>Brand Sourcing China</b></span>
+      <span class="marquee-item">✦ <b>Account Management</b></span>
+      <span class="marquee-item">✦ <b>Content Strategy</b></span>
+      <span class="marquee-item">✦ <b>Social Media Systems</b></span>
+      <span class="marquee-item">✦ <b>Video Production</b></span>
+      <span class="marquee-item">✦ <b>Platform Matrix</b></span>
+      <span class="marquee-item">✦ <b>Brand Sourcing China</b></span>
+      <span class="marquee-item">✦ <b>Account Management</b></span>
     </div>
   </div>
 
-  <!-- HOME SERVICES PREVIEW -->
-  <div class="section-head fade-up">
-    <div class="section-label">What We Do</div>
-    <h2 class="section-title">Strategy-led.<br><em>Results-driven.</em></h2>
-  </div>
-  <div class="services-grid fade-up" style="margin-top:3rem">
-    <div class="service-card">
-      <div class="service-num">01</div>
-      <span class="service-icon">◎</span>
-      <div class="service-name">Social Strategy</div>
-      <div class="service-desc">Full-platform content architecture built around your audience, not guesswork. From brief to calendar to KPIs.</div>
-    </div>
-    <div class="service-card">
-      <div class="service-num">02</div>
-      <span class="service-icon">▶</span>
-      <div class="service-name">Content Creation</div>
-      <div class="service-desc">Scroll-stopping copy, visual briefs and short-form video scripts crafted for each platform's native format.</div>
-    </div>
-    <div class="service-card">
-      <div class="service-num">03</div>
-      <span class="service-icon">◈</span>
-      <div class="service-name">Platform Matrix</div>
-      <div class="service-desc">Multi-channel ecosystem setup — Instagram, TikTok, LinkedIn, WeChat and beyond — built to talk to each other.</div>
+  <!-- TRUST STRIP -->
+  <div style="background:var(--light);padding:1.5rem clamp(1.5rem,5vw,4rem);display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap">
+    <div style="font-size:9px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--stone)">Helping small businesses across</div>
+    <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
+      <span style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);opacity:.6">Beauty</span>
+      <span style="color:var(--border)">·</span>
+      <span style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);opacity:.6">Café</span>
+      <span style="color:var(--border)">·</span>
+      <span style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);opacity:.6">Retail</span>
+      <span style="color:var(--border)">·</span>
+      <span style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);opacity:.6">Personal Brand</span>
+      <span style="color:var(--border)">·</span>
+      <span style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);opacity:.6">E-commerce</span>
     </div>
   </div>
 
-  <div style="text-align:center;padding:3rem clamp(1.5rem,5vw,4rem) 0" class="fade-up">
-    <a class="btn-outline" onclick="show('services')">View all services →</a>
-  </div>
-
-  <!-- HOME VALUE PROP -->
-  <div class="value-prop fade-up" style="margin-top:clamp(4rem,8vw,7rem)">
-    <div class="value-prop-bg"></div>
-    <div class="section-label" style="justify-content:center;margin-bottom:2.5rem">Studio Director</div>
-    <blockquote>Most brands post content. We build presence. There's a difference — and it shows in the numbers.</blockquote>
-    <cite>— StratG Creative Studio</cite>
-  </div>
-
-  <!-- HOME ABOUT TEASER (reference image style) -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:520px;margin-top:clamp(4rem,8vw,7rem)" class="fade-up">
-    <div style="background:var(--cream);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;min-height:400px">
-      <div style="width:220px;height:300px;border-radius:50%;background:linear-gradient(135deg,var(--stone) 0%,var(--cream) 100%);opacity:.25"></div>
-      <div style="position:absolute;bottom:2rem;left:2rem;background:var(--orange);color:var(--white);padding:10px 18px;border-radius:100px;font-family:'League Spartan',sans-serif;font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase">Studio Director</div>
-    </div>
-    <div style="background:var(--warm);padding:4rem clamp(2rem,5vw,5rem);display:flex;flex-direction:column;justify-content:center">
-      <div class="section-label">Behind the Studio</div>
-      <h2 style="font-family:'League Spartan',sans-serif;font-weight:900;font-size:clamp(36px,5vw,58px);letter-spacing:-.03em;line-height:.95;color:var(--dark);margin:1.5rem 0">THE STUDIO<br><span style="color:var(--orange)">DIRECTOR.</span></h2>
-      <p style="font-size:clamp(16px,1.5vw,18px);font-weight:300;line-height:1.8;color:var(--stone);margin-bottom:2rem">We are an intentional social media studio built for brands who understand that the attention economy rewards those who show up strategically — not just consistently.</p>
-      <p style="font-size:clamp(16px,1.5vw,18px);font-weight:300;line-height:1.8;color:var(--stone);margin-bottom:2.5rem">No account managers. No handoffs. You work directly with the specialist — always.</p>
-      <a class="btn-outline" onclick="show('about')" style="align-self:flex-start">Meet the Studio →</a>
+  <!-- PROBLEM / SOLUTION -->
+  <div class="problem s-pad fade">
+    <div class="s-num">01 / THE PROBLEM WE SOLVE</div>
+    <h2 class="s-h2">Marketing shouldn't<br>feel this <em>messy.</em></h2>
+    <div class="problem-grid">
+      <div class="problem-col">
+        <div class="problem-col-label">What we hear every day</div>
+        <div class="problem-item"><div class="problem-dot"></div><div class="problem-text">I know I need social media, but I don't know what to post</div></div>
+        <div class="problem-item"><div class="problem-dot"></div><div class="problem-text">I've tried doing it myself — nothing actually worked</div></div>
+        <div class="problem-item"><div class="problem-dot"></div><div class="problem-text">Agencies feel expensive, slow, and disconnected from my business</div></div>
+        <div class="problem-item"><div class="problem-dot"></div><div class="problem-text">I want branded merchandise but local costs are insane</div></div>
+        <div class="problem-item"><div class="problem-dot"></div><div class="problem-text">I don't have time to figure it all out myself</div></div>
+      </div>
+      <div class="problem-col">
+        <div class="problem-col-label">What StratG gives you</div>
+        <div class="problem-item"><div class="problem-dot red"></div><div class="problem-text">A clear system: what to say, where to show up, how it drives results</div></div>
+        <div class="problem-item"><div class="problem-dot red"></div><div class="problem-text">Done-for-you execution — from idea to posting, we handle everything</div></div>
+        <div class="problem-item"><div class="problem-dot red"></div><div class="problem-text">Direct access to the specialist — no account managers, no handoffs</div></div>
+        <div class="problem-item"><div class="problem-dot red"></div><div class="problem-text">Cost-efficient brand merchandise sourced directly from China</div></div>
+        <div class="problem-item"><div class="problem-dot red"></div><div class="problem-text">Consistency without the stress — we run it so you don't have to</div></div>
+      </div>
     </div>
   </div>
 
-  <!-- HOME TESTIMONIALS TEASER -->
-  <div class="testimonials fade-up">
-    <div class="section-label">Client Results</div>
-    <h2 class="section-title">Words from<br><em>our clients.</em></h2>
-    <div class="testimonials-grid">
-      <div class="testi-card">
-        <p class="testi-quote">Working with StratG completely transformed how we show up online. Our engagement tripled in 60 days — and for the first time our content actually sounds like us.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">A</div>
-          <div><div class="testi-name">Add Client Name</div><div class="testi-role">Founder, [Brand], Canberra</div></div>
+  <!-- DIFFERENTIATORS -->
+  <div class="s-pad fade">
+    <div class="s-num">02 / WHAT MAKES US DIFFERENT</div>
+    <h2 class="s-h2">Not just content.<br><em>A system</em> <span class="ghost">that works.</span></h2>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-n">01 / STRATEGY FIRST</div>
+        <span class="diff-icon">◎</span>
+        <div class="diff-title">Strategy First</div>
+        <div class="diff-desc">We don't start with content. We start with how your business actually grows — audience, positioning, and the platform mix that makes sense for your goals.</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-n">02 / DONE FOR YOU</div>
+        <span class="diff-icon">▶</span>
+        <div class="diff-title">Done-for-You System</div>
+        <div class="diff-desc">From idea to shooting to posting to optimisation — you don't need to figure anything out. We build and run the full content system for you.</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-n">03 / AU + CHINA ADVANTAGE</div>
+        <span class="diff-icon">◈</span>
+        <div class="diff-title">AU + China Advantage</div>
+        <div class="diff-desc">We bridge two markets — creating content AND producing your brand assets. From short-form video to custom merchandise, we source cost-efficiently from China with zero hassle.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES SNAPSHOT -->
+  <div class="s-pad fade" style="background:var(--light)">
+    <div class="s-num">03 / WHAT WE HELP YOU DO</div>
+    <div class="services-intro">
+      <h2 class="s-h2">Most agencies stop<br>at <em>content.</em><br><span class="ghost">We go further.</span></h2>
+      <p>Whether you need a full content system or targeted execution — we work directly with you. No layers, no delays.</p>
+    </div>
+    <div class="services-table">
+      <div class="service-row">
+        <div class="service-row-num">01</div>
+        <div><div class="service-row-name">Content Strategy</div></div>
+        <div class="service-row-tags"><span>•</span> Audit <span>•</span> Positioning <span>•</span> Roadmap<br><span>•</span> No more guessing what to post</div>
+      </div>
+      <div class="service-row">
+        <div class="service-row-num">02</div>
+        <div><div class="service-row-name">Content Production</div></div>
+        <div class="service-row-tags"><span>•</span> Reels / TikTok <span>•</span> Brand video<br><span>•</span> Product shoots <span>•</span> Storytelling</div>
+      </div>
+      <div class="service-row">
+        <div class="service-row-num">03</div>
+        <div><div class="service-row-name">Social Media System</div></div>
+        <div class="service-row-tags"><span>•</span> Calendar <span>•</span> Posting <span>•</span> Optimisation<br><span>•</span> Consistency without the stress</div>
+      </div>
+      <div class="service-row">
+        <div class="service-row-num">04</div>
+        <div>
+          <div class="service-row-name">Brand Sourcing</div>
+          <div class="service-badge">Exclusive Service</div>
+        </div>
+        <div class="service-row-tags"><span>•</span> Custom merch <span>•</span> Packaging<br><span>•</span> China supplier network <span>•</span> Cost-efficient</div>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem"><a class="btn-red" onclick="go('services')">View All Services →</a></div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="s-pad how fade">
+    <div class="s-label" style="color:rgba(255,255,255,.4)"><span style="background:rgba(255,255,255,.2);width:20px;height:1.5px;display:block"></span>HOW IT WORKS</div>
+    <h2 class="s-h2" style="color:var(--white)">A simple process.<br><em>No confusion.</em></h2>
+    <div class="how-grid">
+      <div class="how-step" data-n="01">
+        <div class="how-n">01 — DISCOVER</div>
+        <div class="how-title">Understand</div>
+        <div class="how-desc">We deep-dive your business, audience, and goals. No assumptions — just clarity.</div>
+        <div class="how-arrow">→</div>
+      </div>
+      <div class="how-step" data-n="02">
+        <div class="how-n">02 — BUILD</div>
+        <div class="how-title">Strategise</div>
+        <div class="how-desc">We create your content strategy, platform roadmap, and a system built for your growth.</div>
+        <div class="how-arrow">→</div>
+      </div>
+      <div class="how-step" data-n="03">
+        <div class="how-n">03 — EXECUTE</div>
+        <div class="how-title">Create</div>
+        <div class="how-desc">We shoot, edit, write and publish. Everything, done for you, to brand standard.</div>
+        <div class="how-arrow">→</div>
+      </div>
+      <div class="how-step" data-n="04">
+        <div class="how-n">04 — OPTIMISE</div>
+        <div class="how-title">Refine</div>
+        <div class="how-desc">We track performance and continuously refine — so results compound over time.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURED WORK TEASER -->
+  <div class="s-pad fade">
+    <div class="s-num">04 / REAL WORK. REAL PROGRESS.</div>
+    <h2 class="s-h2">Our <em>work</em><br>speaks for itself.</h2>
+    <div class="work-grid" style="margin-top:3rem">
+      <div class="work-card">
+        <div class="work-card-tag">Beauty · Brand Repositioning</div>
+        <div class="work-card-title">Small Beauty Brand — Identity & Content System</div>
+        <div class="work-card-desc">Rebuilt brand identity, content direction and posting consistency for a Canberra beauty client. Clearer positioning, stronger engagement.</div>
+        <div class="work-card-stats">
+          <div><div class="work-stat-n">↑ 3x</div><div class="work-stat-l">Engagement rate</div></div>
+          <div><div class="work-stat-n">60d</div><div class="work-stat-l">To results</div></div>
         </div>
       </div>
-      <div class="testi-card">
-        <p class="testi-quote">The platform matrix StratG built for us took us from zero to a consistent 6-figure monthly reach. The strategy was the piece we'd been missing.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">B</div>
-          <div><div class="testi-name">Add Client Name</div><div class="testi-role">Director, [Brand]</div></div>
+      <div class="work-card">
+        <div class="work-card-tag">Café · Social Media System</div>
+        <div class="work-card-title">Local Café — Consistency & Visibility</div>
+        <div class="work-card-desc">Built a full content calendar and posting system. Result: consistent brand voice, improved local visibility and repeat customer engagement.</div>
+        <div class="work-card-stats">
+          <div><div class="work-stat-n">↑ 85%</div><div class="work-stat-l">Profile reach</div></div>
+          <div><div class="work-stat-n">100%</div><div class="work-stat-l">Posting consistency</div></div>
+        </div>
+      </div>
+      <div class="work-card work-card-full">
+        <div class="work-card-tag">E-Commerce · Brand Sourcing</div>
+        <div class="work-card-title" style="font-size:clamp(22px,3vw,38px)">Custom Merchandise — China Sourcing & Production</div>
+        <div class="work-card-desc">Coordinated direct supplier sourcing, quality control and logistics for a small brand's first custom merchandise run — at 60% less than local quotes.</div>
+        <div class="work-card-stats">
+          <div><div class="work-stat-n" style="color:var(--red)">−60%</div><div class="work-stat-l" style="color:rgba(255,255,255,.3)">vs local cost</div></div>
+          <div><div class="work-stat-n" style="color:var(--red)">4 wks</div><div class="work-stat-l" style="color:rgba(255,255,255,.3)">Turnaround</div></div>
         </div>
       </div>
     </div>
+    <div style="margin-top:2.5rem"><a class="btn-red" onclick="go('work')">See All Work →</a></div>
   </div>
 
-  <footer style="margin-top:clamp(4rem,8vw,7rem)">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-brand-logo">Strat<span>G</span></div>
-        <div class="footer-brand-sub">Creative Studio</div>
-        <p class="footer-brand-desc">Strategy-led social media for brands ready to own their space online. Based in Canberra, working everywhere.</p>
-      </div>
+  <!-- SOURCING BLOCK -->
+  <div class="sourcing fade">
+    <div class="s-label" style="color:rgba(255,255,255,.6)"><span style="background:rgba(255,255,255,.4);width:20px;height:1.5px;display:block"></span>OUR EXCLUSIVE SERVICE</div>
+    <div class="sourcing-grid">
       <div>
-        <div class="footer-col-title">Navigate</div>
-        <ul class="footer-links">
-          <li><a onclick="show('home')">Home</a></li>
-          <li><a onclick="show('services')">Services</a></li>
-          <li><a onclick="show('about')">About Us</a></li>
-          <li><a onclick="show('blog')">Blog</a></li>
-          <li><a onclick="show('contact')">Get in Touch</a></li>
-        </ul>
+        <h2>WANT YOUR OWN<br>BRANDED<br>PRODUCTS?</h2>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,1.6vw,19px);font-weight:300;font-style:italic;line-height:1.7;color:rgba(255,255,255,.55);margin-top:1.5rem">We help you design, source, and produce custom merchandise — without the insane local costs.</p>
+        <a class="btn-white" onclick="go('contact')">Talk to Us About Your Idea →</a>
       </div>
-      <div>
-        <div class="footer-col-title">Contact</div>
-        <ul class="footer-links">
-          <li><a href="mailto:galinasong365@gmail.com">galinasong365@gmail.com</a></li>
-          <li><a>Canberra, ACT 2617</a></li>
-          <li><a>Available remotely</a></li>
-        </ul>
+      <div class="sourcing-points">
+        <div class="sourcing-point">
+          <div class="sourcing-point-icon">①</div>
+          <div class="sourcing-point-text"><strong>Direct factory access.</strong> We work with trusted manufacturers in China — no middlemen, no inflated costs.</div>
+        </div>
+        <div class="sourcing-point">
+          <div class="sourcing-point-icon">②</div>
+          <div class="sourcing-point-text"><strong>Full service.</strong> Supplier communication, quality control, and logistics — all handled.</div>
+        </div>
+        <div class="sourcing-point">
+          <div class="sourcing-point-icon">③</div>
+          <div class="sourcing-point-text"><strong>Built for small business.</strong> Low minimums, transparent pricing. We charge 10% of order total — you keep the savings.</div>
+        </div>
+        <div class="sourcing-point">
+          <div class="sourcing-point-icon">④</div>
+          <div class="sourcing-point-text"><strong>Custom merch, packaging, branded gifts</strong> — ideal for activations, product launches, and giveaways.</div>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2025 StratG Creative Studio. All rights reserved.</div>
-      <div class="footer-copy">Made with <span class="footer-green">♥</span> in Canberra</div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="s-pad fade">
+    <div class="s-num">05 / TESTIMONIALS</div>
+    <h2 class="s-h2">What it's like to<br><em>work with us.</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p class="testi-quote">Working with StratG made everything so much clearer. I finally understand what my brand is and what to post — and it actually looks like us now.</p>
+        <div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Client Name</div><div class="testi-role">Founder, Beauty Studio, Canberra</div></div></div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">The sourcing service saved us thousands. I'd been quoted ridiculous prices locally — StratG found us the same quality product for a fraction of the cost, handled everything start to finish.</p>
+        <div class="testi-author"><div class="testi-avatar">B</div><div><div class="testi-name">Client Name</div><div class="testi-role">Owner, Retail Brand</div></div></div>
+      </div>
     </div>
-  </footer>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="cta-strip fade">
+    <h2>Let's build your brand<br><em>properly.</em></h2>
+    <p>No more guessing. No more wasted effort. No more doing it alone.</p>
+    <div class="cta-strip-btns">
+      <a class="btn-red" onclick="go('contact')">Book a Free Consultation</a>
+      <a class="btn-ghost" onclick="go('contact')">Send an Enquiry</a>
+    </div>
+  </div>
+
+</div>
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo-main">Strat<span>G</span></div><div class="footer-logo-sub">Creative Studio</div><p class="footer-desc">We build content systems that turn small businesses into brands. Strategy, content, and sourcing — Canberra & beyond.</p></div>
+    <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a onclick="go('home')">Home</a></li><li><a onclick="go('services')">Services</a></li><li><a onclick="go('work')">Our Work</a></li><li><a onclick="go('about')">About</a></li><li><a onclick="go('blog')">Blog</a></li><li><a onclick="go('contact')">Book a Call</a></li></ul></div>
+    <div><div class="footer-col-title">Services</div><ul class="footer-links"><li><a onclick="go('services')">Content Strategy</a></li><li><a onclick="go('services')">Content Production</a></li><li><a onclick="go('services')">Social Media System</a></li><li><a onclick="go('services')">Brand Sourcing</a></li></ul></div>
+    <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:galinasong365@gmail.com">galinasong365@gmail.com</a></li><li><a>Canberra, ACT</a></li><li><a>Remote-friendly</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2025 StratG Creative Studio</div><div class="footer-copy">Canberra, Australia</div></div>
+</footer>
 </section>
 
-<!-- ════════════════ SERVICES ════════════════ -->
+<!-- ══════════ SERVICES ══════════ -->
 <section id="services">
-  <div class="services-page" style="padding-top:72px">
-    <div class="section-head fade-up">
-      <div class="section-label">Services</div>
-      <h1 class="section-title">What we<br><em>do best.</em></h1>
+<div class="page-wrap">
+  <div class="s-pad">
+    <div class="s-num">01 / WHAT WE OFFER</div>
+    <h1 class="s-h2">What we actually<br>help you <em>do.</em></h1>
+    <div class="services-intro" style="margin-top:3rem">
+      <p>Every service is built around your specific goals. No packages that don't fit — just the right work, done properly.</p>
+      <p style="font-size:clamp(14px,1.3vw,15px);font-weight:400;color:var(--stone)">We work directly with you — the Studio Director runs every engagement. No account managers, no junior handoffs.</p>
     </div>
-    <div class="services-intro fade-up">
-      <p>We don't do cookie-cutter social. Every service we offer is built around your brand's specific goals, audience, and the platforms where your people actually live.</p>
-      <div class="services-intro-right">
-        <p>Whether you need a full-platform strategy or targeted execution, we work directly with you — no account managers, no layers.</p>
-      </div>
-    </div>
-    <div class="services-grid fade-up">
-      <div class="service-card">
-        <div class="service-num">01</div>
-        <span class="service-icon">◎</span>
-        <div class="service-name">Social Media Strategy</div>
-        <div class="service-desc">Deep-dive brand audit, audience mapping, content pillar development and a 90-day roadmap built around measurable outcomes — not vanity metrics.</div>
-        <div class="service-tags">
-          <span class="service-tag">Audit</span>
-          <span class="service-tag">Roadmap</span>
-          <span class="service-tag">KPIs</span>
-          <span class="service-tag">Content pillars</span>
+    <div class="services-table">
+      <div class="service-row">
+        <div class="service-row-num">01</div>
+        <div>
+          <div class="service-row-name">Content Strategy</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--stone);margin-top:.5rem">No more guessing what to post.</div>
         </div>
+        <div class="service-row-tags"><span>•</span> Brand audit<br><span>•</span> Audience mapping<br><span>•</span> Content pillars<br><span>•</span> 90-day roadmap</div>
       </div>
-      <div class="service-card">
-        <div class="service-num">02</div>
-        <span class="service-icon">▶</span>
-        <div class="service-name">Content Creation</div>
-        <div class="service-desc">Platform-native content — copy, visual briefs, short-form video scripts and Reels direction — crafted to convert attention into action.</div>
-        <div class="service-tags">
-          <span class="service-tag">Copywriting</span>
-          <span class="service-tag">Reels</span>
-          <span class="service-tag">Visual briefs</span>
-          <span class="service-tag">Scripts</span>
+      <div class="service-row">
+        <div class="service-row-num">02</div>
+        <div>
+          <div class="service-row-name">Content Production</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--stone);margin-top:.5rem">Content that actually reflects your brand.</div>
         </div>
+        <div class="service-row-tags"><span>•</span> Reels & TikTok<br><span>•</span> Brand storytelling video<br><span>•</span> Product photography<br><span>•</span> Visual direction</div>
       </div>
-      <div class="service-card">
-        <div class="service-num">03</div>
-        <span class="service-icon">◈</span>
-        <div class="service-name">Full Platform Matrix</div>
-        <div class="service-desc">Multi-channel ecosystem architecture — Instagram, TikTok, LinkedIn, WeChat, YouTube Shorts — built to amplify across every touchpoint.</div>
-        <div class="service-tags">
-          <span class="service-tag">Instagram</span>
-          <span class="service-tag">TikTok</span>
-          <span class="service-tag">LinkedIn</span>
-          <span class="service-tag">WeChat</span>
+      <div class="service-row">
+        <div class="service-row-num">03</div>
+        <div>
+          <div class="service-row-name">Social Media System</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--stone);margin-top:.5rem">Consistency without the stress.</div>
         </div>
+        <div class="service-row-tags"><span>•</span> Content calendar<br><span>•</span> Scheduling & posting<br><span>•</span> Community management<br><span>•</span> Performance tracking</div>
       </div>
-      <div class="service-card">
-        <div class="service-num">04</div>
-        <span class="service-icon">⊛</span>
-        <div class="service-name">Account Management</div>
-        <div class="service-desc">Monthly retainer — scheduling, community management, trend monitoring and engagement. We show up so you don't have to.</div>
-        <div class="service-tags">
-          <span class="service-tag">Monthly retainer</span>
-          <span class="service-tag">Scheduling</span>
-          <span class="service-tag">Community</span>
+      <div class="service-row">
+        <div class="service-row-num">04</div>
+        <div>
+          <div class="service-row-name">Platform Matrix</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--stone);margin-top:.5rem">Multi-channel presence that amplifies itself.</div>
         </div>
+        <div class="service-row-tags"><span>•</span> Instagram<br><span>•</span> TikTok<br><span>•</span> LinkedIn<br><span>•</span> WeChat / International</div>
       </div>
-      <div class="service-card">
-        <div class="service-num">05</div>
-        <span class="service-icon">◐</span>
-        <div class="service-name">Campaign Direction</div>
-        <div class="service-desc">Product launches, brand activations and seasonal campaigns — from concept to execution, with detailed performance reporting.</div>
-        <div class="service-tags">
-          <span class="service-tag">Launch campaigns</span>
-          <span class="service-tag">Activations</span>
-          <span class="service-tag">Reporting</span>
+      <div class="service-row">
+        <div class="service-row-num">05</div>
+        <div>
+          <div class="service-row-name">Brand Sourcing</div>
+          <div class="service-badge">Exclusive</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--stone);margin-top:.5rem">Build your brand beyond content.</div>
         </div>
+        <div class="service-row-tags"><span>•</span> Custom merchandise<br><span>•</span> Branded packaging<br><span>•</span> China supplier network<br><span>•</span> QC & logistics</div>
       </div>
-      <div class="service-card">
-        <div class="service-num">06</div>
-        <span class="service-icon">⊕</span>
-        <div class="service-name">Brand Merchandise</div>
-        <div class="service-desc">International product sourcing and customisation for brand merchandise — a unique service backed by direct global procurement channels.</div>
-        <div class="service-tags">
-          <span class="service-tag">Sourcing</span>
-          <span class="service-tag">Customisation</span>
-          <span class="service-tag">Global supply</span>
-        </div>
-      </div>
-    </div>
-    <div class="services-cta fade-up">
-      <p>Not sure which service fits? Let's talk through what your brand actually needs.</p>
-      <a class="btn-primary" onclick="show('contact')">Start the conversation →</a>
     </div>
   </div>
-  <footer>
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-brand-logo">Strat<span>G</span></div>
-        <div class="footer-brand-sub">Creative Studio</div>
-        <p class="footer-brand-desc">Strategy-led social media for brands ready to own their space online.</p>
+  <div class="sourcing">
+    <div class="s-label" style="color:rgba(255,255,255,.6)"><span style="background:rgba(255,255,255,.4);width:20px;height:1.5px;display:block"></span>BRAND SOURCING — HOW IT WORKS</div>
+    <div class="sourcing-grid">
+      <div>
+        <h2>WANT YOUR OWN BRANDED PRODUCTS?</h2>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,1.6vw,19px);font-weight:300;font-style:italic;line-height:1.7;color:rgba(255,255,255,.55);margin-top:1.5rem">We help you design, source, and produce custom merchandise — without the insane local costs. We handle everything: supplier communication, quality control, logistics. You just approve and receive.</p>
+        <a class="btn-white" onclick="go('contact')">Talk to Us About Your Idea →</a>
       </div>
-      <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a onclick="show('home')">Home</a></li><li><a onclick="show('services')">Services</a></li><li><a onclick="show('about')">About Us</a></li><li><a onclick="show('blog')">Blog</a></li><li><a onclick="show('contact')">Get in Touch</a></li></ul></div>
-      <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:galinasong365@gmail.com">galinasong365@gmail.com</a></li><li><a>Canberra, ACT 2617</a></li></ul></div>
+      <div class="sourcing-points">
+        <div class="sourcing-point"><div class="sourcing-point-icon">①</div><div class="sourcing-point-text"><strong>Direct factory access</strong> in China — no inflated middlemen costs.</div></div>
+        <div class="sourcing-point"><div class="sourcing-point-icon">②</div><div class="sourcing-point-text"><strong>Full-service coordination</strong> — supplier comms, QC, and logistics, all handled.</div></div>
+        <div class="sourcing-point"><div class="sourcing-point-icon">③</div><div class="sourcing-point-text"><strong>Transparent pricing</strong> — we charge 10% of order total. You keep the savings vs local.</div></div>
+        <div class="sourcing-point"><div class="sourcing-point-icon">④</div><div class="sourcing-point-text"><strong>Merch, packaging, branded gifts</strong> — ideal for product launches & activations.</div></div>
+      </div>
     </div>
-    <div class="footer-bottom"><div class="footer-copy">© 2025 StratG Creative Studio.</div><div class="footer-copy">Made with <span class="footer-green">♥</span> in Canberra</div></div>
-  </footer>
+  </div>
+  <div class="cta-strip">
+    <h2>Not sure which<br>service you <em>need?</em></h2>
+    <p>Let's have a conversation. We'll figure it out together.</p>
+    <div class="cta-strip-btns"><a class="btn-red" onclick="go('contact')">Book a Free Call →</a></div>
+  </div>
+</div>
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo-main">Strat<span>G</span></div><div class="footer-logo-sub">Creative Studio</div><p class="footer-desc">We build content systems that turn small businesses into brands.</p></div>
+    <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a onclick="go('home')">Home</a></li><li><a onclick="go('services')">Services</a></li><li><a onclick="go('work')">Our Work</a></li><li><a onclick="go('about')">About</a></li><li><a onclick="go('blog')">Blog</a></li><li><a onclick="go('contact')">Book a Call</a></li></ul></div>
+    <div><div class="footer-col-title">Services</div><ul class="footer-links"><li><a>Content Strategy</a></li><li><a>Content Production</a></li><li><a>Social Media System</a></li><li><a>Brand Sourcing</a></li></ul></div>
+    <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:galinasong365@gmail.com">galinasong365@gmail.com</a></li><li><a>Canberra, ACT</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2025 StratG Creative Studio</div><div class="footer-copy">Canberra, Australia</div></div>
+</footer>
 </section>
 
-<!-- ════════════════ ABOUT ════════════════ -->
+<!-- ══════════ WORK ══════════ -->
+<section id="work">
+<div class="page-wrap">
+  <div class="s-pad">
+    <div class="s-num">02 / OUR WORK</div>
+    <h1 class="s-h2">Real work.<br><em>Real progress.</em></h1>
+    <div class="work-grid" style="margin-top:4rem">
+      <div class="work-card">
+        <div class="work-card-tag">Beauty · Brand Repositioning</div>
+        <div class="work-card-title">Small Beauty Brand</div>
+        <div class="work-card-desc">Problem: Inconsistent posting, unclear brand voice, no content strategy.<br><br>What we did: Full brand audit, content pillar development, visual direction, and posting system build-out.<br><br>Result: Clearer positioning, significantly stronger engagement, and a brand that finally looks like the business it is.</div>
+        <div class="work-card-stats"><div><div class="work-stat-n">↑ 3x</div><div class="work-stat-l">Engagement rate</div></div><div><div class="work-stat-n">↑ Brand</div><div class="work-stat-l">Clarity</div></div><div><div class="work-stat-n">60d</div><div class="work-stat-l">To results</div></div></div>
+      </div>
+      <div class="work-card">
+        <div class="work-card-tag">Café · Social Media System</div>
+        <div class="work-card-title">Local Café</div>
+        <div class="work-card-desc">Problem: Sporadic posting, no visual consistency, losing to competitors online.<br><br>What we did: Content calendar build, brand photography direction, posting management, and monthly reporting.<br><br>Result: Consistent brand presence, improved local discovery, more repeat customer engagement.</div>
+        <div class="work-card-stats"><div><div class="work-stat-n">↑ 85%</div><div class="work-stat-l">Profile reach</div></div><div><div class="work-stat-n">100%</div><div class="work-stat-l">Post consistency</div></div></div>
+      </div>
+      <div class="work-card work-card-full">
+        <div class="work-card-tag">E-Commerce · Brand Sourcing</div>
+        <div class="work-card-title" style="font-size:clamp(22px,3vw,38px)">Custom Merchandise — China Sourcing</div>
+        <div class="work-card-desc">Problem: Client wanted branded merchandise for a product launch. Local quotes were 3–4x their budget.<br><br>What we did: Sourced 3 competing factories in China, managed samples, QC, and full logistics coordination.<br><br>Result: Quality product delivered in 4 weeks at 60% less than the cheapest local quote.</div>
+        <div class="work-card-stats"><div><div class="work-stat-n" style="color:var(--red)">−60%</div><div class="work-stat-l" style="color:rgba(255,255,255,.3)">vs local cost</div></div><div><div class="work-stat-n" style="color:var(--red)">4 wks</div><div class="work-stat-l" style="color:rgba(255,255,255,.3)">Turnaround</div></div><div><div class="work-stat-n" style="color:var(--red)">100%</div><div class="work-stat-l" style="color:rgba(255,255,255,.3)">QC pass rate</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="cta-strip">
+    <h2>Want results<br>like <em>these?</em></h2>
+    <p>Let's talk about what's possible for your business.</p>
+    <div class="cta-strip-btns"><a class="btn-red" onclick="go('contact')">Book a Free Consultation →</a></div>
+  </div>
+</div>
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo-main">Strat<span>G</span></div><div class="footer-logo-sub">Creative Studio</div><p class="footer-desc">We build content systems that turn small businesses into brands.</p></div>
+    <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a onclick="go('home')">Home</a></li><li><a onclick="go('services')">Services</a></li><li><a onclick="go('work')">Our Work</a></li><li><a onclick="go('about')">About</a></li><li><a onclick="go('blog')">Blog</a></li><li><a onclick="go('contact')">Book a Call</a></li></ul></div>
+    <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:galinasong365@gmail.com">galinasong365@gmail.com</a></li><li><a>Canberra, ACT</a></li></ul></div>
+    <div></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2025 StratG Creative Studio</div><div class="footer-copy">Canberra, Australia</div></div>
+</footer>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
 <section id="about">
-  <div class="about-page" style="padding-top:72px">
-    <div class="section-head fade-up">
-      <div class="section-label">About Us</div>
-      <h1 class="section-title">Behind the<br><em>studio.</em></h1>
+<div class="page-wrap">
+  <div class="s-pad">
+    <div class="s-num">03 / ABOUT US</div>
+    <h1 class="s-h2">Built between two markets.<br><em>Designed for small business.</em></h1>
+  </div>
+  <div class="about-hero">
+    <div class="about-photo">
+      <div class="about-photo-circle"></div>
+      <div class="about-badge">Founder & Director</div>
     </div>
-    <div class="about-hero fade-up">
-      <div class="about-photo-side">
-        <div class="about-photo-placeholder"></div>
-        <div class="about-photo-badge">Studio Director</div>
+    <div class="about-content">
+      <div class="about-role">Behind the Studio</div>
+      <div class="about-h2">GALINA<em>,</em></div>
+      <div class="about-title-sub">Founder & Studio Director</div>
+      <p class="about-bio">We kept seeing the same problem: small businesses know marketing matters — but don't have the time, system, or clarity to do it properly.<br><br>After completing a <strong>Master's in Marketing Management at ANU</strong> and spending <strong>7+ years across multiple industries</strong>, StratG was built to solve exactly that gap.<br><br>We combine strategy, content, and execution into one streamlined system. And with direct access to Chinese manufacturing and supplier networks, we offer something no other local agency can — the ability to take your brand from content to physical product, cost-efficiently and seamlessly.<br><br>When you work with StratG, you work with the Studio Director. No account managers. No handoffs. Ever.</p>
+      <div class="about-credentials">
+        <div><div class="cred-n">7+</div><div class="cred-l">Years experience</div></div>
+        <div><div class="cred-n">ANU</div><div class="cred-l">Master's, Marketing</div></div>
+        <div><div class="cred-n">AU+CN</div><div class="cred-l">Dual market reach</div></div>
       </div>
-      <div class="about-content-side">
-        <div class="about-role">Behind the Studio</div>
-        <h2 class="about-name">THE STUDIO<br>DIRECTOR.<em>Strategy. Content. Results.</em></h2>
-        <p class="about-bio">We are <strong>StratG Creative Studio</strong> — a boutique social media studio for brands who believe their online presence should work as hard as they do.<br><br>Based in Canberra with a global mindset, we specialise in full-platform matrix strategy, social media content creation and international brand merchandise sourcing. Our approach is always <strong>strategy first</strong> — because great content without direction is just noise.<br><br>When you work with StratG, you work directly with the studio director. No junior handoffs, no account managers in between. Just sharp, intentional social media that moves the needle.</p>
-        <a class="btn-primary" onclick="show('contact')" style="align-self:flex-start">Work with us →</a>
-      </div>
+      <a class="btn-red" onclick="go('contact')">Work With Us →</a>
     </div>
+  </div>
 
-    <div class="about-pillars fade-up">
-      <div class="pillar">
-        <div class="pillar-num">01</div>
-        <div class="pillar-title">Strategy First</div>
-        <div class="pillar-desc">Every decision starts with a clear objective. We don't post for the sake of posting — every piece of content serves a purpose.</div>
+  <!-- PILLARS -->
+  <div class="s-pad" style="background:var(--light)">
+    <div class="s-num">WHAT MAKES STRATG DIFFERENT</div>
+    <div class="diff-grid" style="margin-top:3rem">
+      <div class="diff-card">
+        <div class="diff-n">01</div>
+        <span class="diff-icon">◎</span>
+        <div class="diff-title">Strategy-First Thinking</div>
+        <div class="diff-desc">Every engagement starts with understanding how your business grows — not what looks good. Content without strategy is just noise.</div>
       </div>
-      <div class="pillar">
-        <div class="pillar-num">02</div>
-        <div class="pillar-title">Culturally Fluent</div>
-        <div class="pillar-desc">We understand the nuance of multi-cultural audiences — creating content that speaks authentically across communities and platforms.</div>
+      <div class="diff-card">
+        <div class="diff-n">02</div>
+        <span class="diff-icon">◐</span>
+        <div class="diff-title">Dual Market Understanding</div>
+        <div class="diff-desc">Deep fluency in both Australian and Chinese markets — consumer behaviour, platforms, and supplier ecosystems — gives our clients an edge most agencies can't offer.</div>
       </div>
-      <div class="pillar">
-        <div class="pillar-num">03</div>
-        <div class="pillar-title">Boutique by Design</div>
-        <div class="pillar-desc">We deliberately stay small. Your brand gets the full focus of a specialist, not a team of interns interpreting a brief.</div>
-      </div>
-    </div>
-
-    <div class="value-prop fade-up">
-      <div class="value-prop-bg"></div>
-      <div class="section-label" style="justify-content:center;margin-bottom:2rem">Our Philosophy</div>
-      <blockquote>The brands winning on social aren't posting more. They're posting with intent.</blockquote>
-      <cite>— StratG Creative Studio</cite>
-    </div>
-
-    <div class="testimonials fade-up">
-      <div class="section-label">What Clients Say</div>
-      <h2 class="section-title">Proof in<br><em>their words.</em></h2>
-      <div class="testimonials-grid">
-        <div class="testi-card">
-          <p class="testi-quote">Working with StratG completely transformed how we show up online. Our engagement tripled in 60 days — and for the first time our content actually sounds like us.</p>
-          <div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Add Client Name</div><div class="testi-role">Founder, [Brand], Canberra</div></div></div>
-        </div>
-        <div class="testi-card">
-          <p class="testi-quote">The platform matrix StratG built took us from zero to consistent 6-figure monthly reach. The strategy was the piece we'd been missing for years.</p>
-          <div class="testi-author"><div class="testi-avatar">B</div><div><div class="testi-name">Add Client Name</div><div class="testi-role">Director, [Brand]</div></div></div>
-        </div>
-        <div class="testi-card">
-          <p class="testi-quote">Finally, someone who thinks about social media the same way I think about business. No fluff — just clear strategy and content that actually performs.</p>
-          <div class="testi-author"><div class="testi-avatar">C</div><div><div class="testi-name">Add Client Name</div><div class="testi-role">CEO, [Brand]</div></div></div>
-        </div>
-        <div class="testi-card">
-          <p class="testi-quote">StratG helped us launch our rebrand across every platform simultaneously. Seamless, strategic, and the results spoke for themselves within the first month.</p>
-          <div class="testi-author"><div class="testi-avatar">D</div><div><div class="testi-name">Add Client Name</div><div class="testi-role">Marketing Manager, [Brand]</div></div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- FAQ -->
-    <div class="faq fade-up">
-      <div class="section-label">Q &amp; A</div>
-      <h2 class="section-title">Frequently<br><em>asked.</em></h2>
-      <div class="faq-grid" id="faq">
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you work with small businesses?</div><div class="faq-a">Yes — in fact, most of our clients are small to medium businesses and founders. We love working with brands that are ambitious but need the right strategy to scale their social presence effectively.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What platforms do you cover?</div><div class="faq-a">We cover all major platforms — Instagram, TikTok, LinkedIn, Facebook, YouTube Shorts and WeChat. Our full-platform matrix approach ensures your content is adapted for each channel, not just repurposed.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does pricing work?</div><div class="faq-a">We offer both project-based and monthly retainer pricing. Every engagement starts with a strategy consultation so we can scope exactly what you need — no packages that don't fit.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How quickly can we start?</div><div class="faq-a">Usually within 2 weeks of confirming scope. We begin with a kick-off session to deep-dive your brand, audience and goals before building anything.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will I work with you directly?</div><div class="faq-a">Always. You work directly with the Studio Director — no account managers, no junior handoffs. This is a boutique studio by design, and that direct relationship is central to how we work.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is brand merchandise sourcing?</div><div class="faq-a">We have direct international procurement channels for custom branded merchandise — ideal for brand activations, campaign giveaways or product launches. We handle sourcing, customisation and logistics.</div></div>
+      <div class="diff-card">
+        <div class="diff-n">03</div>
+        <span class="diff-icon">◈</span>
+        <div class="diff-title">Beyond Visuals</div>
+        <div class="diff-desc">We connect branding with real production. From content strategy to custom merchandise — a fully integrated brand-building capability in one place.</div>
       </div>
     </div>
   </div>
-  <footer>
-    <div class="footer-top">
-      <div class="footer-brand"><div class="footer-brand-logo">Strat<span>G</span></div><div class="footer-brand-sub">Creative Studio</div><p class="footer-brand-desc">Strategy-led social media for brands ready to own their space online.</p></div>
-      <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a onclick="show('home')">Home</a></li><li><a onclick="show('services')">Services</a></li><li><a onclick="show('about')">About Us</a></li><li><a onclick="show('blog')">Blog</a></li><li><a onclick="show('contact')">Get in Touch</a></li></ul></div>
-      <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:galinasong365@gmail.com">galinasong365@gmail.com</a></li><li><a>Canberra, ACT 2617</a></li></ul></div>
+
+  <!-- TESTIMONIALS -->
+  <div class="s-pad">
+    <div class="s-num">04 / WHAT CLIENTS SAY</div>
+    <h2 class="s-h2">Proof in their<br><em>words.</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card"><p class="testi-quote">Working with StratG made everything so much clearer. I finally understand what my brand is and what to post — and for the first time, it actually sounds like us.</p><div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Client Name</div><div class="testi-role">Founder, Beauty Studio, Canberra</div></div></div></div>
+      <div class="testi-card"><p class="testi-quote">The sourcing service was incredible. I'd been quoted ridiculous prices locally — StratG found the same quality product for a fraction of the cost and handled everything end to end.</p><div class="testi-author"><div class="testi-avatar">B</div><div><div class="testi-name">Client Name</div><div class="testi-role">Owner, Retail Brand</div></div></div></div>
+      <div class="testi-card"><p class="testi-quote">Finally, someone who thinks about social media the same way I think about business. No fluff — just clear strategy and content that actually performs.</p><div class="testi-author"><div class="testi-avatar">C</div><div><div class="testi-name">Client Name</div><div class="testi-role">CEO, [Brand]</div></div></div></div>
+      <div class="testi-card"><p class="testi-quote">StratG built our platform presence from scratch. The strategy was the piece we'd been missing — everything else followed from that clarity.</p><div class="testi-author"><div class="testi-avatar">D</div><div><div class="testi-name">Client Name</div><div class="testi-role">Marketing Manager, [Brand]</div></div></div></div>
     </div>
-    <div class="footer-bottom"><div class="footer-copy">© 2025 StratG Creative Studio.</div><div class="footer-copy">Made with <span class="footer-green">♥</span> in Canberra</div></div>
-  </footer>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-wrap s-pad">
+    <div class="s-num">05 / FAQ</div>
+    <h2 class="s-h2">Frequently<br><em>asked.</em></h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you work with small businesses?<div class="faq-toggle">+</div></div><div class="faq-a"><div class="faq-a-inner">Yes — most of our clients are small to medium businesses and founders. We're specifically built for businesses that are ambitious but need the right system to grow their presence effectively, without the cost or complexity of a large agency.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What platforms do you cover?<div class="faq-toggle">+</div></div><div class="faq-a"><div class="faq-a-inner">Instagram, TikTok, LinkedIn, Facebook, YouTube Shorts, and WeChat. We adapt content for each channel's native format — not just repurpose the same post everywhere.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does pricing work?<div class="faq-toggle">+</div></div><div class="faq-a"><div class="faq-a-inner">We offer both project-based and monthly retainer structures. Every engagement starts with a free consultation to scope exactly what you need. For brand sourcing, we charge 10% of the total order value — you get the rest of the savings vs local suppliers.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Will I work directly with you?<div class="faq-toggle">+</div></div><div class="faq-a"><div class="faq-a-inner">Always. You work directly with the Studio Director — no account managers, no junior handoffs. This is a boutique studio by design, and that direct relationship is central to how we work and why results are consistent.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How quickly can we start?<div class="faq-toggle">+</div></div><div class="faq-a"><div class="faq-a-inner">Usually within 2 weeks of confirming scope. We begin with a kick-off session to understand your brand, audience, and goals before building anything.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What exactly is the brand sourcing service?<div class="faq-toggle">+</div></div><div class="faq-a"><div class="faq-a-inner">We have direct access to trusted manufacturers in China. We source, sample, quality-check, and coordinate logistics for custom branded merchandise — merch, packaging, promotional items. We charge 10% of total order value. For most clients, even with our fee included, the total cost is 40–60% less than sourcing locally.</div></div></div>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo-main">Strat<span>G</span></div><div class="footer-logo-sub">Creative Studio</div><p class="footer-desc">We build content systems that turn small businesses into brands.</p></div>
+    <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a onclick="go('home')">Home</a></li><li><a onclick="go('services')">Services</a></li><li><a onclick="go('work')">Our Work</a></li><li><a onclick="go('about')">About</a></li><li><a onclick="go('blog')">Blog</a></li><li><a onclick="go('contact')">Book a Call</a></li></ul></div>
+    <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:galinasong365@gmail.com">galinasong365@gmail.com</a></li><li><a>Canberra, ACT</a></li></ul></div>
+    <div></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2025 StratG Creative Studio</div><div class="footer-copy">Canberra, Australia</div></div>
+</footer>
 </section>
 
-<!-- ════════════════ BLOG ════════════════ -->
+<!-- ══════════ BLOG ══════════ -->
 <section id="blog">
-  <div class="blog-page" style="padding-top:72px">
-    <div class="section-head fade-up">
-      <div class="section-label">Insights</div>
-      <h1 class="section-title">The StratG<br><em>journal.</em></h1>
+<div class="page-wrap">
+  <div class="s-pad">
+    <div class="s-num">04 / INSIGHTS</div>
+    <h1 class="s-h2">The StratG<br><em>Journal.</em></h1>
+    <div class="blog-grid">
+      <div class="blog-card"><div class="blog-cat">Strategy</div><div class="blog-title">Why Your Instagram Isn't Growing — And The 3 Things To Fix First</div><div class="blog-excerpt">Most accounts plateau not because of the algorithm, but because their strategy never had a foundation. Here's where to start.</div><div class="blog-meta">Coming soon · 5 min read</div></div>
+      <div class="blog-card"><div class="blog-cat">Platform</div><div class="blog-title">TikTok vs Instagram in 2025: Where Should Your Business Actually Be?</div><div class="blog-excerpt">The answer isn't "both." It's where your audience is paying attention. A framework for making the right call without wasting content.</div><div class="blog-meta">Coming soon · 4 min read</div></div>
+      <div class="blog-card"><div class="blog-cat">Content</div><div class="blog-title">How To Build A Content Calendar You'll Actually Stick To</div><div class="blog-excerpt">Most content calendars are built for the best-case scenario. Here's how to build one for real business life.</div><div class="blog-meta">Coming soon · 6 min read</div></div>
+      <div class="blog-card"><div class="blog-cat">Analytics</div><div class="blog-title">The Social Media Metrics That Actually Matter (And The Ones To Ignore)</div><div class="blog-excerpt">Follower count is vanity. Saves and shares are the real signal. A practical guide to reading your analytics with intent.</div><div class="blog-meta">Coming soon · 5 min read</div></div>
+      <div class="blog-card"><div class="blog-cat">Strategy</div><div class="blog-title">Why Your Content Isn't Converting — And How To Fix It</div><div class="blog-excerpt">Most small businesses create content that gets attention but no action. Here's the strategic shift that changes that.</div><div class="blog-meta">Coming soon · 7 min read</div></div>
+      <div class="blog-card"><div class="blog-cat">Brand</div><div class="blog-title">Brand Merchandise As A Growth Strategy: The Underrated Lever</div><div class="blog-excerpt">The brands using physical touchpoints to drive digital engagement are playing a different game. Here's how it works — and how to do it cheaply.</div><div class="blog-meta">Coming soon · 4 min read</div></div>
     </div>
-    <div class="blog-grid fade-up">
-      <div class="blog-card">
-        <div class="blog-cat">Strategy</div>
-        <div class="blog-title">Why your Instagram isn't growing — and the 3 things to fix first</div>
-        <div class="blog-excerpt">Most accounts plateau not because of the algorithm, but because their strategy never had a foundation. Here's where to start.</div>
-        <div class="blog-meta">Coming soon · 5 min read</div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-cat">Platform</div>
-        <div class="blog-title">TikTok vs Instagram in 2025: where should your brand actually be?</div>
-        <div class="blog-excerpt">The answer isn't "both" — it's "where your audience is paying attention." A framework for making the right call.</div>
-        <div class="blog-meta">Coming soon · 4 min read</div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-cat">Content</div>
-        <div class="blog-title">How to build a content calendar that you'll actually stick to</div>
-        <div class="blog-excerpt">The problem with most content calendars is they're built for the best-case scenario. Here's how to build one for real life.</div>
-        <div class="blog-meta">Coming soon · 6 min read</div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-cat">Analytics</div>
-        <div class="blog-title">The social media metrics that actually matter (and the ones to ignore)</div>
-        <div class="blog-excerpt">Follower count is vanity. Reach is interesting. Saves and shares are the signal. A guide to reading your analytics with intent.</div>
-        <div class="blog-meta">Coming soon · 5 min read</div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-cat">Strategy</div>
-        <div class="blog-title">Full-platform matrix: why your brand needs more than one channel</div>
-        <div class="blog-excerpt">A single-platform strategy is a single point of failure. Here's how to build a content ecosystem that amplifies itself.</div>
-        <div class="blog-meta">Coming soon · 7 min read</div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-cat">Brand</div>
-        <div class="blog-title">Brand merchandise as a social strategy: the underrated growth lever</div>
-        <div class="blog-excerpt">The brands using physical touchpoints to drive digital engagement are playing a different game. Here's how it works.</div>
-        <div class="blog-meta">Coming soon · 4 min read</div>
-      </div>
-    </div>
-    <div class="blog-coming fade-up">
-      <p>Articles launching soon. Follow us on Instagram for early access to every piece.</p>
+    <div style="text-align:center;padding:3rem 0">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--stone);margin-bottom:1.5rem">Articles launching soon. Follow StratG on Instagram for early access.</p>
     </div>
   </div>
-  <footer>
-    <div class="footer-top">
-      <div class="footer-brand"><div class="footer-brand-logo">Strat<span>G</span></div><div class="footer-brand-sub">Creative Studio</div><p class="footer-brand-desc">Strategy-led social media for brands ready to own their space online.</p></div>
-      <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a onclick="show('home')">Home</a></li><li><a onclick="show('services')">Services</a></li><li><a onclick="show('about')">About Us</a></li><li><a onclick="show('blog')">Blog</a></li><li><a onclick="show('contact')">Get in Touch</a></li></ul></div>
-      <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:galinasong365@gmail.com">galinasong365@gmail.com</a></li><li><a>Canberra, ACT 2617</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><div class="footer-copy">© 2025 StratG Creative Studio.</div><div class="footer-copy">Made with <span class="footer-green">♥</span> in Canberra</div></div>
-  </footer>
+</div>
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo-main">Strat<span>G</span></div><div class="footer-logo-sub">Creative Studio</div><p class="footer-desc">We build content systems that turn small businesses into brands.</p></div>
+    <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a onclick="go('home')">Home</a></li><li><a onclick="go('services')">Services</a></li><li><a onclick="go('work')">Our Work</a></li><li><a onclick="go('about')">About</a></li><li><a onclick="go('blog')">Blog</a></li><li><a onclick="go('contact')">Book a Call</a></li></ul></div>
+    <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:galinasong365@gmail.com">galinasong365@gmail.com</a></li><li><a>Canberra, ACT</a></li></ul></div>
+    <div></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2025 StratG Creative Studio</div><div class="footer-copy">Canberra, Australia</div></div>
+</footer>
 </section>
 
-<!-- ════════════════ CONTACT ════════════════ -->
+<!-- ══════════ CONTACT ══════════ -->
 <section id="contact">
-  <div class="contact-page" style="padding-top:72px">
-    <div class="section-head fade-up">
-      <div class="section-label">Get in Touch</div>
-      <h1 class="section-title">Let's build<br><em>something worth<br>scrolling for.</em></h1>
+<div class="page-wrap">
+  <div class="s-pad">
+    <div class="s-num">05 / GET IN TOUCH</div>
+    <h1 class="s-h2">Let's build something<br>that actually <em>works.</em></h1>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-left">
+      <h2>Ready to<br><em>own your space</em><br>online?</h2>
+      <p>Whether you have a full brief, a rough idea, or just know something isn't working — reach out. Every great project starts with a conversation.</p>
+      <a href="mailto:galinasong365@gmail.com" class="contact-detail"><div class="contact-icon">✉</div><div class="contact-txt">galinasong365@gmail.com</div></a>
+      <div class="contact-detail"><div class="contact-icon">◎</div><div class="contact-txt">Canberra, ACT — Remote-friendly</div></div>
+      <div class="contact-detail"><div class="contact-icon">◐</div><div class="contact-txt">Reply within 24 hours</div></div>
+      <div class="contact-note"><p>"No account managers. No handoffs. You work directly with the Studio Director — always."</p></div>
     </div>
-    <div class="contact-layout fade-up">
-      <div class="contact-left">
-        <h2>Ready to<br><em>own your feed?</em></h2>
-        <p>Whether you have a full brief or just an idea — we'd love to hear from you. Every great partnership starts with a conversation.</p>
-        <a href="mailto:galinasong365@gmail.com" class="contact-detail">
-          <div class="contact-detail-icon">✉</div>
-          <div class="contact-detail-text">galinasong365@gmail.com</div>
-        </a>
-        <div class="contact-detail">
-          <div class="contact-detail-icon">◎</div>
-          <div class="contact-detail-text">Canberra, ACT 2617 · Remote-friendly</div>
+    <div class="contact-right">
+      <div id="cForm">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Your Name</label><input class="form-input" type="text" placeholder="Jane Smith"></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" id="cEmail" placeholder="jane@yourbrand.com"></div>
         </div>
-        <div class="contact-detail">
-          <div class="contact-detail-icon">◐</div>
-          <div class="contact-detail-text">We reply within 24 hours</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Business Name</label><input class="form-input" type="text" placeholder="Your Brand"></div>
+          <div class="form-group"><label class="form-label">Industry</label><input class="form-input" type="text" placeholder="e.g. Beauty, Café, Retail"></div>
         </div>
-        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.08)">
-          <div style="font-family:'League Spartan',sans-serif;font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:1rem">Our approach</div>
-          <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;font-weight:300;color:rgba(255,255,255,.4);line-height:1.6">No account managers. No handoffs. You work directly with the Studio Director — always.</p>
-        </div>
-      </div>
-      <div class="contact-right">
-        <div class="contact-form" id="contactForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Your Name</label>
-              <input class="form-input" type="text" placeholder="Jane Smith">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Email</label>
-              <input class="form-input" type="email" id="contactEmail" placeholder="jane@yourbrand.com">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Brand / Company</label>
-            <input class="form-input" type="text" placeholder="Your Brand Name">
-          </div>
-          <div class="form-group">
-            <label class="form-label">What do you need?</label>
-            <select class="form-select">
-              <option value="">Select a service</option>
-              <option>Social Media Strategy</option>
-              <option>Content Creation</option>
-              <option>Full Platform Matrix</option>
-              <option>Account Management</option>
-              <option>Campaign Direction</option>
-              <option>Brand Merchandise</option>
-              <option>Not sure yet — let's talk</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Tell us more</label>
-            <textarea class="form-textarea" placeholder="What's your brand about, what's your goal, or what's not working right now?"></textarea>
-          </div>
-          <button class="form-submit" onclick="submitForm()">Send Message →</button>
-          <div class="form-success" id="formSuccess">✓ &nbsp;Message received — we'll be in touch within 24 hours.</div>
-        </div>
+        <div class="form-group"><label class="form-label">What do you need help with?</label><select class="form-select"><option value="">Select a service</option><option>Content Strategy</option><option>Content Production (Video / Photo)</option><option>Social Media System</option><option>Platform Matrix Build</option><option>Brand Sourcing (Merchandise)</option><option>Full Package</option><option>Not sure yet — let's talk</option></select></div>
+        <div class="form-group"><label class="form-label">Monthly Budget Range</label><select class="form-select"><option value="">Select range</option><option>Under $500/month</option><option>$500 – $1,500/month</option><option>$1,500 – $3,000/month</option><option>$3,000+/month</option><option>One-off project</option></select></div>
+        <div class="form-group"><label class="form-label">Tell us more</label><textarea class="form-textarea" placeholder="What's your brand about, what's your goal, or what's not working right now?"></textarea></div>
+        <button class="form-submit" onclick="submitForm()">Send Enquiry →</button>
+        <div class="form-success" id="cSuccess">✓ Message received — we'll be in touch within 24 hours.</div>
       </div>
     </div>
   </div>
-  <footer style="margin-top:clamp(4rem,8vw,7rem)">
-    <div class="footer-top">
-      <div class="footer-brand"><div class="footer-brand-logo">Strat<span>G</span></div><div class="footer-brand-sub">Creative Studio</div><p class="footer-brand-desc">Strategy-led social media for brands ready to own their space online.</p></div>
-      <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a onclick="show('home')">Home</a></li><li><a onclick="show('services')">Services</a></li><li><a onclick="show('about')">About Us</a></li><li><a onclick="show('blog')">Blog</a></li><li><a onclick="show('contact')">Get in Touch</a></li></ul></div>
-      <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:galinasong365@gmail.com">galinasong365@gmail.com</a></li><li><a>Canberra, ACT 2617</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><div class="footer-copy">© 2025 StratG Creative Studio.</div><div class="footer-copy">Made with <span class="footer-green">♥</span> in Canberra</div></div>
-  </footer>
+</div>
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo-main">Strat<span>G</span></div><div class="footer-logo-sub">Creative Studio</div><p class="footer-desc">We build content systems that turn small businesses into brands.</p></div>
+    <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a onclick="go('home')">Home</a></li><li><a onclick="go('services')">Services</a></li><li><a onclick="go('work')">Our Work</a></li><li><a onclick="go('about')">About</a></li><li><a onclick="go('blog')">Blog</a></li></ul></div>
+    <div><div class="footer-col-title">Services</div><ul class="footer-links"><li><a>Content Strategy</a></li><li><a>Content Production</a></li><li><a>Social Media System</a></li><li><a>Brand Sourcing</a></li></ul></div>
+    <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:galinasong365@gmail.com">galinasong365@gmail.com</a></li><li><a>Canberra, ACT</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2025 StratG Creative Studio</div><div class="footer-copy">Canberra, Australia</div></div>
+</footer>
 </section>
 
 <script>
@@ -781,53 +921,43 @@ const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring'
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
 (function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
-document.querySelectorAll('a,button,input,select,textarea,.faq-q,.service-card,.blog-card').forEach(el=>{
+document.querySelectorAll('a,button,input,select,textarea,.service-row,.blog-card,.work-card,.faq-q').forEach(el=>{
   el.addEventListener('mouseenter',()=>{cur.style.width='5px';cur.style.height='5px';ring.style.width='42px';ring.style.height='42px';});
-  el.addEventListener('mouseleave',()=>{cur.style.width='7px';cur.style.height='7px';ring.style.width='30px';ring.style.height='30px';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='8px';cur.style.height='8px';ring.style.width='32px';ring.style.height='32px';});
 });
 
 // Nav scroll
-window.addEventListener('scroll',()=>{
-  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20);
-});
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>10));
 
-// Section switching
-function show(id){
+// Navigation
+function go(id){
   document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  window.scrollTo(0,0);
-  setTimeout(initFadeUps,100);
+  window.scrollTo({top:0,behavior:'instant'});
+  setTimeout(initFades,80);
 }
 
-// Fade on scroll
-function initFadeUps(){
-  const els=document.querySelectorAll('.active .fade-up');
-  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.1});
-  els.forEach(el=>io.observe(el));
+// Scroll fade
+function initFades(){
+  const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in');}),{threshold:.1});
+  document.querySelectorAll('.active .fade').forEach(el=>io.observe(el));
 }
-initFadeUps();
+initFades();
 
 // FAQ
-function toggleFaq(el){
-  el.parentElement.classList.toggle('open');
-}
+function toggleFaq(el){el.parentElement.classList.toggle('open');}
+
+// Mobile menu
+function toggleMob(){const m=document.getElementById('mob-menu');m.style.display=m.style.display==='flex'?'none':'flex';}
+function closeMob(){document.getElementById('mob-menu').style.display='none';}
 
 // Form
 function submitForm(){
-  const email=document.getElementById('contactEmail').value;
-  if(!email||!email.includes('@')){document.getElementById('contactEmail').style.borderColor='var(--orange)';return;}
-  document.getElementById('contactForm').style.opacity='.4';
-  document.getElementById('contactForm').style.pointerEvents='none';
-  document.getElementById('formSuccess').style.display='block';
-}
-
-// Mobile menu
-function toggleMobileMenu(){
-  const m=document.getElementById('mobile-menu');
-  m.style.display=m.style.display==='flex'?'none':'flex';
-}
-function closeMobile(){
-  document.getElementById('mobile-menu').style.display='none';
+  const e=document.getElementById('cEmail');
+  if(!e.value||!e.value.includes('@')){e.style.borderColor='var(--red)';return;}
+  document.getElementById('cForm').style.opacity='.35';
+  document.getElementById('cForm').style.pointerEvents='none';
+  document.getElementById('cSuccess').style.display='block';
 }
 </script>
 </body>
