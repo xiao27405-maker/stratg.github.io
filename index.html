@@ -4,326 +4,336 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>StratG — Content & Sourcing Studio, Canberra</title>
-<meta name="description" content="StratG is a Canberra content and sourcing studio. Strategy, content, and China brand sourcing for small businesses.">
+<meta name="description" content="StratG is a Canberra content and sourcing studio. Branding, social media, photography and China brand sourcing for small businesses.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --paper:#F6F3EC;
-  --paper2:#EEE9DC;
+  --paper:#FFFFFF;
+  --paper2:#F6F6F4;
   --ink:#17160F;
-  --stone:#8C8778;
-  --line:rgba(23,22,15,.14);
-  --line-soft:rgba(23,22,15,.08);
-  --seal:#A63024;
-  --seal-soft:#E9D9C9;
+  --stone:#8C8C86;
+  --line:rgba(23,22,15,.13);
+  --line-soft:rgba(23,22,15,.07);
+  --orange:#E8622C;
+  --orange-tint:#FBE6DA;
+  --green:#4FAF7A;
 }
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden}
-::selection{background:var(--seal);color:var(--paper)}
+::selection{background:var(--orange);color:var(--paper)}
 a{color:inherit}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,5vw,3.5rem);background:rgba(246,243,236,0);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
-nav.scrolled{background:rgba(246,243,236,.92);backdrop-filter:blur(10px);border-color:var(--line)}
-.logo{font-family:'Fraunces',serif;font-weight:600;font-size:19px;letter-spacing:-.01em;text-decoration:none}
-.logo em{font-style:italic;color:var(--seal)}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,5vw,3.5rem);background:rgba(255,255,255,0);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-color:var(--line)}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo-mark{width:26px;height:26px;border-radius:50%;background:var(--orange);position:relative;flex-shrink:0}
+.logo-mark::after{content:'';position:absolute;top:7px;left:7px;width:6px;height:6px;border-radius:50%;background:var(--green)}
+.logo-word{font-family:'Fraunces',serif;font-weight:600;font-size:19px;letter-spacing:-.01em}
 .nav-links{display:flex;align-items:center;gap:2.25rem;list-style:none}
-.nav-links a{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--ink);opacity:.6;transition:opacity .2s}
-.nav-links a:hover{opacity:1}
+.nav-item{position:relative;height:64px;display:flex;align-items:center}
+.nav-links a.top{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--ink);opacity:.6;transition:opacity .2s}
+.nav-item:hover a.top{opacity:1}
+.nav-drop{position:absolute;top:100%;left:50%;transform:translate(-50%,4px);background:var(--paper);border:1px solid var(--line);min-width:210px;padding:.6rem 0;opacity:0;visibility:hidden;transition:opacity .18s,transform .18s,visibility .18s;box-shadow:0 16px 30px rgba(23,22,15,.09)}
+.nav-item:hover .nav-drop{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.nav-drop a{display:block;padding:.65rem 1.35rem;font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;color:var(--ink);opacity:.7;transition:opacity .15s,background .15s}
+.nav-drop a:hover{opacity:1;background:var(--paper2)}
+.nav-drop.contact-drop{min-width:240px;padding:1.1rem 1.35rem}
+.contact-drop p{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin:.75rem 0 .15rem}
+.contact-drop p:first-child{margin-top:0}
+.contact-drop a.line{display:block;font-size:14px;text-decoration:none;color:var(--ink);padding:0}
+.contact-drop .go{display:inline-block;margin-top:.85rem;font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);text-decoration:none}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer}
 .burger span{display:block;width:20px;height:1px;background:var(--ink)}
-#mob{display:none;position:fixed;inset:0;background:var(--paper);z-index:190;flex-direction:column;align-items:flex-start;justify-content:center;gap:1.75rem;padding:0 2.5rem}
-#mob a{font-family:'Fraunces',serif;font-size:32px;text-decoration:none;color:var(--ink)}
+#mob{display:none;position:fixed;inset:0;background:var(--paper);z-index:190;flex-direction:column;justify-content:center;padding:0 2.5rem;gap:0;overflow-y:auto}
+.mob-row{border-bottom:1px solid var(--line);padding:1.35rem 0}
+.mob-row>a,.mob-row>button{font-family:'Fraunces',serif;font-size:28px;text-decoration:none;color:var(--ink);background:none;border:none;text-align:left;width:100%;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.mob-sub{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.mob-sub.open{max-height:300px}
+.mob-sub a{display:block;font-family:'Inter',sans-serif;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--stone);text-decoration:none;padding:.7rem 0 .7rem .5rem}
 
-/* SHARED */
-.wrap{padding:0 clamp(1.5rem,5vw,3.5rem)}
-.pad{padding:clamp(4.5rem,9vw,7rem) clamp(1.5rem,5vw,3.5rem)}
-.eyebrow{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--seal);display:flex;align-items:center;gap:10px;margin-bottom:1.5rem}
-.eyebrow::before{content:'';width:22px;height:1px;background:var(--seal)}
-.rule{border:none;border-top:1px solid var(--line)}
+.pad{padding:clamp(4rem,8vw,6.5rem) clamp(1.5rem,5vw,3.5rem)}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:10px;margin-bottom:1.5rem}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--orange)}
 .fade{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
 .fade.in{opacity:1;transform:translateY(0)}
 
-/* HERO */
-.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;padding:9rem clamp(1.5rem,5vw,3.5rem) 4rem}
-.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);margin-bottom:2rem}
-.hero h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(40px,7vw,92px);line-height:.98;letter-spacing:-.02em;max-width:16ch}
-.hero h1 em{font-style:italic;font-weight:400;color:var(--seal)}
-.hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-top:3rem;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:2rem}
-.hero-note{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(17px,1.8vw,21px);color:var(--stone);max-width:34ch;line-height:1.5}
+.hero{min-height:86vh;display:flex;flex-direction:column;justify-content:center;padding:9rem clamp(1.5rem,5vw,3.5rem) 3.5rem}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);margin-bottom:1.75rem}
+.hero h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(38px,7vw,88px);line-height:.98;letter-spacing:-.02em;max-width:15ch}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--orange)}
+.hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-top:2.5rem;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:1.75rem}
+.hero-note{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(16px,1.7vw,19px);color:var(--stone);max-width:32ch;line-height:1.5}
 .hero-scroll{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);white-space:nowrap}
 
-/* STRIP */
-.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.1rem clamp(1.5rem,5vw,3.5rem);display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:space-between}
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1rem clamp(1.5rem,5vw,3.5rem);display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:space-between}
 .strip span{font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
 .strip span b{color:var(--ink);font-weight:600}
 
-/* WORK LIST */
-.work-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:1rem}
-.work-head h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(32px,4.5vw,54px);letter-spacing:-.02em;line-height:1}
-.work-count{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone)}
-.case{border-top:1px solid var(--line);display:grid;grid-template-columns:64px 1.4fr 1fr auto;align-items:center;gap:2rem;padding:1.75rem 0;cursor:pointer;position:relative;transition:padding-left .3s}
-.case:last-child{border-bottom:1px solid var(--line)}
-.case:hover{padding-left:.75rem}
-.case:hover .case-name{color:var(--seal)}
-.case-idx{font-family:'Fraunces',serif;font-size:13px;color:var(--stone);font-style:italic}
-.case-main{min-width:0}
-.case-name{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(19px,2.4vw,27px);letter-spacing:-.01em;transition:color .25s}
-.case-cat{font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-top:.4rem}
-.case-desc{font-size:13.5px;line-height:1.6;color:var(--stone);max-width:42ch}
-.case-stat{text-align:right;white-space:nowrap}
-.case-stat b{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--seal);display:block}
-.case-stat span{font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone)}
-@media(max-width:820px){
-  .case{grid-template-columns:32px 1fr;row-gap:.6rem}
-  .case-desc{display:none}
-  .case-stat{grid-column:2;text-align:left}
-  .case-stat b{display:inline;margin-right:8px}
-}
+.work-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.work-head h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(30px,4.5vw,52px);letter-spacing:-.02em;line-height:1}
+.wfilters{display:flex;gap:1.5rem;flex-wrap:wrap}
+.wfilters button{background:none;border:none;font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);cursor:pointer;padding:0;position:relative}
+.wfilters button::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--orange);transition:width .2s}
+.wfilters button.active{color:var(--ink)}
+.wfilters button.active::after{width:100%}
 
-/* SERVICES */
+.wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--line)}
+.wcard{position:relative;display:block;text-decoration:none;background:var(--paper);aspect-ratio:4/5;overflow:hidden;transition:opacity .3s,transform .3s}
+.wcard.hide{display:none}
+.wcard-img{position:absolute;inset:0;background:repeating-linear-gradient(135deg,var(--paper2) 0 14px,#EFEFEC 14px 28px);background-size:cover;background-position:center;transition:transform .5s ease}
+.wcard:hover .wcard-img{transform:scale(1.045)}
+.wcard-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:var(--stone);pointer-events:none}
+.wcard-ph svg{width:26px;height:26px;opacity:.35}
+.wcard-ph span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;opacity:.45}
+.wcard-tag{position:absolute;top:14px;left:14px;font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:rgba(255,255,255,.85);padding:5px 10px}
+.wcard-cap{position:absolute;left:0;right:0;bottom:0;padding:1rem 1.1rem;background:linear-gradient(to top,rgba(23,22,15,.72),rgba(23,22,15,0));transform:translateY(60%);opacity:0;transition:transform .3s ease,opacity .3s ease}
+.wcard:hover .wcard-cap{transform:translateY(0);opacity:1}
+.wcard-cap span{display:block;font-family:'Fraunces',serif;font-weight:500;font-size:16px;color:#fff}
+@media(max-width:900px){.wgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.wgrid{grid-template-columns:1fr}.wcard-cap{transform:translateY(0);opacity:1;background:linear-gradient(to top,rgba(23,22,15,.6),rgba(23,22,15,0))}}
+
 .serv-list{border-top:1px solid var(--line)}
-.serv-row{border-bottom:1px solid var(--line);padding:2rem 0;display:grid;grid-template-columns:56px 1fr 1.6fr;gap:2rem;align-items:start}
-.serv-num{font-family:'Fraunces',serif;font-style:italic;color:var(--stone);font-size:14px}
-.serv-name{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(20px,2.4vw,28px);letter-spacing:-.01em}
-.serv-sub{font-size:13px;font-style:italic;color:var(--seal);margin-top:.35rem;font-family:'Fraunces',serif}
-.serv-desc{font-size:14.5px;line-height:1.75;color:var(--stone);max-width:52ch}
-.badge{display:inline-block;border:1px solid var(--seal);color:var(--seal);font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-top:.6rem}
-@media(max-width:760px){.serv-row{grid-template-columns:1fr}}
+.serv-row{border-bottom:1px solid var(--line);padding:1.5rem 0;display:grid;grid-template-columns:44px 1fr auto;gap:1.5rem;align-items:center}
+.serv-num{font-family:'Fraunces',serif;font-style:italic;color:var(--stone);font-size:13px}
+.serv-name{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(18px,2.2vw,24px);letter-spacing:-.01em}
+.serv-tag{font-size:11px;color:var(--stone);text-align:right;white-space:nowrap}
+.badge{display:inline-block;border:1px solid var(--orange);color:var(--orange);font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-left:.6rem}
+@media(max-width:600px){.serv-row{grid-template-columns:1fr}.serv-tag{text-align:left}}
 
-/* SOURCING BLOCK */
 .dark{background:var(--ink);color:var(--paper)}
-.dark .eyebrow{color:#D98F7E}
-.dark .eyebrow::before{background:#D98F7E}
-.sc-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:4.5rem;margin-top:3rem}
-.sc-grid h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(30px,4.2vw,50px);letter-spacing:-.02em;line-height:1.04}
-.sc-grid h2 em{font-style:italic;color:#D98F7E}
-.sc-lead{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:18px;line-height:1.6;color:rgba(246,243,236,.55);margin-top:1.25rem;max-width:38ch}
-.sc-points{border-top:1px solid rgba(246,243,236,.15)}
-.sc-point{display:grid;grid-template-columns:26px 1fr;gap:1rem;padding:1.4rem 0;border-bottom:1px solid rgba(246,243,236,.15)}
-.sc-point b{font-family:'Fraunces',serif;font-style:italic;color:rgba(246,243,236,.35);font-size:13px}
-.sc-point p{font-size:14px;line-height:1.65;color:rgba(246,243,236,.65)}
+.dark .eyebrow{color:#F2A67D}
+.dark .eyebrow::before{background:#F2A67D}
+.sc-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:4.5rem;margin-top:2.5rem}
+.sc-grid h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(28px,4vw,46px);letter-spacing:-.02em;line-height:1.04}
+.sc-grid h2 em{font-style:italic;color:#F2A67D}
+.sc-points{border-top:1px solid rgba(255,255,255,.15)}
+.sc-point{display:grid;grid-template-columns:22px 1fr;gap:1rem;padding:1.15rem 0;border-bottom:1px solid rgba(255,255,255,.15)}
+.sc-point b{font-family:'Fraunces',serif;font-style:italic;color:rgba(255,255,255,.35);font-size:12px}
+.sc-point p{font-size:13.5px;line-height:1.6;color:rgba(255,255,255,.62)}
 .sc-point p strong{color:var(--paper);font-weight:500}
-.btn{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:14px 26px;border-radius:2px;text-decoration:none;transition:opacity .2s;cursor:pointer;border:1px solid currentColor;background:transparent}
-.btn-fill{background:var(--seal);border-color:var(--seal);color:var(--paper)}
-.btn-fill:hover{opacity:.85}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:14px 26px;border-radius:2px;text-decoration:none;transition:opacity .2s,background .2s;cursor:pointer;border:1px solid currentColor;background:transparent}
 .btn-line-dark{color:var(--paper)}
-.btn-line-dark:hover{background:rgba(246,243,236,.08)}
-.btn-line{color:var(--ink)}
-.btn-line:hover{background:var(--line-soft)}
-@media(max-width:800px){.sc-grid{grid-template-columns:1fr;gap:2.5rem}}
+.btn-line-dark:hover{background:rgba(255,255,255,.08)}
+@media(max-width:800px){.sc-grid{grid-template-columns:1fr;gap:2.25rem}}
 
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:.9fr 1.4fr;gap:4rem;align-items:start}
-.about-mark{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(60px,8vw,120px);line-height:.85;color:var(--seal-soft);-webkit-text-stroke:1px var(--seal)}
-.about-name{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-top:1.5rem}
-.about-bio{font-size:15.5px;line-height:1.85;color:var(--stone);max-width:58ch}
-.about-bio strong{color:var(--ink);font-weight:600}
-.about-creds{display:flex;gap:3rem;margin-top:2.5rem;border-top:1px solid var(--line);padding-top:1.75rem}
-.cred-n{font-family:'Fraunces',serif;font-weight:600;font-size:26px;color:var(--seal)}
-.cred-l{font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-top:2px}
-@media(max-width:800px){.about-grid{grid-template-columns:1fr;gap:2rem}}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+.about-photo{aspect-ratio:4/5;background:repeating-linear-gradient(135deg,var(--paper2) 0 14px,#EFEFEC 14px 28px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:var(--stone)}
+.about-photo svg{width:28px;height:28px;opacity:.35}
+.about-photo span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;opacity:.5}
+.about-block{margin-bottom:2rem}
+.about-block:last-child{margin-bottom:0}
+.about-block h3{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(19px,2.2vw,25px);letter-spacing:-.01em;margin-bottom:.75rem}
+.about-block p{font-size:14.5px;line-height:1.8;color:var(--stone);max-width:52ch}
+.about-block p strong{color:var(--ink);font-weight:600}
+.about-creds{display:flex;gap:2.5rem;margin-top:2rem;border-top:1px solid var(--line);padding-top:1.5rem}
+.cred-n{font-family:'Fraunces',serif;font-weight:600;font-size:24px;color:var(--orange)}
+.cred-l{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-top:2px}
+@media(max-width:800px){.about-grid{grid-template-columns:1fr;gap:2rem}.about-photo{max-width:280px}}
 
-/* FAQ */
 .faq-item{border-bottom:1px solid var(--line)}
 .faq-item:first-child{border-top:1px solid var(--line)}
-.faq-q{padding:1.5rem 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:2rem}
-.faq-q p{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(15px,1.6vw,18px)}
-.faq-plus{font-size:18px;color:var(--seal);flex-shrink:0;transition:transform .3s;font-family:'Fraunces',serif}
+.faq-q{padding:1.35rem 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:2rem}
+.faq-q p{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(14px,1.5vw,17px)}
+.faq-plus{font-size:17px;color:var(--orange);flex-shrink:0;transition:transform .3s;font-family:'Fraunces',serif}
 .faq-item.open .faq-plus{transform:rotate(45deg)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
-.faq-a p{font-size:14px;line-height:1.75;color:var(--stone);padding-bottom:1.5rem;max-width:56ch}
-.faq-item.open .faq-a{max-height:220px}
+.faq-a p{font-size:13.5px;line-height:1.7;color:var(--stone);padding-bottom:1.35rem;max-width:56ch}
+.faq-item.open .faq-a{max-height:200px}
 
-/* CONTACT */
 .ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem}
-.ct-grid h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(32px,4.5vw,56px);letter-spacing:-.02em;line-height:1}
-.ct-grid h2 em{font-style:italic;color:var(--seal)}
-.ct-line{display:flex;align-items:baseline;gap:12px;padding:1.1rem 0;border-bottom:1px solid var(--line);text-decoration:none}
+.ct-grid h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(30px,4.2vw,50px);letter-spacing:-.02em;line-height:1}
+.ct-grid h2 em{font-style:italic;color:var(--orange)}
+.ct-line{display:flex;align-items:baseline;gap:12px;padding:1rem 0;border-bottom:1px solid var(--line);text-decoration:none}
 .ct-line span:first-child{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);width:80px;flex-shrink:0}
 .ct-line span:last-child{font-size:15px}
 .f-group{margin-bottom:1.1rem}
 .f-label{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:.4rem}
 .f-input,.f-select,.f-text{width:100%;background:transparent;border:none;border-bottom:1px solid var(--line);padding:.6rem 0;font-family:'Inter',sans-serif;font-size:15px;color:var(--ink);outline:none;transition:border-color .2s}
-.f-input:focus,.f-select:focus,.f-text:focus{border-color:var(--seal)}
+.f-input:focus,.f-select:focus,.f-text:focus{border-color:var(--orange)}
 .f-text{resize:none;height:70px}
 .f-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
 .f-submit{margin-top:1rem;background:var(--ink);color:var(--paper);border:none;padding:14px 30px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:background .2s}
-.f-submit:hover{background:var(--seal)}
-.f-ok{display:none;font-family:'Fraunces',serif;font-style:italic;color:var(--seal);margin-top:1rem;font-size:15px}
-@media(max-width:800px){.ct-grid{grid-template-columns:1fr;gap:2.5rem}.f-row{grid-template-columns:1fr}}
+.f-submit:hover{background:var(--orange)}
+.f-ok{display:none;font-family:'Fraunces',serif;font-style:italic;color:var(--orange);margin-top:1rem;font-size:15px}
+@media(max-width:800px){.ct-grid{grid-template-columns:1fr;gap:2.25rem}.f-row{grid-template-columns:1fr}}
 
-/* FOOTER */
-footer{padding:3rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--line)}
+footer{padding:2.5rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--line)}
 .f-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .f-bottom span{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone)}
+@media(max-width:960px){.nav-links{display:none}.burger{display:flex}}
 </style>
 </head>
 <body>
 
 <nav id="nav">
-  <a class="logo" href="#top">Strat<em>G</em></a>
+  <a class="logo" href="#top">
+    <span class="logo-mark"></span>
+    <span class="logo-word">Strat<span style="color:var(--orange)">G</span></span>
+  </a>
   <ul class="nav-links">
-    <li><a href="#work">Works</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li class="nav-item">
+      <a class="top" href="#work">Works</a>
+      <div class="nav-drop">
+        <a href="#work" onclick="filterWork('branding')">Branding + Creative</a>
+        <a href="#work" onclick="filterWork('social')">Social Media</a>
+        <a href="#work" onclick="filterWork('photography')">Photography</a>
+      </div>
+    </li>
+    <li class="nav-item"><a class="top" href="#about">About</a></li>
+    <li class="nav-item">
+      <a class="top" href="#contact">Contact</a>
+      <div class="nav-drop contact-drop">
+        <p>Email</p>
+        <a class="line" href="mailto:galinasong365@gmail.com">galinasong365@gmail.com</a>
+        <p>Studio</p>
+        <a class="line" href="#contact">Canberra, ACT — remote-friendly</a>
+        <p>Reply time</p>
+        <a class="line" href="#contact">Within 24 hours</a>
+        <a class="go" href="#contact">Full enquiry form ↓</a>
+      </div>
+    </li>
   </ul>
   <button class="burger" id="burger" onclick="toggleMob()"><span></span><span></span><span></span></button>
 </nav>
 
 <div id="mob">
-  <a href="#work" onclick="closeMob()">Works</a>
-  <a href="#about" onclick="closeMob()">About</a>
-  <a href="#contact" onclick="closeMob()" style="color:var(--seal)">Contact</a>
+  <div class="mob-row">
+    <button onclick="toggleMobSub()">Works <span style="font-size:16px;color:var(--orange)" id="mobWorksIcon">+</span></button>
+    <div class="mob-sub" id="mobWorksSub">
+      <a href="#work" onclick="filterWork('branding');closeMob()">Branding + Creative</a>
+      <a href="#work" onclick="filterWork('social');closeMob()">Social Media</a>
+      <a href="#work" onclick="filterWork('photography');closeMob()">Photography</a>
+    </div>
+  </div>
+  <div class="mob-row"><a href="#about" onclick="closeMob()">About</a></div>
+  <div class="mob-row"><a href="#contact" onclick="closeMob()" style="color:var(--orange)">Contact</a></div>
 </div>
 
 <div id="top"></div>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-eyebrow">StratG — Canberra Content &amp; Sourcing Studio</div>
   <h1>We turn small<br>businesses into<br><em>brands</em> worth<br>remembering.</h1>
   <div class="hero-foot">
-    <p class="hero-note">Strategy, content, and direct China sourcing — one studio, one point of contact, no handoffs.</p>
+    <p class="hero-note">Strategy, content and China sourcing — one studio, one point of contact.</p>
     <div class="hero-scroll">Selected Work ↓</div>
   </div>
 </div>
 
 <div class="strip">
-  <span>Content Strategy</span>
-  <span>Content Production</span>
-  <span>Social Media Systems</span>
-  <span>Platform Matrix</span>
+  <span>Branding + Creative</span>
+  <span>Social Media</span>
+  <span>Photography</span>
   <span><b>Brand Sourcing — China</b></span>
 </div>
 
-<!-- WORK -->
 <section id="work" class="pad fade">
   <div class="work-head">
     <h2>Selected work.</h2>
-    <div class="work-count">09 Projects — Canberra &amp; Beyond</div>
+    <div class="wfilters">
+      <button class="active" onclick="filterWork('all')">All</button>
+      <button onclick="filterWork('branding')">Branding + Creative</button>
+      <button onclick="filterWork('social')">Social Media</button>
+      <button onclick="filterWork('photography')">Photography</button>
+    </div>
   </div>
 
-  <div class="case">
-    <div class="case-idx">01</div>
-    <div class="case-main"><div class="case-name">A Local Beauty Studio</div><div class="case-cat">Beauty · Brand Repositioning</div></div>
-    <div class="case-desc">Full brand audit, content pillars and a posting system built from scratch.</div>
-    <div class="case-stat"><b>3×</b><span>Engagement</span></div>
-  </div>
-  <div class="case">
-    <div class="case-idx">02</div>
-    <div class="case-main"><div class="case-name">Neighbourhood Café</div><div class="case-cat">Hospitality · Social System</div></div>
-    <div class="case-desc">A content calendar and posting rhythm that finally stuck.</div>
-    <div class="case-stat"><b>85%</b><span>Reach ↑</span></div>
-  </div>
-  <div class="case">
-    <div class="case-idx">03</div>
-    <div class="case-main"><div class="case-name">Launch Merch Run</div><div class="case-cat">E-Commerce · Brand Sourcing</div></div>
-    <div class="case-desc">Sourced, sampled and QC'd a custom merchandise run direct from China.</div>
-    <div class="case-stat"><b>−60%</b><span>vs local cost</span></div>
-  </div>
-  <div class="case">
-    <div class="case-idx">04</div>
-    <div class="case-main"><div class="case-name">Boutique Retail Rebrand</div><div class="case-cat">Retail · Content Strategy</div></div>
-    <div class="case-desc">Repositioned voice and visuals ahead of a store relocation.</div>
-    <div class="case-stat"><b>4 wks</b><span>To launch</span></div>
-  </div>
-  <div class="case">
-    <div class="case-idx">05</div>
-    <div class="case-main"><div class="case-name">Personal Trainer Brand</div><div class="case-cat">Fitness · Platform Matrix</div></div>
-    <div class="case-desc">Built a multi-platform presence across Instagram, TikTok and LinkedIn.</div>
-    <div class="case-stat"><b>2.4×</b><span>Lead volume</span></div>
-  </div>
-  <div class="case">
-    <div class="case-idx">06</div>
-    <div class="case-main"><div class="case-name">Event Gifting Order</div><div class="case-cat">Corporate · Brand Sourcing</div></div>
-    <div class="case-desc">Consolidated a small-batch gifting order to clear factory minimums.</div>
-    <div class="case-stat"><b>150</b><span>Units delivered</span></div>
-  </div>
-  <div class="case">
-    <div class="case-idx">07</div>
-    <div class="case-main"><div class="case-name">Family Restaurant Refresh</div><div class="case-cat">Hospitality · Content Production</div></div>
-    <div class="case-desc">A shoot day and short-form video system for weekly specials.</div>
-    <div class="case-stat"><b>12</b><span>Reels / month</span></div>
-  </div>
-  <div class="case">
-    <div class="case-idx">08</div>
-    <div class="case-main"><div class="case-name">Professional Services Firm</div><div class="case-cat">B2B · Content Strategy</div></div>
-    <div class="case-desc">LinkedIn-first content pillars built around founder expertise.</div>
-    <div class="case-stat"><b>90d</b><span>Roadmap</span></div>
-  </div>
-  <div class="case">
-    <div class="case-idx">09</div>
-    <div class="case-main"><div class="case-name">Packaging Redesign</div><div class="case-cat">Retail · Brand Sourcing</div></div>
-    <div class="case-desc">Sourced custom branded packaging with full logistics handled end to end.</div>
-    <div class="case-stat"><b>100%</b><span>QC pass rate</span></div>
+  <div class="wgrid" id="wgrid">
+    <a class="wcard" data-cat="branding" href="#" onclick="return false">
+      <div class="wcard-img"><div class="wcard-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg><span>Add photo</span></div></div>
+      <div class="wcard-tag">Branding</div>
+      <div class="wcard-cap"><span>A Local Beauty Studio</span></div>
+    </a>
+    <a class="wcard" data-cat="social" href="#" onclick="return false">
+      <div class="wcard-img"><div class="wcard-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg><span>Add photo</span></div></div>
+      <div class="wcard-tag">Social Media</div>
+      <div class="wcard-cap"><span>Neighbourhood Café</span></div>
+    </a>
+    <a class="wcard" data-cat="photography" href="#" onclick="return false">
+      <div class="wcard-img"><div class="wcard-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg><span>Add photo</span></div></div>
+      <div class="wcard-tag">Photography</div>
+      <div class="wcard-cap"><span>Launch Merch Shoot</span></div>
+    </a>
+    <a class="wcard" data-cat="branding" href="#" onclick="return false">
+      <div class="wcard-img"><div class="wcard-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg><span>Add photo</span></div></div>
+      <div class="wcard-tag">Branding</div>
+      <div class="wcard-cap"><span>Boutique Retail Rebrand</span></div>
+    </a>
+    <a class="wcard" data-cat="social" href="#" onclick="return false">
+      <div class="wcard-img"><div class="wcard-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg><span>Add photo</span></div></div>
+      <div class="wcard-tag">Social Media</div>
+      <div class="wcard-cap"><span>Personal Trainer Brand</span></div>
+    </a>
+    <a class="wcard" data-cat="photography" href="#" onclick="return false">
+      <div class="wcard-img"><div class="wcard-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg><span>Add photo</span></div></div>
+      <div class="wcard-tag">Photography</div>
+      <div class="wcard-cap"><span>Family Restaurant Refresh</span></div>
+    </a>
+    <a class="wcard" data-cat="branding" href="#" onclick="return false">
+      <div class="wcard-img"><div class="wcard-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg><span>Add photo</span></div></div>
+      <div class="wcard-tag">Branding</div>
+      <div class="wcard-cap"><span>Packaging Redesign</span></div>
+    </a>
+    <a class="wcard" data-cat="social" href="#" onclick="return false">
+      <div class="wcard-img"><div class="wcard-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg><span>Add photo</span></div></div>
+      <div class="wcard-tag">Social Media</div>
+      <div class="wcard-cap"><span>Professional Services Firm</span></div>
+    </a>
+    <a class="wcard" data-cat="photography" href="#" onclick="return false">
+      <div class="wcard-img"><div class="wcard-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg><span>Add photo</span></div></div>
+      <div class="wcard-tag">Photography</div>
+      <div class="wcard-cap"><span>Event Gifting Campaign</span></div>
+    </a>
   </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services" class="pad fade" style="border-top:1px solid var(--line)">
   <div class="eyebrow">What We Do</div>
-  <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(32px,4.5vw,54px);letter-spacing:-.02em;line-height:1;margin-bottom:2.5rem">Most agencies stop<br>at content. <em style="font-style:italic;color:var(--seal)">We go further.</em></h2>
-
+  <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(28px,4vw,44px);letter-spacing:-.02em;line-height:1;margin-bottom:2rem">Content, sourced <em style="font-style:italic;color:var(--orange)">and made.</em></h2>
   <div class="serv-list">
-    <div class="serv-row">
-      <div class="serv-num">01</div>
-      <div><div class="serv-name">Content Strategy</div><div class="serv-sub">No more guessing what to post</div></div>
-      <div class="serv-desc">Brand audit, audience mapping, content pillars and a 90-day roadmap built around how your business actually grows.</div>
-    </div>
-    <div class="serv-row">
-      <div class="serv-num">02</div>
-      <div><div class="serv-name">Content Production</div><div class="serv-sub">Content that looks like you</div></div>
-      <div class="serv-desc">Reels, TikTok, brand video, product photography and visual direction — shot and edited to a consistent standard.</div>
-    </div>
-    <div class="serv-row">
-      <div class="serv-num">03</div>
-      <div><div class="serv-name">Social Media System</div><div class="serv-sub">Consistency without the stress</div></div>
-      <div class="serv-desc">Calendar, scheduling, community management and performance tracking — run for you, week after week.</div>
-    </div>
-    <div class="serv-row">
-      <div class="serv-num">04</div>
-      <div><div class="serv-name">Platform Matrix</div><div class="serv-sub">One voice, every channel</div></div>
-      <div class="serv-desc">Instagram, TikTok, LinkedIn and WeChat, each adapted to its native format — never the same post copy-pasted everywhere.</div>
-    </div>
-    <div class="serv-row">
-      <div class="serv-num">05</div>
-      <div><div class="serv-name">Brand Sourcing<span class="badge">Exclusive</span></div><div class="serv-sub">Build your brand beyond content</div></div>
-      <div class="serv-desc">Custom merchandise, branded packaging and promotional gifting sourced direct from trusted China manufacturers — supplier comms, QC and logistics fully handled.</div>
-    </div>
+    <div class="serv-row"><div class="serv-num">01</div><div class="serv-name">Content Strategy</div><div class="serv-tag">Roadmap &amp; positioning</div></div>
+    <div class="serv-row"><div class="serv-num">02</div><div class="serv-name">Content Production</div><div class="serv-tag">Video &amp; photography</div></div>
+    <div class="serv-row"><div class="serv-num">03</div><div class="serv-name">Social Media System</div><div class="serv-tag">Calendar &amp; posting</div></div>
+    <div class="serv-row"><div class="serv-num">04</div><div class="serv-name">Platform Matrix</div><div class="serv-tag">Instagram · TikTok · LinkedIn</div></div>
+    <div class="serv-row"><div class="serv-num">05</div><div class="serv-name">Brand Sourcing<span class="badge">Exclusive</span></div><div class="serv-tag">Merch, packaging, gifting</div></div>
   </div>
 </section>
 
-<!-- SOURCING -->
 <section id="sourcing" class="dark pad fade">
   <div class="eyebrow">Our Exclusive Service</div>
   <div class="sc-grid">
     <div>
       <h2>Want your own<br><em>branded products?</em></h2>
-      <p class="sc-lead">We help you design, source and produce custom merchandise — without the local mark-up.</p>
-      <a class="btn btn-line-dark" href="#contact" style="margin-top:2rem">Talk to us about your idea →</a>
+      <p style="font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:17px;line-height:1.6;color:rgba(255,255,255,.55);margin-top:1.1rem;max-width:34ch">Design, source and produce custom merchandise — without the local mark-up.</p>
+      <a class="btn btn-line-dark" href="#contact" style="margin-top:1.75rem">Talk to us →</a>
     </div>
     <div class="sc-points">
-      <div class="sc-point"><b>01</b><p><strong>Direct factory access.</strong> Trusted manufacturers in China — no middlemen, no inflated costs.</p></div>
-      <div class="sc-point"><b>02</b><p><strong>Full service.</strong> Supplier communication, quality control and logistics, all handled for you.</p></div>
-      <div class="sc-point"><b>03</b><p><strong>Built for small business.</strong> Low minimums via consolidated orders, transparent pricing — a flat 10% of order total.</p></div>
-      <div class="sc-point"><b>04</b><p><strong>Merch, packaging, gifting.</strong> Ideal for launches, activations and events.</p></div>
+      <div class="sc-point"><b>01</b><p><strong>Direct factory access.</strong> Trusted manufacturers, no middlemen.</p></div>
+      <div class="sc-point"><b>02</b><p><strong>Full service.</strong> Supplier comms, QC and logistics — handled.</p></div>
+      <div class="sc-point"><b>03</b><p><strong>Transparent pricing.</strong> A flat 10% of order total, no hidden mark-up.</p></div>
+      <div class="sc-point"><b>04</b><p><strong>Low minimums.</strong> Consolidated orders built for small business.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about" class="pad fade" style="border-top:1px solid var(--line)">
   <div class="eyebrow">Behind The Studio</div>
   <div class="about-grid">
-    <div>
-      <div class="about-mark">G</div>
-      <div class="about-name">Galina — Founder &amp; Studio Director</div>
+    <div class="about-photo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg>
+      <span>Add founder photo</span>
     </div>
     <div>
-      <p class="about-bio">Small businesses know marketing matters — they just don't have the time, system, or clarity to do it properly.<br><br>After a <strong>Master's in Marketing Management at ANU</strong> and <strong>7+ years across multiple industries</strong>, I built StratG to close that gap: strategy, content and execution in one streamlined system.<br><br>With direct access to Chinese manufacturing and supplier networks, StratG offers something most local agencies can't — taking your brand from content to physical product, cost-efficiently and seamlessly. When you work with StratG, you work with me directly. No account managers, ever.</p>
+      <div class="about-block">
+        <h3>The brand story.</h3>
+        <p>Small businesses know marketing matters — they just don't have the time, system or clarity to do it properly. StratG exists to close that gap: strategy, content and physical product, run as one system instead of three separate headaches.</p>
+      </div>
+      <div class="about-block">
+        <h3>The founder story.</h3>
+        <p><strong>Galina</strong> founded StratG after a Master's in Marketing Management at ANU and 7+ years working across industries in both Australia and China. That dual footing is the studio's edge — fluent in local platforms and audiences, and directly connected to Chinese supplier networks most agencies never touch. When you work with StratG, you work with Galina, always.</p>
+      </div>
       <div class="about-creds">
         <div><div class="cred-n">7+</div><div class="cred-l">Years experience</div></div>
         <div><div class="cred-n">ANU</div><div class="cred-l">Master's, Marketing</div></div>
@@ -333,23 +343,20 @@ footer{padding:3rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--lin
   </div>
 </section>
 
-<!-- FAQ -->
 <section class="pad fade" style="border-top:1px solid var(--line);max-width:900px">
   <div class="eyebrow">Good To Know</div>
-  <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(28px,4vw,42px);letter-spacing:-.02em;margin-bottom:2.5rem">Frequently asked.</h2>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><p>Will I work directly with you?</p><div class="faq-plus">+</div></div><div class="faq-a"><p>Always. This is a boutique studio by design — you work with the Studio Director from first call to final delivery, no handoffs.</p></div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><p>How does brand sourcing pricing work?</p><div class="faq-plus">+</div></div><div class="faq-a"><p>A flat 10% of total order value. Even with our fee included, most clients land 40–60% below local quotes.</p></div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><p>Can small orders clear factory minimums?</p><div class="faq-plus">+</div></div><div class="faq-a"><p>Often, yes — we consolidate smaller orders where possible to help clients meet MOQs without overcommitting.</p></div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><p>How quickly can we start?</p><div class="faq-plus">+</div></div><div class="faq-a"><p>Usually within two weeks of scoping. We open with a session to understand your brand, audience and goals.</p></div></div>
+  <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(26px,3.6vw,38px);letter-spacing:-.02em;margin-bottom:2rem">Frequently asked.</h2>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><p>Will I work directly with you?</p><div class="faq-plus">+</div></div><div class="faq-a"><p>Always — no account managers, no handoffs.</p></div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><p>How does sourcing pricing work?</p><div class="faq-plus">+</div></div><div class="faq-a"><p>A flat 10% of order value. Most clients still land 40–60% below local quotes.</p></div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><p>How quickly can we start?</p><div class="faq-plus">+</div></div><div class="faq-a"><p>Usually within two weeks of scoping.</p></div></div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="pad fade" style="border-top:1px solid var(--line)">
   <div class="eyebrow">Get In Touch</div>
   <div class="ct-grid">
     <div>
       <h2>Let's build<br>something that<br><em>actually works.</em></h2>
-      <div style="margin-top:2.5rem">
+      <div style="margin-top:2rem">
         <a class="ct-line" href="mailto:galinasong365@gmail.com"><span>Email</span><span>galinasong365@gmail.com</span></a>
         <div class="ct-line"><span>Studio</span><span>Canberra, ACT — remote-friendly</span></div>
         <div class="ct-line"><span>Reply</span><span>Within 24 hours</span></div>
@@ -361,7 +368,7 @@ footer{padding:3rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--lin
         <div class="f-group"><label class="f-label">Email</label><input class="f-input" type="email" id="cEmail" placeholder="jane@yourbrand.com"></div>
       </div>
       <div class="f-group"><label class="f-label">What do you need help with?</label>
-        <select class="f-select"><option value="">Select a service</option><option>Content Strategy</option><option>Content Production</option><option>Social Media System</option><option>Brand Sourcing</option><option>Not sure yet</option></select>
+        <select class="f-select"><option value="">Select a service</option><option>Branding + Creative</option><option>Social Media</option><option>Photography</option><option>Brand Sourcing</option><option>Not sure yet</option></select>
       </div>
       <div class="f-group"><label class="f-label">Tell us more</label><textarea class="f-text" placeholder="What's your brand about, and what's not working right now?"></textarea></div>
       <button class="f-submit" onclick="submitForm()">Send enquiry →</button>
@@ -381,10 +388,18 @@ footer{padding:3rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--lin
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>10));
 function toggleMob(){const m=document.getElementById('mob');m.style.display=m.style.display==='flex'?'none':'flex';}
 function closeMob(){document.getElementById('mob').style.display='none';}
+function toggleMobSub(){const s=document.getElementById('mobWorksSub');s.classList.toggle('open');document.getElementById('mobWorksIcon').textContent=s.classList.contains('open')?'−':'+';}
 function toggleFaq(el){el.parentElement.classList.toggle('open');}
+function filterWork(cat){
+  document.querySelectorAll('.wcard').forEach(c=>{c.classList.toggle('hide',cat!=='all'&&c.dataset.cat!==cat);});
+  document.querySelectorAll('.wfilters button').forEach(b=>b.classList.remove('active'));
+  const map={all:0,branding:1,social:2,photography:3};
+  const btns=document.querySelectorAll('.wfilters button');
+  if(btns[map[cat]])btns[map[cat]].classList.add('active');
+}
 function submitForm(){
   const e=document.getElementById('cEmail');
-  if(!e.value||!e.value.includes('@')){e.style.borderColor='var(--seal)';return;}
+  if(!e.value||!e.value.includes('@')){e.style.borderColor='var(--orange)';return;}
   document.getElementById('cForm').style.opacity='.35';
   document.getElementById('cForm').style.pointerEvents='none';
   document.getElementById('cOk').style.display='block';
