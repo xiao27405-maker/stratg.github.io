@@ -59,13 +59,13 @@ nav.scrolled{background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-
 .fade{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
 .fade.in{opacity:1;transform:translateY(0)}
 
-.hero{min-height:86vh;display:flex;flex-direction:column;justify-content:center;padding:9rem clamp(1.5rem,5vw,3.5rem) 3.5rem}
-.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);margin-bottom:1.75rem}
-.hero h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(38px,7vw,88px);line-height:.98;letter-spacing:-.02em;max-width:15ch}
+.hero{min-height:86vh;display:flex;flex-direction:column;justify-content:center;padding:9rem clamp(1.5rem,5vw,3.5rem) 3.5rem;background-image:linear-gradient(180deg,rgba(23,22,15,.2),rgba(23,22,15,.6)),url('frontcover.png');background-size:cover;background-position:center;position:relative}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:1.75rem}
+.hero h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(38px,7vw,88px);line-height:.98;letter-spacing:-.02em;max-width:15ch;color:#fff}
 .hero h1 em{font-style:italic;font-weight:400;color:var(--orange)}
-.hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-top:2.5rem;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:1.75rem}
-.hero-note{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(16px,1.7vw,19px);color:var(--stone);max-width:32ch;line-height:1.5}
-.hero-scroll{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);white-space:nowrap}
+.hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-top:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.25);padding-top:1.75rem}
+.hero-note{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(16px,1.7vw,19px);color:rgba(255,255,255,.8);max-width:32ch;line-height:1.5}
+.hero-scroll{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.75);white-space:nowrap}
 
 .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1rem clamp(1.5rem,5vw,3.5rem);display:flex;gap:2.5rem;flex-wrap:wrap;justify-content:space-between}
 .strip span{font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
@@ -242,47 +242,47 @@ footer{padding:2.5rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--l
 
   <div class="wgrid" id="wgrid">
     <a class="wcard" data-cat="branding" href="#" onclick="return false">
-      <div class="wcard-img"><div class="wcard-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg><span>Add photo</span></div></div>
+      <div class="wcard-img" style="background-image:url('work-1.jpg')"></div>
       <div class="wcard-tag">Branding</div>
       <div class="wcard-cap"><span>A Local Beauty Studio</span></div>
     </a>
     <a class="wcard" data-cat="social" href="#" onclick="return false">
-      <div class="wcard-img"><div class="wcard-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg><span>Add photo</span></div></div>
+      <div class="wcard-img" style="background-image:url('work-2.jpg')"></div>
       <div class="wcard-tag">Social Media</div>
       <div class="wcard-cap"><span>Neighbourhood Café</span></div>
     </a>
     <a class="wcard" data-cat="photography" href="#" onclick="return false">
-      <div class="wcard-img"><div class="wcard-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg><span>Add photo</span></div></div>
+      <div class="wcard-img" style="background-image:url('work-3.jpg')"></div>
       <div class="wcard-tag">Photography</div>
       <div class="wcard-cap"><span>Launch Merch Shoot</span></div>
     </a>
     <a class="wcard" data-cat="branding" href="#" onclick="return false">
-      <div class="wcard-img"><div class="wcard-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg><span>Add photo</span></div></div>
+      <div class="wcard-img" style="background-image:url('work-4.jpg')"></div>
       <div class="wcard-tag">Branding</div>
       <div class="wcard-cap"><span>Boutique Retail Rebrand</span></div>
     </a>
     <a class="wcard" data-cat="social" href="#" onclick="return false">
-      <div class="wcard-img"><div class="wcard-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg><span>Add photo</span></div></div>
+      <div class="wcard-img" style="background-image:url('work-5.jpg')"></div>
       <div class="wcard-tag">Social Media</div>
       <div class="wcard-cap"><span>Personal Trainer Brand</span></div>
     </a>
     <a class="wcard" data-cat="photography" href="#" onclick="return false">
-      <div class="wcard-img"><div class="wcard-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg><span>Add photo</span></div></div>
+      <div class="wcard-img" style="background-image:url('work-6.jpg')"></div>
       <div class="wcard-tag">Photography</div>
       <div class="wcard-cap"><span>Family Restaurant Refresh</span></div>
     </a>
     <a class="wcard" data-cat="branding" href="#" onclick="return false">
-      <div class="wcard-img"><div class="wcard-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg><span>Add photo</span></div></div>
+      <div class="wcard-img" style="background-image:url('work-7.jpg')"></div>
       <div class="wcard-tag">Branding</div>
       <div class="wcard-cap"><span>Packaging Redesign</span></div>
     </a>
     <a class="wcard" data-cat="social" href="#" onclick="return false">
-      <div class="wcard-img"><div class="wcard-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg><span>Add photo</span></div></div>
+      <div class="wcard-img" style="background-image:url('work-8.jpg')"></div>
       <div class="wcard-tag">Social Media</div>
       <div class="wcard-cap"><span>Professional Services Firm</span></div>
     </a>
     <a class="wcard" data-cat="photography" href="#" onclick="return false">
-      <div class="wcard-img"><div class="wcard-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-4 4-2-2-5 5"/></svg><span>Add photo</span></div></div>
+      <div class="wcard-img" style="background-image:url('work-9.jpg')"></div>
       <div class="wcard-tag">Photography</div>
       <div class="wcard-cap"><span>Event Gifting Campaign</span></div>
     </a>
@@ -321,10 +321,10 @@ footer{padding:2.5rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--l
 <section id="about" class="pad fade" style="border-top:1px solid var(--line)">
   <div class="eyebrow">Behind The Studio</div>
   <div class="about-grid">
-    <div class="about-photo">
-     <img src="founder.jpg" style="width:100%;height:100%;object-fit:cover">
+    <div class="about-photo" style="background:none">
+      <img src="founder.jpg" alt="Galina, Founder & Studio Director" style="width:100%;height:100%;object-fit:cover">
+    </div>
     <div>
-  <div>
       <div class="about-block">
         <h3>The brand story.</h3>
         <p>Small businesses know marketing matters — they just don't have the time, system or clarity to do it properly. StratG exists to close that gap: strategy, content and physical product, run as one system instead of three separate headaches.</p>
