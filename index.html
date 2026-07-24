@@ -84,9 +84,6 @@ nav.scrolled{background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-
 .wcard.hide{display:none}
 .wcard-img{position:absolute;inset:0;background:repeating-linear-gradient(135deg,var(--paper2) 0 14px,#EFEFEC 14px 28px);background-size:cover;background-position:center;transition:transform .5s ease}
 .wcard:hover .wcard-img{transform:scale(1.045)}
-.wcard-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:var(--stone);pointer-events:none}
-.wcard-ph svg{width:26px;height:26px;opacity:.35}
-.wcard-ph span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;opacity:.45}
 .wcard-tag{position:absolute;top:14px;left:14px;font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:rgba(255,255,255,.85);padding:5px 10px}
 .wcard-cap{position:absolute;left:0;right:0;bottom:0;padding:1rem 1.1rem;background:linear-gradient(to top,rgba(23,22,15,.72),rgba(23,22,15,0));transform:translateY(60%);opacity:0;transition:transform .3s ease,opacity .3s ease}
 .wcard:hover .wcard-cap{transform:translateY(0);opacity:1}
@@ -100,7 +97,7 @@ nav.scrolled{background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-
 .serv-name{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(18px,2.2vw,24px);letter-spacing:-.01em}
 .serv-tag{font-size:11px;color:var(--stone);text-align:right;white-space:nowrap}
 .badge{display:inline-block;border:1px solid var(--orange);color:var(--orange);font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-left:.6rem}
-@media(max-width:600px){.serv-row{grid-template-columns:1fr}.serv-tag{text-align:left}}
+@media(max-width:600px){.serv-row{grid-template-columns:1fr}.serv-tag{text-align:left;white-space:normal}}
 
 .dark{background:var(--ink);color:var(--paper)}
 .dark .eyebrow{color:#F2A67D}
@@ -116,12 +113,19 @@ nav.scrolled{background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-
 .btn{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:14px 26px;border-radius:2px;text-decoration:none;transition:opacity .2s,background .2s;cursor:pointer;border:1px solid currentColor;background:transparent}
 .btn-line-dark{color:var(--paper)}
 .btn-line-dark:hover{background:rgba(255,255,255,.08)}
+.btn-fill{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn-fill:hover{opacity:.85}
+.btn-line{color:var(--orange);border-color:var(--orange)}
+.btn-line:hover{background:var(--orange-tint)}
 @media(max-width:800px){.sc-grid{grid-template-columns:1fr;gap:2.25rem}}
 
+.quick-ct{text-align:center;max-width:640px;margin:0 auto}
+.quick-ct h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(28px,4.2vw,46px);letter-spacing:-.02em;line-height:1.05;margin-bottom:1.75rem}
+.quick-ct h2 em{font-style:italic;color:var(--orange)}
+.quick-ct-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
-.about-photo{aspect-ratio:4/5;background:repeating-linear-gradient(135deg,var(--paper2) 0 14px,#EFEFEC 14px 28px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:var(--stone)}
-.about-photo svg{width:28px;height:28px;opacity:.35}
-.about-photo span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;opacity:.5}
+.about-photo{aspect-ratio:4/5;background:repeating-linear-gradient(135deg,var(--paper2) 0 14px,#EFEFEC 14px 28px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:var(--stone);overflow:hidden}
 .about-block{margin-bottom:2rem}
 .about-block:last-child{margin-bottom:0}
 .about-block h3{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(19px,2.2vw,25px);letter-spacing:-.01em;margin-bottom:.75rem}
@@ -218,7 +222,7 @@ footer{padding:2.5rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--l
   <h1>We turn small<br>businesses into<br><em>brands</em> worth<br>remembering.</h1>
   <div class="hero-foot">
     <p class="hero-note">Strategy, content and China sourcing — one studio, one point of contact.</p>
-    <div class="hero-scroll">Selected Work ↓</div>
+    <div class="hero-scroll">Scroll ↓</div>
   </div>
 </div>
 
@@ -229,7 +233,58 @@ footer{padding:2.5rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--l
   <span><b>Brand Sourcing — China</b></span>
 </div>
 
-<section id="work" class="pad fade">
+<!-- 01 WHAT WE DO -->
+<section id="services" class="pad fade">
+  <div class="eyebrow">What We Do</div>
+  <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(28px,4vw,44px);letter-spacing:-.02em;line-height:1;margin-bottom:2rem">Content, sourced <em style="font-style:italic;color:var(--orange)">and made.</em></h2>
+  <div class="serv-list">
+    <div class="serv-row"><div class="serv-num">01</div><div class="serv-name">Content Strategy</div><div class="serv-tag">Roadmap &amp; positioning</div></div>
+    <div class="serv-row"><div class="serv-num">02</div><div class="serv-name">Content Production</div><div class="serv-tag">Video &amp; photography</div></div>
+    <div class="serv-row"><div class="serv-num">03</div><div class="serv-name">Social Media System</div><div class="serv-tag">Calendar &amp; posting</div></div>
+    <div class="serv-row"><div class="serv-num">04</div><div class="serv-name">Platform Matrix</div><div class="serv-tag">Instagram · TikTok · LinkedIn · Facebook · Website · RedNote</div></div>
+    <div class="serv-row"><div class="serv-num">05</div><div class="serv-name">Brand Sourcing<span class="badge">Exclusive</span></div><div class="serv-tag">Merch, packaging, gifting</div></div>
+  </div>
+</section>
+
+<!-- 02 OUR EXCLUSIVE SERVICE -->
+<section id="sourcing" class="dark pad fade">
+  <div class="eyebrow">Our Exclusive Service</div>
+  <div class="sc-grid">
+    <div>
+      <h2>Want your own<br><em>branded products?</em></h2>
+      <p style="font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:17px;line-height:1.6;color:rgba(255,255,255,.55);margin-top:1.1rem;max-width:34ch">Design, source and produce custom merchandise — without the local mark-up.</p>
+      <a class="btn btn-line-dark" href="#contact" style="margin-top:1.75rem">Talk to us →</a>
+    </div>
+    <div class="sc-points">
+      <div class="sc-point"><b>01</b><p><strong>Direct factory access.</strong> Trusted manufacturers, no middlemen.</p></div>
+      <div class="sc-point"><b>02</b><p><strong>Full service.</strong> Supplier comms, QC and logistics — handled.</p></div>
+      <div class="sc-point"><b>03</b><p><strong>Transparent pricing.</strong> A flat 10% of order total, no hidden mark-up.</p></div>
+      <div class="sc-point"><b>04</b><p><strong>Low minimums.</strong> Consolidated orders built for small business.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 GOOD TO KNOW -->
+<section class="pad fade" style="border-top:1px solid var(--line);max-width:900px">
+  <div class="eyebrow">Good To Know</div>
+  <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(26px,3.6vw,38px);letter-spacing:-.02em;margin-bottom:2rem">Frequently asked.</h2>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><p>Will I work directly with you?</p><div class="faq-plus">+</div></div><div class="faq-a"><p>Always — no account managers, no handoffs.</p></div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><p>How does sourcing pricing work?</p><div class="faq-plus">+</div></div><div class="faq-a"><p>A flat 10% of order value. Most clients still land 40–60% below local quotes.</p></div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><p>How quickly can we start?</p><div class="faq-plus">+</div></div><div class="faq-a"><p>Usually within two weeks of scoping.</p></div></div>
+</section>
+
+<!-- 04 QUICK CONTACT CTA -->
+<section id="contact-quick" class="pad fade quick-ct" style="border-top:1px solid var(--line)">
+  <div class="eyebrow" style="justify-content:center">Get In Touch</div>
+  <h2>Let's build something that <em>actually works.</em></h2>
+  <div class="quick-ct-btns">
+    <a class="btn btn-fill" href="mailto:galinasong365@gmail.com">Email us →</a>
+    <a class="btn btn-line" href="#contact">Full enquiry form ↓</a>
+  </div>
+</section>
+
+<!-- 05 SELECTED WORK -->
+<section id="work" class="pad fade" style="border-top:1px solid var(--line)">
   <div class="work-head">
     <h2>Selected work.</h2>
     <div class="wfilters">
@@ -289,67 +344,32 @@ footer{padding:2.5rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--l
   </div>
 </section>
 
-<section id="services" class="pad fade" style="border-top:1px solid var(--line)">
-  <div class="eyebrow">What We Do</div>
-  <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(28px,4vw,44px);letter-spacing:-.02em;line-height:1;margin-bottom:2rem">Content, sourced <em style="font-style:italic;color:var(--orange)">and made.</em></h2>
-  <div class="serv-list">
-    <div class="serv-row"><div class="serv-num">01</div><div class="serv-name">Content Strategy</div><div class="serv-tag">Roadmap &amp; positioning</div></div>
-    <div class="serv-row"><div class="serv-num">02</div><div class="serv-name">Content Production</div><div class="serv-tag">Video &amp; photography</div></div>
-    <div class="serv-row"><div class="serv-num">03</div><div class="serv-name">Social Media System</div><div class="serv-tag">Calendar &amp; posting</div></div>
-    <div class="serv-row"><div class="serv-num">04</div><div class="serv-name">Platform Matrix</div><div class="serv-tag">Instagram · TikTok · LinkedIn</div></div>
-    <div class="serv-row"><div class="serv-num">05</div><div class="serv-name">Brand Sourcing<span class="badge">Exclusive</span></div><div class="serv-tag">Merch, packaging, gifting</div></div>
-  </div>
-</section>
-
-<section id="sourcing" class="dark pad fade">
-  <div class="eyebrow">Our Exclusive Service</div>
-  <div class="sc-grid">
-    <div>
-      <h2>Want your own<br><em>branded products?</em></h2>
-      <p style="font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:17px;line-height:1.6;color:rgba(255,255,255,.55);margin-top:1.1rem;max-width:34ch">Design, source and produce custom merchandise — without the local mark-up.</p>
-      <a class="btn btn-line-dark" href="#contact" style="margin-top:1.75rem">Talk to us →</a>
-    </div>
-    <div class="sc-points">
-      <div class="sc-point"><b>01</b><p><strong>Direct factory access.</strong> Trusted manufacturers, no middlemen.</p></div>
-      <div class="sc-point"><b>02</b><p><strong>Full service.</strong> Supplier comms, QC and logistics — handled.</p></div>
-      <div class="sc-point"><b>03</b><p><strong>Transparent pricing.</strong> A flat 10% of order total, no hidden mark-up.</p></div>
-      <div class="sc-point"><b>04</b><p><strong>Low minimums.</strong> Consolidated orders built for small business.</p></div>
-    </div>
-  </div>
-</section>
-
+<!-- 06 BEHIND THE STUDIO -->
 <section id="about" class="pad fade" style="border-top:1px solid var(--line)">
   <div class="eyebrow">Behind The Studio</div>
   <div class="about-grid">
-    <div class="about-photo" style="background:none">
+    <div class="about-photo">
       <img src="founder.jpg" alt="Galina, Founder & Studio Director" style="width:100%;height:100%;object-fit:cover">
     </div>
     <div>
       <div class="about-block">
         <h3>The brand story.</h3>
-        <p>Small businesses know marketing matters — they just don't have the time, system or clarity to do it properly. StratG exists to close that gap: strategy, content and physical product, run as one system instead of three separate headaches.</p>
+        <p>No time. No spare budget. No idea where to even start. That's the reality for most small business owners — not a lack of ambition, just a lack of a system. StratG exists to fix that: one studio that plans it, makes it, posts it, and even sources the product behind it — so growth stops depending on you finding another hour in the day.</p>
       </div>
       <div class="about-block">
         <h3>The founder story.</h3>
-        <p><strong>Galina</strong> founded StratG after a Master's in Marketing Management at ANU and 7+ years working across industries in both Australia and China. That dual footing is the studio's edge — fluent in local platforms and audiences, and directly connected to Chinese supplier networks most agencies never touch. When you work with StratG, you work with Galina, always.</p>
+        <p><strong>Galina</strong> has spent 7+ years working inside the industries small businesses actually come from — education, hospitality, beauty, events and banquets, floristry, modelling, bars and cafés. That's what shapes the strategy: not theory, but knowing how these businesses really run, what their customers respond to, and where the budget actually needs to go. On the sourcing side, that same hands-on approach means working directly with factories in China — no middlemen — so quality stays consistent and the price stays fair. When you work with StratG, you work with Galina, always.</p>
       </div>
       <div class="about-creds">
         <div><div class="cred-n">7+</div><div class="cred-l">Years experience</div></div>
-        <div><div class="cred-n">ANU</div><div class="cred-l">Master's, Marketing</div></div>
         <div><div class="cred-n">AU+CN</div><div class="cred-l">Dual market reach</div></div>
+        <div><div class="cred-n">360°</div><div class="cred-l">Platform matrix, AU+CN</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="pad fade" style="border-top:1px solid var(--line);max-width:900px">
-  <div class="eyebrow">Good To Know</div>
-  <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(26px,3.6vw,38px);letter-spacing:-.02em;margin-bottom:2rem">Frequently asked.</h2>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><p>Will I work directly with you?</p><div class="faq-plus">+</div></div><div class="faq-a"><p>Always — no account managers, no handoffs.</p></div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><p>How does sourcing pricing work?</p><div class="faq-plus">+</div></div><div class="faq-a"><p>A flat 10% of order value. Most clients still land 40–60% below local quotes.</p></div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><p>How quickly can we start?</p><div class="faq-plus">+</div></div><div class="faq-a"><p>Usually within two weeks of scoping.</p></div></div>
-</section>
-
+<!-- 07 FULL CONTACT FORM -->
 <section id="contact" class="pad fade" style="border-top:1px solid var(--line)">
   <div class="eyebrow">Get In Touch</div>
   <div class="ct-grid">
