@@ -174,6 +174,12 @@ nav.scrolled{background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-
 .f-ok{display:none;font-family:'Fraunces',serif;font-style:italic;color:var(--orange);margin-top:1rem;font-size:15px}
 @media(max-width:800px){.ct-grid{grid-template-columns:1fr;gap:2.25rem}.f-row{grid-template-columns:1fr}}
 
+  .social{display:flex;gap:.7rem;align-items:center}
+.social a{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:var(--ink);transition:background .2s,border-color .2s,color .2s}
+.social a:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+.social svg{width:17px;height:17px}
+.f-follow{display:flex;align-items:center;gap:1rem}
+  
 footer{padding:2.5rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--line)}
 .f-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .f-bottom span{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone)}
@@ -389,6 +395,12 @@ footer{padding:2.5rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--l
         <a class="ct-line" href="mailto:galinasong365@gmail.com"><span>Email</span><span>galinasong365@gmail.com</span></a>
         <div class="ct-line"><span>Studio</span><span>Canberra, ACT — remote-friendly</span></div>
         <div class="ct-line"><span>Reply</span><span>Within 24 hours</span></div>
+                <div class="ct-line" style="align-items:center"><span>Follow</span>
+          <div class="social">
+            <a href="https://www.instagram.com/stratg.mkt/" target="_blank" rel="noopener" aria-label="StratG on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="https://www.linkedin.com/in/galinasong365/" target="_blank" rel="noopener" aria-label="Galina on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11.5H3zM9.5 9.75h3.83v1.57h.05c.53-1 1.84-2.07 3.78-2.07 4.04 0 4.79 2.66 4.79 6.12v5.88h-4v-5.2c0-1.24-.02-2.83-1.73-2.83-1.73 0-2 1.35-2 2.74v5.29h-4z"/></svg></a>
+          </div>
+        </div>
       </div>
     </div>
     <form id="cForm" action="https://formspree.io/f/mwvgrqrk" method="POST" onsubmit="return submitForm(event)">
@@ -421,6 +433,13 @@ footer{padding:2.5rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--l
 <footer>
   <div class="f-bottom">
     <span>© 2026 StratG Creative Studio — Canberra, Australia</span>
+    <div class="f-follow">
+      <span>Find us</span>
+      <div class="social">
+        <a href="https://www.instagram.com/stratg.mkt/" target="_blank" rel="noopener" aria-label="StratG on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.linkedin.com/in/galinasong365/" target="_blank" rel="noopener" aria-label="Galina on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11.5H3zM9.5 9.75h3.83v1.57h.05c.53-1 1.84-2.07 3.78-2.07 4.04 0 4.79 2.66 4.79 6.12v5.88h-4v-5.2c0-1.24-.02-2.83-1.73-2.83-1.73 0-2 1.35-2 2.74v5.29h-4z"/></svg></a>
+      </div>
+    </div>
     <span>galinasong365@gmail.com</span>
   </div>
 </footer>
