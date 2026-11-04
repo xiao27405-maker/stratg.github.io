@@ -80,17 +80,25 @@ nav.scrolled{background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-
 .wfilters button.active::after{width:100%}
 
 .wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--line)}
-.wcard{position:relative;display:block;text-decoration:none;background:var(--paper);aspect-ratio:4/5;overflow:hidden;transition:opacity .3s,transform .3s}
+.wcard{position:relative;display:block;background:var(--paper);aspect-ratio:4/5;overflow:hidden;outline:none}
 .wcard.hide{display:none}
-.wcard-img{position:absolute;inset:0;background:repeating-linear-gradient(135deg,var(--paper2) 0 14px,#EFEFEC 14px 28px);background-size:cover;background-position:center;transition:transform .5s ease}
-.wcard:hover .wcard-img{transform:scale(1.045)}
-.wcard-tag{position:absolute;top:14px;left:14px;font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:rgba(255,255,255,.85);padding:5px 10px}
-.wcard-cap{position:absolute;left:0;right:0;bottom:0;padding:1rem 1.1rem;background:linear-gradient(to top,rgba(23,22,15,.72),rgba(23,22,15,0));transform:translateY(60%);opacity:0;transition:transform .3s ease,opacity .3s ease}
-.wcard:hover .wcard-cap{transform:translateY(0);opacity:1}
-.wcard-cap span{display:block;font-family:'Fraunces',serif;font-weight:500;font-size:16px;color:#fff}
-@media(max-width:900px){.wgrid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.wgrid{grid-template-columns:1fr}.wcard-cap{transform:translateY(0);opacity:1;background:linear-gradient(to top,rgba(23,22,15,.6),rgba(23,22,15,0))}}
-
+.wcard-img{position:absolute;inset:0;background:repeating-linear-gradient(135deg,var(--paper2) 0 14px,#EFEFEC 14px 28px);background-size:cover;background-position:center;transition:transform .6s ease}
+.wcard:hover .wcard-img,.wcard.open .wcard-img,.wcard:focus-within .wcard-img{transform:scale(1.04)}
+.wcard-tag{position:absolute;top:14px;left:14px;z-index:2;font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:rgba(255,255,255,.88);padding:5px 10px}
+.wcard-cap{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:2.5rem 1.25rem 1.1rem;background:linear-gradient(to top,rgba(23,22,15,.75),rgba(23,22,15,0));transition:opacity .25s}
+.wcard-cap span{display:block;font-family:'Fraunces',serif;font-weight:500;font-size:20px;color:#fff;line-height:1.15}
+.wcard-cap small{display:block;margin-top:.45rem;font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.wcard-story{position:absolute;inset:0;z-index:3;background:rgba(23,22,15,.9);color:#fff;padding:1.75rem 1.5rem 1.5rem;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s}
+.wcard:hover .wcard-story,.wcard.open .wcard-story,.wcard:focus-within .wcard-story{opacity:1;visibility:visible}
+.wcard:hover .wcard-cap,.wcard.open .wcard-cap,.wcard:focus-within .wcard-cap{opacity:0}
+.wcard-story h3{font-family:'Fraunces',serif;font-weight:500;font-size:22px;letter-spacing:-.01em;line-height:1.1;margin:0 0 1rem}
+.wcard-scroll{flex:1;overflow-y:auto;padding-right:.75rem;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.35) transparent;-webkit-overflow-scrolling:touch}
+.wcard-scroll::-webkit-scrollbar{width:4px}
+.wcard-scroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,.35);border-radius:4px}
+.wcard-scroll p{font-size:13.5px;line-height:1.75;color:rgba(255,255,255,.78);margin-bottom:1rem}
+.wcard-scroll p:last-child{margin-bottom:0}
+.wcard-hint{margin-top:.9rem;font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#F2A67D}
+@media(max-width:900px){.wgrid{grid-template-columns:1fr}.wcard{aspect-ratio:1/1}}
 .serv-list{border-top:1px solid var(--line)}
 .serv-row{border-bottom:1px solid var(--line);padding:1.5rem 0;display:grid;grid-template-columns:44px 1fr auto;gap:1.5rem;align-items:center}
 .serv-num{font-family:'Fraunces',serif;font-style:italic;color:var(--stone);font-size:13px}
@@ -183,9 +191,9 @@ footer{padding:2.5rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--l
     <li class="nav-item">
       <a class="top" href="#work">Works</a>
       <div class="nav-drop">
-        <a href="#work" onclick="filterWork('branding')">Branding + Creative</a>
-        <a href="#work" onclick="filterWork('social')">Social Media</a>
-        <a href="#work" onclick="filterWork('photography')">Photography</a>
+        <a href="#work" >Branding + Creative</a>
+        <a href="#work" >Social Media</a>
+        <a href="#work" >Photography</a>
       </div>
     </li>
     <li class="nav-item"><a class="top" href="#about">About</a></li>
@@ -209,9 +217,9 @@ footer{padding:2.5rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--l
   <div class="mob-row">
     <button onclick="toggleMobSub()">Works <span style="font-size:16px;color:var(--orange)" id="mobWorksIcon">+</span></button>
     <div class="mob-sub" id="mobWorksSub">
-      <a href="#work" onclick="filterWork('branding');closeMob()">Branding + Creative</a>
-      <a href="#work" onclick="filterWork('social');closeMob()">Social Media</a>
-      <a href="#work" onclick="filterWork('photography');closeMob()">Photography</a>
+      <a href="#work" onclick="closeMob()">Branding + Creative</a>
+      <a href="#work" onclick="closeMob()">Social Media</a>
+      <a href="#work" onclick="closeMob()">Photography</a>
     </div>
   </div>
   <div class="mob-row"><a href="#about" onclick="closeMob()">About</a></div>
@@ -292,60 +300,55 @@ footer{padding:2.5rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--l
 <section id="work" class="pad fade" style="border-top:1px solid var(--line)">
   <div class="work-head">
     <h2>Selected work.</h2>
-    <div class="wfilters">
-      <button class="active" onclick="filterWork('all')">All</button>
-      <button onclick="filterWork('branding')">Branding + Creative</button>
-      <button onclick="filterWork('social')">Social Media</button>
-      <button onclick="filterWork('photography')">Photography</button>
-    </div>
   </div>
 
   <div class="wgrid" id="wgrid">
-    <a class="wcard" data-cat="branding" href="#" onclick="return false">
-      <div class="wcard-img" style="background-image:url('work-1.jpg')"></div>
-      <div class="wcard-tag">Branding</div>
-      <div class="wcard-cap"><span>A Local Beauty Studio</span></div>
-    </a>
-    <a class="wcard" data-cat="social" href="#" onclick="return false">
-      <div class="wcard-img" style="background-image:url('work-2.jpg')"></div>
-      <div class="wcard-tag">Social Media</div>
-      <div class="wcard-cap"><span>Neighbourhood Café</span></div>
-    </a>
-    <a class="wcard" data-cat="photography" href="#" onclick="return false">
-      <div class="wcard-img" style="background-image:url('work-3.jpg')"></div>
-      <div class="wcard-tag">Photography</div>
-      <div class="wcard-cap"><span>Launch Merch Shoot</span></div>
-    </a>
-    <a class="wcard" data-cat="branding" href="#" onclick="return false">
-      <div class="wcard-img" style="background-image:url('work-4.jpg')"></div>
-      <div class="wcard-tag">Branding</div>
-      <div class="wcard-cap"><span>Boutique Retail Rebrand</span></div>
-    </a>
-    <a class="wcard" data-cat="social" href="#" onclick="return false">
-      <div class="wcard-img" style="background-image:url('work-5.jpg')"></div>
-      <div class="wcard-tag">Social Media</div>
-      <div class="wcard-cap"><span>Personal Trainer Brand</span></div>
-    </a>
-    <a class="wcard" data-cat="photography" href="#" onclick="return false">
-      <div class="wcard-img" style="background-image:url('work-6.jpg')"></div>
-      <div class="wcard-tag">Photography</div>
-      <div class="wcard-cap"><span>Family Restaurant Refresh</span></div>
-    </a>
-    <a class="wcard" data-cat="branding" href="#" onclick="return false">
-      <div class="wcard-img" style="background-image:url('work-7.jpg')"></div>
-      <div class="wcard-tag">Branding</div>
-      <div class="wcard-cap"><span>Packaging Redesign</span></div>
-    </a>
-    <a class="wcard" data-cat="social" href="#" onclick="return false">
-      <div class="wcard-img" style="background-image:url('work-8.jpg')"></div>
-      <div class="wcard-tag">Social Media</div>
-      <div class="wcard-cap"><span>Professional Services Firm</span></div>
-    </a>
-    <a class="wcard" data-cat="photography" href="#" onclick="return false">
-      <div class="wcard-img" style="background-image:url('work-9.jpg')"></div>
-      <div class="wcard-tag">Photography</div>
-      <div class="wcard-cap"><span>Event Gifting Campaign</span></div>
-    </a>
+
+    <!-- CASE 1: ABTA — upload photo as case-abta.jpg -->
+    <div class="wcard" data-cat="social branding" tabindex="0">
+      <div class="wcard-img" style="background-image:url('case-abta.jpg')"></div>
+      <div class="wcard-cap"><span>ABTA</span><small>Hover to read the story</small></div>
+      <div class="wcard-story">
+        <h3>Australasian Beauty Therapy Academy</h3>
+        <div class="wcard-scroll">
+          <p>ABTA trains the next generation of beauty professionals. The challenge was to make a hands-on, visual education brand look as polished online as it does in the classroom.</p>
+          <p>We built a consistent content system — showcasing student work, campus life and course highlights across the platforms prospective students actually use.</p>
+          <p>The result is a social presence that works like a shopfront: a clearer brand voice, a steady posting rhythm, and content that gives future students a reason to enquire.</p>
+        </div>
+        <div class="wcard-hint">Scroll ↓</div>
+      </div>
+    </div>
+
+    <!-- CASE 2: 满上 — upload photo as case-manshang.jpg -->
+    <div class="wcard" data-cat="branding social" tabindex="0">
+      <div class="wcard-img" style="background-image:url('case-manshang.jpg')"></div>
+      <div class="wcard-cap"><span>满上 Craft Beer Bar</span><small>Hover to read the story</small></div>
+      <div class="wcard-story">
+        <h3>满上 — Craft Beer Bar, China</h3>
+        <div class="wcard-scroll">
+          <p>满上 is a Chinese craft beer bar brand with a strong personality and a young, social-first crowd. The brief was to turn that personality into a recognisable brand across Chinese platforms.</p>
+          <p>We developed the visual direction and content approach — from venue and product imagery to platform-native posts built for Chinese social media.</p>
+          <p>The brand now carries one consistent look and voice, from the bar itself to the feed.</p>
+        </div>
+        <div class="wcard-hint">Scroll ↓</div>
+      </div>
+    </div>
+
+    <!-- CASE 3: TEDxCanberra — upload photo as case-tedxcanberra.jpg -->
+    <div class="wcard" data-cat="photography social" tabindex="0">
+      <div class="wcard-img" style="background-image:url('case-tedxcanberra.jpg')"></div>
+      <div class="wcard-cap"><span>TEDxCanberra</span><small>Hover to read the story</small></div>
+      <div class="wcard-story">
+        <h3>TEDxCanberra</h3>
+        <div class="wcard-scroll">
+          <p>TEDxCanberra brings local ideas and speakers together in one live event. The challenge was building anticipation and visibility around a one-day event with a limited promotion window.</p>
+          <p>We shaped the event's content and visual storytelling — speaker features, behind-the-scenes and event-day coverage — so the audience felt part of it before and after the day.</p>
+          <p>The photography and social content now live on as a record of the event and a foundation for next year's promotion.</p>
+        </div>
+        <div class="wcard-hint">Scroll ↓</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -386,7 +389,7 @@ footer{padding:2.5rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--l
         <div class="ct-line"><span>Reply</span><span>Within 24 hours</span></div>
       </div>
     </div>
-    <form id="cForm" action="https://formspree.io/f/mwvgrqrk" method="POST" onsubmit="return submitForm(event)">
+    <form id="cForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="return submitForm(event)">
       <div class="f-row">
         <div class="f-group"><label class="f-label">Name</label><input class="f-input" type="text" name="name" placeholder="Jane Smith" required></div>
         <div class="f-group"><label class="f-label">Email</label><input class="f-input" type="email" name="email" id="cEmail" placeholder="jane@yourbrand.com" required></div>
@@ -394,6 +397,18 @@ footer{padding:2.5rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--l
       <div class="f-group"><label class="f-label">What do you need help with?</label>
         <select class="f-select" name="service"><option value="">Select a service</option><option>Branding + Creative</option><option>Social Media</option><option>Photography</option><option>Brand Sourcing</option><option>Not sure yet</option></select>
       </div>
+      <div class="f-group"><label class="f-label">How did you hear about us? *</label>
+        <select class="f-select" name="how_did_you_hear" id="cSource" required onchange="toggleOther(this)">
+          <option value="" disabled selected>Please select</option>
+          <option>Search Engine (Google, Bing, etc.)</option>
+          <option>Social Media (LinkedIn, Facebook, X, etc.)</option>
+          <option>AI Assistant (ChatGPT, Claude, Gemini, etc.)</option>
+          <option>Word of mouth / Friend or colleague referral</option>
+          <option>Event, tradeshow, or conference</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="f-group" id="cOtherWrap" style="display:none"><label class="f-label">Please tell us how *</label><input class="f-input" type="text" name="how_did_you_hear_other" id="cOther" maxlength="120" placeholder="A short note is fine" disabled></div>
       <div class="f-group"><label class="f-label">Tell us more</label><textarea class="f-text" name="message" placeholder="What's your brand about, and what's not working right now?"></textarea></div>
       <button class="f-submit" type="submit">Send enquiry →</button>
       <div class="f-ok" id="cOk">✓ Message received — we'll be in touch within 24 hours.</div>
@@ -415,11 +430,20 @@ function closeMob(){document.getElementById('mob').style.display='none';}
 function toggleMobSub(){const s=document.getElementById('mobWorksSub');s.classList.toggle('open');document.getElementById('mobWorksIcon').textContent=s.classList.contains('open')?'−':'+';}
 function toggleFaq(el){el.parentElement.classList.toggle('open');}
 function filterWork(cat){
-  document.querySelectorAll('.wcard').forEach(c=>{c.classList.toggle('hide',cat!=='all'&&c.dataset.cat!==cat);});
+  document.querySelectorAll('.wcard').forEach(c=>{c.classList.toggle('hide',cat!=='all'&&!c.dataset.cat.split(' ').includes(cat));});
   document.querySelectorAll('.wfilters button').forEach(b=>b.classList.remove('active'));
   const map={all:0,branding:1,social:2,photography:3};
   const btns=document.querySelectorAll('.wfilters button');
   if(btns[map[cat]])btns[map[cat]].classList.add('active');
+}
+document.querySelectorAll('.wcard').forEach(c=>{c.addEventListener('click',()=>{if(window.matchMedia('(hover:none)').matches){document.querySelectorAll('.wcard.open').forEach(o=>{if(o!==c)o.classList.remove('open')});c.classList.toggle('open');}});});
+function toggleOther(sel){
+  const show=sel.value==='Other';
+  const wrap=document.getElementById('cOtherWrap'),inp=document.getElementById('cOther');
+  wrap.style.display=show?'block':'none';
+  inp.disabled=!show;
+  inp.required=show;
+  if(!show)inp.value='';
 }
 async function submitForm(e){
   e.preventDefault();
