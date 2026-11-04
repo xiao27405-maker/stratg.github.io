@@ -135,16 +135,16 @@ nav.scrolled{background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-
 .quick-ct h2 em{font-style:italic;color:var(--orange)}
 .quick-ct-btns{display:flex;gap:1rem;flex-wrap:wrap}
 
-.about-grid{display:grid;grid-template-columns:260px 1fr;gap:3rem;align-items:start}
-.about-photo{width:260px;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,var(--paper2) 0 14px,#EFEFEC 14px 28px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:var(--stone);overflow:hidden;border-radius:2px}
-.about-block{margin-bottom:2rem}
-.about-block:last-child{margin-bottom:0}
+.about-grid{display:grid;grid-template-columns:280px 1fr;gap:3.5rem;align-items:start}
+.about-photo{width:280px;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,var(--paper2) 0 14px,#EFEFEC 14px 28px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:var(--stone);overflow:hidden;border-radius:2px}
+.about-stories{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem}
 .about-block h3{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(19px,2.2vw,25px);letter-spacing:-.01em;margin-bottom:.75rem}
-.about-block p{font-size:14.5px;line-height:1.8;color:var(--stone);max-width:52ch}
+.about-block p{font-size:14.5px;line-height:1.8;color:var(--stone)}
 .about-block p strong{color:var(--ink);font-weight:600}
-.about-creds{display:flex;gap:2.5rem;margin-top:2rem;border-top:1px solid var(--line);padding-top:1.5rem}
+.about-creds{display:flex;gap:3rem;margin-top:2.5rem;border-top:1px solid var(--line);padding-top:1.5rem}
 .cred-n{font-family:'Fraunces',serif;font-weight:600;font-size:24px;color:var(--orange)}
 .cred-l{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-top:2px}
+@media(max-width:1000px){.about-stories{grid-template-columns:1fr;gap:2rem}}
 @media(max-width:800px){.about-grid{grid-template-columns:1fr;gap:2rem}.about-photo{width:200px}}
 
 .faq-item{border-bottom:1px solid var(--line)}
@@ -360,13 +360,15 @@ footer{padding:2.5rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--l
       <img src="founder.jpg" alt="Galina, Founder & Studio Director" style="width:100%;height:100%;object-fit:cover">
     </div>
     <div>
-      <div class="about-block">
-        <h3>The brand story.</h3>
-        <p>No time. No spare budget. No idea where to even start. That's the reality for most small business owners — not a lack of ambition, just a lack of a system. StratG exists to fix that: one studio that plans it, makes it, posts it, and even sources the product behind it — so growth stops depending on you finding another hour in the day.</p>
-      </div>
-      <div class="about-block">
-        <h3>The founder story.</h3>
-        <p><strong>Galina</strong> has spent 7+ years working inside the industries small businesses actually come from — education, hospitality, beauty, events and banquets, floristry, modelling, bars and cafés. That's what shapes the strategy: not theory, but knowing how these businesses really run, what their customers respond to, and where the budget actually needs to go. On the sourcing side, that same hands-on approach means working directly with factories in China — no middlemen — so quality stays consistent and the price stays fair. When you work with StratG, you work with Galina, always.</p>
+      <div class="about-stories">
+        <div class="about-block">
+          <h3>The brand story.</h3>
+          <p>No time. No spare budget. No idea where to even start. That's the reality for most small business owners — not a lack of ambition, just a lack of a system. StratG exists to fix that: one studio that plans it, makes it, posts it, and even sources the product behind it — so growth stops depending on you finding another hour in the day.</p>
+        </div>
+        <div class="about-block">
+          <h3>The founder story.</h3>
+          <p><strong>Galina</strong> has spent 7+ years working inside the industries small businesses actually come from — education, hospitality, beauty, events and banquets, floristry, modelling, bars and cafés. That's what shapes the strategy: not theory, but knowing how these businesses really run, what their customers respond to, and where the budget actually needs to go. On the sourcing side, that same hands-on approach means working directly with factories in China — no middlemen — so quality stays consistent and the price stays fair. When you work with StratG, you work with Galina, always.</p>
+        </div>
       </div>
       <div class="about-creds">
         <div><div class="cred-n">7+</div><div class="cred-l">Years experience</div></div>
