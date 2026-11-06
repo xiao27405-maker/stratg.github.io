@@ -100,10 +100,11 @@ nav.scrolled{background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-
 .wcard-hint{margin-top:.9rem;font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#F2A67D}
 @media(max-width:900px){.wgrid{grid-template-columns:1fr}.wcard{aspect-ratio:1/1}}
 .serv-list{border-top:1px solid var(--line)}
-.serv-row{border-bottom:1px solid var(--line);padding:1.5rem 0;display:grid;grid-template-columns:44px 1fr auto;gap:1.5rem;align-items:center}
+.serv-row{border-bottom:1px solid var(--line);padding:1.75rem 0;display:grid;grid-template-columns:44px minmax(0,1fr) minmax(0,1.3fr);gap:1.5rem;align-items:baseline}
 .serv-num{font-family:'Fraunces',serif;font-style:italic;color:var(--stone);font-size:13px}
 .serv-name{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(18px,2.2vw,24px);letter-spacing:-.01em}
 .serv-tag{font-size:11px;color:var(--stone);text-align:right;white-space:nowrap}
+  .serv-desc{font-size:14px;line-height:1.7;color:var(--stone)}
 .badge{display:inline-block;border:1px solid var(--orange);color:var(--orange);font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-left:.6rem}
 @media(max-width:600px){.serv-row{grid-template-columns:1fr}.serv-tag{text-align:left;white-space:normal}}
 
@@ -239,13 +240,14 @@ footer{padding:2.5rem clamp(1.5rem,5vw,3.5rem) 2rem;border-top:1px solid var(--l
 <!-- 01 WHAT WE DO -->
 <section id="services" class="pad fade">
   <div class="eyebrow">What We Do</div>
-  <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(28px,4vw,44px);letter-spacing:-.02em;line-height:1;margin-bottom:2rem">Content, sourced <em style="font-style:italic;color:var(--orange)">and made.</em></h2>
+  <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(28px,4vw,44px);letter-spacing:-.02em;line-height:1.05;margin-bottom:1rem">Strategy meets creativity. <em style="font-style:italic;color:var(--orange)">Marketing made practical.</em></h2>
+  <p style="font-size:15px;line-height:1.7;color:var(--stone);max-width:60ch;margin-bottom:2rem">Strategic thinking, creative production and marketing execution for growing Canberra businesses.</p>
   <div class="serv-list">
-    <div class="serv-row"><div class="serv-num">01</div><div class="serv-name">Content Strategy</div><div class="serv-tag">Roadmap &amp; positioning</div></div>
-    <div class="serv-row"><div class="serv-num">02</div><div class="serv-name">Content Production</div><div class="serv-tag">Video &amp; photography</div></div>
-    <div class="serv-row"><div class="serv-num">03</div><div class="serv-name">Social Media System</div><div class="serv-tag">Calendar &amp; posting</div></div>
-    <div class="serv-row"><div class="serv-num">04</div><div class="serv-name">Platform Matrix</div><div class="serv-tag">Instagram · TikTok · LinkedIn · Facebook · Website · RedNote</div></div>
-    <div class="serv-row"><div class="serv-num">05</div><div class="serv-name">Branded Merch Sourcing<span class="badge">Exclusive</span></div><div class="serv-tag">Custom merch, packaging &amp; gifting — made in China</div></div>
+    <div class="serv-row"><div class="serv-num">01</div><div class="serv-name">Marketing Strategy</div><div class="serv-desc">Brand positioning, marketing roadmaps, audience insights and campaign planning.</div></div>
+    <div class="serv-row"><div class="serv-num">02</div><div class="serv-name">Creative Production</div><div class="serv-desc">Brand photography, video production, copywriting and creative content.</div></div>
+    <div class="serv-row"><div class="serv-num">03</div><div class="serv-name">Digital &amp; Social Marketing</div><div class="serv-desc">Social media management, multi-platform content planning, digital campaigns and website content.</div></div>
+    <div class="serv-row"><div class="serv-num">04</div><div class="serv-name">Campaigns &amp; Growth</div><div class="serv-desc">Campaign execution, performance tracking, analytics and marketing optimisation.</div></div>
+    <div class="serv-row"><div class="serv-num">05</div><div class="serv-name">Branded Merchandise &amp; Sourcing<span class="badge">Specialist</span></div><div class="serv-desc">Custom merchandise, branded packaging and corporate gifting, sourced through our China-based supply network.</div></div>
   </div>
 </section>
 
